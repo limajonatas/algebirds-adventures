@@ -1,0 +1,12 @@
+[gd_scene load_steps=2 format=3 uid="uid://ctmyrlulkq5bw"]
+
+[ext_resource type="Texture2D" uid="uid://dw6lpgso1jska" path="res://assets/background/background1.png" id="1_iurnv"]
+
+[node name="ParallaxBackground" type="ParallaxBackground"]
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="."]
+
+[node name="TextureRect" type="TextureRect" parent="ParallaxLayer"]
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("1_iurnv")
