@@ -1,33 +1,41 @@
 [gd_scene load_steps=7 format=3 uid="uid://dp2cdda8eykr8"]
 
 [ext_resource type="PackedScene" uid="uid://ctmyrlulkq5bw" path="res://scenes/env/background.tscn" id="1_dp26d"]
+[ext_resource type="Script" path="res://scripts/node_2d.gd" id="1_hvssx"]
 [ext_resource type="PackedScene" uid="uid://g7ldocm1a1b5" path="res://scenes/objects/gun.tscn" id="2_aeeha"]
 [ext_resource type="PackedScene" uid="uid://sevos7bhxqdt" path="res://scenes/personagem/arara_azul.tscn" id="3_4477x"]
 [ext_resource type="Script" path="res://scenes/personagem/arara_azul.gd" id="4_e3fq6"]
-[ext_resource type="Texture2D" uid="uid://crawl5ykk8v61" path="res://icon.svg" id="5_rgyny"]
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_nmell"]
-size = Vector2(122, 124)
+[ext_resource type="PackedScene" uid="uid://b7o4dlqolv2xb" path="res://scenes/objects/ballon.tscn" id="6_jdwde"]
 
 [node name="Node2D" type="Node2D"]
+script = ExtResource("1_hvssx")
+metadata/_edit_horizontal_guides_ = []
 
 [node name="ParallaxBackground" parent="." instance=ExtResource("1_dp26d")]
 
 [node name="Gun" parent="." instance=ExtResource("2_aeeha")]
-position = Vector2(147, 529)
+position = Vector2(176.5, 554)
 
 [node name="AraraAzul" parent="." instance=ExtResource("3_4477x")]
-position = Vector2(195, 477)
+position = Vector2(224.5, 505)
 script = ExtResource("4_e3fq6")
 
-[node name="StaticBody2D" type="StaticBody2D" parent="."]
-position = Vector2(979, 166)
+[node name="Ballon01" parent="." instance=ExtResource("6_jdwde")]
+position = Vector2(840, 150)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
-position = Vector2(-1, -2)
-shape = SubResource("RectangleShape2D_nmell")
+[node name="Ballon02" parent="." instance=ExtResource("6_jdwde")]
+position = Vector2(1047, 167)
 
-[node name="Sprite2D" type="Sprite2D" parent="StaticBody2D"]
-texture = ExtResource("5_rgyny")
+[node name="Ballon03" parent="." instance=ExtResource("6_jdwde")]
+position = Vector2(944, 290)
+
+[node name="Ballon04" parent="." instance=ExtResource("6_jdwde")]
+position = Vector2(1099, 372)
+
+[node name="Ballon05" parent="." instance=ExtResource("6_jdwde")]
+position = Vector2(901, 464)
+
+[node name="Ballon06" parent="." instance=ExtResource("6_jdwde")]
+position = Vector2(1004, 577)
 
 [connection signal="cont_updated" from="Gun" to="AraraAzul" method="_on_gun_cont_updated"]

@@ -4,9 +4,8 @@
 [ext_resource type="Texture2D" uid="uid://b7p0gjhw12p61" path="res://assets/character/arara-azul-grande2.png" id="1_w06u3"]
 [ext_resource type="Script" path="res://scenes/personagem/arara_azul_sprite.gd" id="3_p5e4e"]
 
-[sub_resource type="Animation" id="Animation_2n8vt"]
-resource_name = "static"
-length = 0.05
+[sub_resource type="Animation" id="Animation_m25jt"]
+length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -44,8 +43,9 @@ tracks/2/keys = {
 "values": [0]
 }
 
-[sub_resource type="Animation" id="Animation_m25jt"]
-length = 0.001
+[sub_resource type="Animation" id="Animation_2n8vt"]
+resource_name = "static"
+length = 0.05
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -132,12 +132,13 @@ _data = {
 }
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3i2hv"]
-size = Vector2(89, 71)
+size = Vector2(46, 43)
 
 [node name="AraraAzul" type="CharacterBody2D"]
 position = Vector2(57, 51)
 
 [node name="AraraAzulSprite" type="Sprite2D" parent="."]
+position = Vector2(0, -1)
 scale = Vector2(0.407407, 0.407407)
 texture = ExtResource("1_mnjnq")
 script = ExtResource("3_p5e4e")
@@ -149,5 +150,5 @@ libraries = {
 }
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-0.5, -0.5)
+position = Vector2(0, -0.5)
 shape = SubResource("RectangleShape2D_3i2hv")

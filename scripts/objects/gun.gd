@@ -25,7 +25,7 @@ func _input(event: InputEvent) -> void:
 				
 		elif key_event.is_action_pressed("ui_up")  and !isMoving:
 			# Atualize a textura para a aparência "para cima"
-			if cont < 3:
+			if cont < 2:
 				cont += 1
 				if(cont < 0):
 					texture_path = "res://assets/objects/gun-" + str(abs(cont)) + ".png"					
