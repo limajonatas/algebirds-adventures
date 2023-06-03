@@ -6,10 +6,12 @@ var initialY: float
 var direction: int = 1
 var animationPlayer: AnimationPlayer
 var rng: RandomNumberGenerator
-
+var is_moving: bool = false
 @onready var label: Label = $Label;
+signal atingido(value: bool, label: Label )
 
 func _ready():
+	add_to_group("balloons")
 	initialY = position.y
 	animationPlayer = $AnimationPlayer
 	
@@ -25,15 +27,18 @@ func _ready():
 
 	# Definir a direção inicial com base no número aleatório
 	direction = directionVerify(randomDirection)
+	
+	is_moving = true
 
 func _process(delta):
-	position.y += speed * delta * direction
+	if(is_moving):
+		position.y += speed * delta * direction
 
-	# Verifica se o objeto atingiu a amplitude desejada ou voltou à posição inicial
-	if position.y >= initialY + amplitude:
-		direction = -1
-	elif position.y <= initialY:
-		direction = 1
+		# Verifica se o objeto atingiu a amplitude desejada ou voltou à posição inicial
+		if position.y >= initialY + amplitude:
+			direction = -1
+		elif position.y <= initialY:
+			direction = 1
 		
 func directionVerify(random: int ) -> int:
 	if random == 0:
@@ -41,16 +46,16 @@ func directionVerify(random: int ) -> int:
 	else:
 		return 1;
 
-func _onBodyEntered(body: Node) -> void:
-	if body is CharacterBody2D and body.is_in_group("characters"):
-		# Um objeto CharacterBody atingiu o StaticBody2D
-		var character = body as CharacterBody2D
-		label.text = "Colidiu com " + character.name
-		
-		# Alterar a animação quando um objeto colidir
-		animationPlayer.play("outra_animacao")
-
-		# Ocultar a label quando um objeto colidir
+func _on_body_entered(body: Node) -> void:
+	if body is CharacterBody2D:  # Verifica se o objeto que colidiu é do tipo CharacterBody
+		# Faça algo quando um CharacterBody colidir com a Área2D
+		print("Um CharacterBody colidiu com a Área2D!", body)
+		animationPlayer.play('pow')
 		label.visible = false
-
- # Replace with function body.
+		is_moving = false
+		emit_signal("atingido", true, label)
+		
+		
+		
+		
+		

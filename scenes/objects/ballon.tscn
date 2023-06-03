@@ -432,7 +432,7 @@ _data = {
 "pow": SubResource("Animation_xf2ad")
 }
 
-[node name="Area2D" type="Area2D"]
+[node name="Ballon" type="Area2D"]
 script = ExtResource("1_1bhdf")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -444,7 +444,6 @@ position = Vector2(-1.00002, 22.8409)
 scale = Vector2(0.260536, 0.289681)
 texture = ExtResource("2_dc2ra")
 hframes = 4
-frame = 1
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 root_node = NodePath("../Sprite2D")
@@ -463,3 +462,5 @@ theme_override_font_sizes/font_size = 20
 text = "2*2"
 horizontal_alignment = 1
 autowrap_mode = 2
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

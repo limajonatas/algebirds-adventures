@@ -21,13 +21,13 @@ position = Vector2(224.5, 505)
 script = ExtResource("4_e3fq6")
 
 [node name="Ballon01" parent="." instance=ExtResource("6_jdwde")]
-position = Vector2(840, 150)
+position = Vector2(823, 121)
 
 [node name="Ballon02" parent="." instance=ExtResource("6_jdwde")]
-position = Vector2(1047, 167)
+position = Vector2(1046, 147)
 
 [node name="Ballon03" parent="." instance=ExtResource("6_jdwde")]
-position = Vector2(944, 290)
+position = Vector2(933, 282)
 
 [node name="Ballon04" parent="." instance=ExtResource("6_jdwde")]
 position = Vector2(1099, 372)
@@ -38,4 +38,15 @@ position = Vector2(901, 464)
 [node name="Ballon06" parent="." instance=ExtResource("6_jdwde")]
 position = Vector2(1004, 577)
 
+[node name="Line2D" type="Line2D" parent="."]
+points = PackedVector2Array(886, 273, 274, 496)
+
 [connection signal="cont_updated" from="Gun" to="AraraAzul" method="_on_gun_cont_updated"]
+[connection signal="atingido" from="Ballon01" to="." method="_on_ballon_01_atingido"]
+[connection signal="body_entered" from="Ballon01" to="." method="_on_ballon_01_body_entered"]
+[connection signal="body_entered" from="Ballon01" to="AraraAzul" method="_on_ballon_01_body_entered"]
+[connection signal="atingido" from="Ballon02" to="." method="_on_ballon_02_atingido"]
+[connection signal="atingido" from="Ballon03" to="." method="_on_ballon_03_atingido"]
+[connection signal="atingido" from="Ballon04" to="." method="_on_ballon_04_atingido"]
+[connection signal="atingido" from="Ballon05" to="." method="_on_ballon_05_atingido"]
+[connection signal="atingido" from="Ballon06" to="." method="_on_ballon_06_atingido"]

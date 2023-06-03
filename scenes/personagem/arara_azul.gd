@@ -50,13 +50,27 @@ func _physics_process(delta: float) -> void:
 		motion += Vector2(0, gravity) * delta
 		var collision = move_and_collide(motion * delta)
 		
-		# Verifique se houve colisão
+		# Verifique se houve colisão (não está sendo utilizado)
+		'''
 		if collision:
 			# Pare o movimento do personagem e defina isMoving como falso
 			isMoving = false
 			# Oculte o sprite
 			sprite.visible = false
-		
+			
+			# Identifique o objeto que colidiu
+			var collidedObject = collision.collider
+			
+			# Faça algo com o objeto colidido
+			if collidedObject.is_in_group("ballons"):
+				# O objeto colidido pertence ao grupo "NomeDoGrupo"
+				# Execute ação específica para esse objeto
+				print("Colisão com o objeto do grupo NomeDoGrupo detectada!")
+			else:
+				# O objeto colidido não pertence ao grupo "NomeDoGrupo"
+				# Faça algo para outros casos de colisão
+				print("Colisão detectada com um objeto fora do grupo NomeDoGrupo.")
+	'''
 		gravity *= 1.04 #Aumente a gravidade para criar uma curva descendente
 		
 		currentSpeed *= speedReductionRate
@@ -66,3 +80,7 @@ func _physics_process(delta: float) -> void:
 # Será chamado externamente quando o canhão muda de direção
 func _on_gun_cont_updated(value: int):
 	canhao_position = value
+
+
+func _on_ballon_01_body_entered(body):
+	pass # Replace with function body.
