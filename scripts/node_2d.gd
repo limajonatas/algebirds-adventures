@@ -11,6 +11,8 @@ extends Node2D
 @onready var label: Label = $Ballon01/Label
 @onready var arara: CharacterBody2D = $AraraAzul
 
+@onready var pergunta: Label = $Pergunta/Label
+ 
 var balaoAtingido: bool = false;
 
 var startPosition: Vector2 = Vector2(100, 100)
@@ -41,14 +43,14 @@ func _ready():
 	
 	# Definir o texto inicial
 	label.set_text("")
-
+	pergunta.set_text('2/2')
 	# Ou você pode definir o texto usando uma variável
 	var texto = "2*2"
 	label.set_text(texto)
 	
 
 func _process(_delta) -> void:
-	draw_line(Vector2.ZERO, Vector2.RIGHT * 300, Color.WHITE, 0.8)
+	#draw_line(Vector2.ZERO, Vector2.RIGHT * 300, Color.WHITE, 0.8)
 	
 	if(balaoAtingido):
 		arara.visible = false;
@@ -62,6 +64,7 @@ func _process(_delta) -> void:
 	
 
 func _on_ballon_01_body_entered(body):
+	print(body)
 	pass # Replace with function body
 
 ##são os sinais emitidos pelos baloes

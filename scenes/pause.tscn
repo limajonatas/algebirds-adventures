@@ -1,0 +1,63 @@
+[gd_scene load_steps=7 format=3 uid="uid://b56clqs8bu8wa"]
+
+[ext_resource type="Script" path="res://scripts/Control.gd" id="1_u6ibs"]
+[ext_resource type="Texture2D" uid="uid://db386wy125eax" path="res://assets/pause/menu.png" id="2_1my7y"]
+[ext_resource type="Texture2D" uid="uid://cy2ry65d50v2x" path="res://assets/pause/voltar.png" id="3_bjyg6"]
+[ext_resource type="Texture2D" uid="uid://igdfbp23jph6" path="res://assets/pause/opcoes.png" id="4_5qcnx"]
+[ext_resource type="Texture2D" uid="uid://bhrmtvw1qc1eh" path="res://assets/pause/sair.png" id="5_soaln"]
+[ext_resource type="Texture2D" uid="uid://bern1o63t7v3v" path="res://assets/pause/pause.png" id="7_2rvnt"]
+
+[node name="CanvasLayer" type="CanvasLayer"]
+
+[node name="Control" type="Control" parent="."]
+process_mode = 3
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_u6ibs")
+
+[node name="ColorRect" type="ColorRect" parent="Control"]
+modulate = Color(0, 0, 0, 0.698039)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="CenterContainer" type="CenterContainer" parent="Control"]
+layout_mode = 1
+anchors_preset = 13
+anchor_left = 0.5
+anchor_right = 0.5
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Pause" type="Sprite2D" parent="Control/CenterContainer"]
+position = Vector2(2, 80)
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("7_2rvnt")
+
+[node name="Menu" type="Sprite2D" parent="Control/CenterContainer"]
+position = Vector2(3.69995, 287.35)
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("2_1my7y")
+
+[node name="Voltar" type="Sprite2D" parent="Control/CenterContainer"]
+position = Vector2(3.69995, 176.35)
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("3_bjyg6")
+
+[node name="Opcoes" type="Sprite2D" parent="Control/CenterContainer"]
+position = Vector2(3.69995, 398.35)
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("4_5qcnx")
+
+[node name="Sair" type="Sprite2D" parent="Control/CenterContainer"]
+position = Vector2(3.69995, 510.35)
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("5_soaln")

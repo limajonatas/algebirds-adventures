@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://dp2cdda8eykr8"]
+[gd_scene load_steps=14 format=3 uid="uid://dp2cdda8eykr8"]
 
 [ext_resource type="PackedScene" uid="uid://ctmyrlulkq5bw" path="res://scenes/env/background.tscn" id="1_dp26d"]
 [ext_resource type="Script" path="res://scripts/node_2d.gd" id="1_hvssx"]
@@ -6,6 +6,13 @@
 [ext_resource type="PackedScene" uid="uid://sevos7bhxqdt" path="res://scenes/personagem/arara_azul.tscn" id="3_4477x"]
 [ext_resource type="Script" path="res://scenes/personagem/arara_azul.gd" id="4_e3fq6"]
 [ext_resource type="PackedScene" uid="uid://b7o4dlqolv2xb" path="res://scenes/objects/ballon.tscn" id="6_jdwde"]
+[ext_resource type="Texture2D" uid="uid://dabosy3eg5dne" path="res://assets/interface/painel_pergunta.png" id="8_g3tdb"]
+[ext_resource type="Texture2D" uid="uid://bkeadsdoyakjw" path="res://assets/interface/pausa.png" id="9_ev0kt"]
+[ext_resource type="Texture2D" uid="uid://c5rs727gbn1f7" path="res://assets/interface/texto_qual_a_pergunta.png" id="10_gs4bo"]
+[ext_resource type="Script" path="res://scripts/Pausa.gd" id="10_lw8f8"]
+[ext_resource type="Texture2D" uid="uid://be78pt7gpud23" path="res://assets/interface/fase1.png" id="11_003u2"]
+[ext_resource type="PackedScene" uid="uid://clf3bmt51d2vh" path="res://scenes/interface/vida.tscn" id="12_qba8w"]
+[ext_resource type="PackedScene" uid="uid://b56clqs8bu8wa" path="res://scenes/pause.tscn" id="13_ma7vm"]
 
 [node name="Node2D" type="Node2D"]
 script = ExtResource("1_hvssx")
@@ -40,6 +47,49 @@ position = Vector2(1004, 577)
 
 [node name="Line2D" type="Line2D" parent="."]
 points = PackedVector2Array(886, 273, 274, 496)
+
+[node name="Pergunta" type="Sprite2D" parent="."]
+position = Vector2(376, 588)
+scale = Vector2(0.308823, 0.308823)
+texture = ExtResource("8_g3tdb")
+
+[node name="Label" type="Label" parent="Pergunta"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -588.0
+offset_top = -210.0
+offset_right = -46.0
+offset_bottom = -25.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 120
+text = "2+2"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Pausa" type="Sprite2D" parent="."]
+position = Vector2(1086, 593)
+scale = Vector2(0.256522, 0.256522)
+texture = ExtResource("9_ev0kt")
+script = ExtResource("10_lw8f8")
+
+[node name="TextoQualAPergunta" type="Sprite2D" parent="."]
+position = Vector2(566, 88)
+scale = Vector2(0.201425, 0.201425)
+texture = ExtResource("10_gs4bo")
+
+[node name="Fase" type="Sprite2D" parent="."]
+position = Vector2(561, 39)
+scale = Vector2(0.220588, 0.220588)
+texture = ExtResource("11_003u2")
+
+[node name="Vida" parent="." instance=ExtResource("12_qba8w")]
+
+[node name="Pause" parent="." instance=ExtResource("13_ma7vm")]
 
 [connection signal="cont_updated" from="Gun" to="AraraAzul" method="_on_gun_cont_updated"]
 [connection signal="atingido" from="Ballon01" to="." method="_on_ballon_01_atingido"]
