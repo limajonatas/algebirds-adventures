@@ -73,23 +73,25 @@ vertical_alignment = 1
 
 [node name="Pausa" type="Sprite2D" parent="."]
 position = Vector2(1086, 593)
-scale = Vector2(0.256522, 0.256522)
+scale = Vector2(0.2, 0.2)
 texture = ExtResource("9_ev0kt")
 script = ExtResource("10_lw8f8")
 
 [node name="TextoQualAPergunta" type="Sprite2D" parent="."]
 position = Vector2(566, 88)
-scale = Vector2(0.201425, 0.201425)
+scale = Vector2(0.2, 0.2)
 texture = ExtResource("10_gs4bo")
 
 [node name="Fase" type="Sprite2D" parent="."]
 position = Vector2(561, 39)
-scale = Vector2(0.220588, 0.220588)
+scale = Vector2(0.2, 0.2)
 texture = ExtResource("11_003u2")
 
 [node name="Vida" parent="." instance=ExtResource("12_qba8w")]
+scale = Vector2(0.2, 0.2)
 
 [node name="Pause" parent="." instance=ExtResource("13_ma7vm")]
+visible = false
 
 [connection signal="cont_updated" from="Gun" to="AraraAzul" method="_on_gun_cont_updated"]
 [connection signal="atingido" from="Ballon01" to="." method="_on_ballon_01_atingido"]
