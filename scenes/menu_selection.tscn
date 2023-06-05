@@ -1,0 +1,52 @@
+[gd_scene load_steps=4 format=3 uid="uid://dyx3skgdhs0yq"]
+
+[ext_resource type="Texture2D" uid="uid://cvao17v5rfpfs" path="res://assets/background/menu.png" id="1_vfors"]
+[ext_resource type="Script" path="res://scripts/Menu_selection.gd" id="1_w71g0"]
+[ext_resource type="Texture2D" uid="uid://cy2ry65d50v2x" path="res://assets/pause/voltar.png" id="3_vncoe"]
+
+[node name="Node2D" type="Node2D"]
+
+[node name="Menu_selection" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 1154.0
+offset_bottom = 649.0
+script = ExtResource("1_w71g0")
+
+[node name="Button_back" type="Button" parent="Menu_selection"]
+layout_mode = 0
+offset_left = 24.0
+offset_top = 575.0
+offset_right = 324.0
+offset_bottom = 630.0
+action_mode = 0
+keep_pressed_outside = true
+flat = true
+
+[node name="TextureButton" type="TextureButton" parent="Menu_selection/Button_back"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+texture_normal = ExtResource("3_vncoe")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="TextureRect" type="TextureRect" parent="Menu_selection"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_vfors")
+expand_mode = 2
+
+[node name="Button" type="Button" parent="Menu_selection"]
+layout_mode = 0
+offset_right = 8.0
+offset_bottom = 8.0
+text = "Voltar"
