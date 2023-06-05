@@ -1,9 +1,10 @@
-[gd_scene load_steps=7 format=3 uid="uid://b56clqs8bu8wa"]
+[gd_scene load_steps=8 format=3 uid="uid://b56clqs8bu8wa"]
 
 [ext_resource type="Script" path="res://scripts/Control.gd" id="1_u6ibs"]
 [ext_resource type="Texture2D" uid="uid://db386wy125eax" path="res://assets/pause/menu.png" id="2_1my7y"]
 [ext_resource type="Texture2D" uid="uid://cy2ry65d50v2x" path="res://assets/pause/voltar.png" id="3_bjyg6"]
 [ext_resource type="Texture2D" uid="uid://igdfbp23jph6" path="res://assets/pause/opcoes.png" id="4_5qcnx"]
+[ext_resource type="Script" path="res://scripts/VoltarPause.gd" id="5_rs4hf"]
 [ext_resource type="Texture2D" uid="uid://bhrmtvw1qc1eh" path="res://assets/pause/sair.png" id="5_soaln"]
 [ext_resource type="Texture2D" uid="uid://bern1o63t7v3v" path="res://assets/pause/pause.png" id="7_2rvnt"]
 
@@ -51,6 +52,7 @@ texture = ExtResource("2_1my7y")
 position = Vector2(3.69995, 176.35)
 scale = Vector2(0.3, 0.3)
 texture = ExtResource("3_bjyg6")
+script = ExtResource("5_rs4hf")
 
 [node name="Opcoes" type="Sprite2D" parent="Control/CenterContainer"]
 position = Vector2(3.69995, 398.35)
@@ -61,3 +63,5 @@ texture = ExtResource("4_5qcnx")
 position = Vector2(3.69995, 510.35)
 scale = Vector2(0.3, 0.3)
 texture = ExtResource("5_soaln")
+
+[connection signal="voltar" from="Control/CenterContainer/Voltar" to="Control" method="_on_voltar_voltar"]

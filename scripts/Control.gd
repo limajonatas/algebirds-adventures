@@ -13,3 +13,7 @@ func _process(_delta):
 	if a==-1:
 		hide()
 		get_tree().paused = false		
+
+
+func _on_voltar_voltar():
+	a=-1;
