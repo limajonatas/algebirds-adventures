@@ -1,0 +1,51 @@
+[gd_scene load_steps=5 format=3 uid="uid://dq6cb1qse613i"]
+
+[ext_resource type="Texture2D" uid="uid://dkjjb5p0wsq5w" path="res://assets/menu/fundo.png" id="1_nau6i"]
+[ext_resource type="Texture2D" uid="uid://bi3737qcekep5" path="res://assets/menu/text35639-7.png" id="2_uyfno"]
+[ext_resource type="Texture2D" uid="uid://bt5fnjvvani5f" path="res://assets/menu/som.png" id="3_eyf7f"]
+[ext_resource type="Texture2D" uid="uid://cy2ry65d50v2x" path="res://assets/pause/voltar.png" id="5_h857k"]
+
+[node name="Node2D" type="Node2D"]
+
+[node name="ParallaxBackground" type="ParallaxBackground" parent="."]
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
+
+[node name="TextureRect" type="TextureRect" parent="ParallaxBackground/ParallaxLayer"]
+offset_right = 1153.0
+offset_bottom = 651.0
+texture = ExtResource("1_nau6i")
+expand_mode = 1
+
+[node name="Options" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = 1154.0
+offset_bottom = 647.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="CenterContainer" type="CenterContainer" parent="Options"]
+layout_mode = 1
+anchors_preset = 13
+anchor_left = 0.5
+anchor_right = 0.5
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Pause" type="Sprite2D" parent="Options/CenterContainer"]
+position = Vector2(2, 80)
+texture = ExtResource("2_uyfno")
+
+[node name="Volume" type="Sprite2D" parent="Options/CenterContainer"]
+position = Vector2(2.00002, 239)
+scale = Vector2(0.937337, 0.992168)
+texture = ExtResource("3_eyf7f")
+
+[node name="Voltar" type="Sprite2D" parent="Options/CenterContainer"]
+position = Vector2(2, 372)
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("5_h857k")
