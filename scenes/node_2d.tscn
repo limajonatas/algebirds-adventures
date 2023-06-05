@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://dp2cdda8eykr8"]
+[gd_scene load_steps=14 format=3 uid="uid://bhqg2l0m8g028"]
 
 [ext_resource type="PackedScene" uid="uid://ctmyrlulkq5bw" path="res://scenes/env/background.tscn" id="1_dp26d"]
 [ext_resource type="Script" path="res://scripts/node_2d.gd" id="1_hvssx"]
@@ -8,11 +8,11 @@
 [ext_resource type="PackedScene" uid="uid://b7o4dlqolv2xb" path="res://scenes/objects/ballon.tscn" id="6_jdwde"]
 [ext_resource type="Texture2D" uid="uid://dabosy3eg5dne" path="res://assets/interface/painel_pergunta.png" id="8_g3tdb"]
 [ext_resource type="Texture2D" uid="uid://bkeadsdoyakjw" path="res://assets/interface/pausa.png" id="9_ev0kt"]
+[ext_resource type="Script" path="res://scripts/pauseJogo.gd" id="9_ytj1u"]
 [ext_resource type="Texture2D" uid="uid://c5rs727gbn1f7" path="res://assets/interface/texto_qual_a_pergunta.png" id="10_gs4bo"]
-[ext_resource type="Script" path="res://scripts/Pausa.gd" id="10_lw8f8"]
 [ext_resource type="Texture2D" uid="uid://be78pt7gpud23" path="res://assets/interface/fase1.png" id="11_003u2"]
 [ext_resource type="PackedScene" uid="uid://clf3bmt51d2vh" path="res://scenes/interface/vida.tscn" id="12_qba8w"]
-[ext_resource type="PackedScene" uid="uid://b56clqs8bu8wa" path="res://scenes/pause.tscn" id="13_ma7vm"]
+[ext_resource type="PackedScene" uid="uid://bvt4godvrh1uo" path="res://scenes/pause.tscn" id="13_ma7vm"]
 
 [node name="Node2D" type="Node2D"]
 script = ExtResource("1_hvssx")
@@ -75,7 +75,7 @@ vertical_alignment = 1
 position = Vector2(1086, 593)
 scale = Vector2(0.2, 0.2)
 texture = ExtResource("9_ev0kt")
-script = ExtResource("10_lw8f8")
+script = ExtResource("9_ytj1u")
 
 [node name="TextoQualAPergunta" type="Sprite2D" parent="."]
 position = Vector2(566, 88)
@@ -91,7 +91,6 @@ texture = ExtResource("11_003u2")
 scale = Vector2(0.2, 0.2)
 
 [node name="Pause" parent="." instance=ExtResource("13_ma7vm")]
-visible = false
 
 [connection signal="cont_updated" from="Gun" to="AraraAzul" method="_on_gun_cont_updated"]
 [connection signal="atingido" from="Ballon01" to="." method="_on_ballon_01_atingido"]
@@ -102,3 +101,4 @@ visible = false
 [connection signal="atingido" from="Ballon04" to="." method="_on_ballon_04_atingido"]
 [connection signal="atingido" from="Ballon05" to="." method="_on_ballon_05_atingido"]
 [connection signal="atingido" from="Ballon06" to="." method="_on_ballon_06_atingido"]
+[connection signal="pausar" from="Pausa" to="Pause" method="_on_pausa_pausar"]
