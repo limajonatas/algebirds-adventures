@@ -1,0 +1,36 @@
+[gd_scene load_steps=8 format=3 uid="uid://cqd2wqvm76h6b"]
+
+[ext_resource type="Texture2D" uid="uid://fvjadvofli2u" path="res://assets/level.png" id="1_n4xrt"]
+[ext_resource type="Script" path="res://scripts/ButtonLevel.gd" id="2_5je1h"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_m25ke"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_0puus"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_gi0vu"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_31pdn"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_gykvm"]
+
+[node name="ButtonLevel" type="Button"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -218.0
+offset_top = -203.5
+offset_right = 218.0
+offset_bottom = 203.5
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.3, 0.3)
+theme_override_styles/normal = SubResource("StyleBoxEmpty_m25ke")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_0puus")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_gi0vu")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_31pdn")
+theme_override_styles/focus = SubResource("StyleBoxTexture_gykvm")
+icon = ExtResource("1_n4xrt")
+icon_alignment = 1
+script = ExtResource("2_5je1h")
