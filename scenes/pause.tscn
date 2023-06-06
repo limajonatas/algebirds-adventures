@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://bvt4godvrh1uo"]
+[gd_scene load_steps=9 format=3 uid="uid://bvt4godvrh1uo"]
 
 [ext_resource type="Script" path="res://scripts/pauseESC.gd" id="1_useum"]
 [ext_resource type="Texture2D" uid="uid://db386wy125eax" path="res://assets/pause/menu.png" id="2_1my7y"]
@@ -7,13 +7,13 @@
 [ext_resource type="Script" path="res://scripts/VoltarPause.gd" id="5_rs4hf"]
 [ext_resource type="Texture2D" uid="uid://bhrmtvw1qc1eh" path="res://assets/pause/sair.png" id="5_soaln"]
 [ext_resource type="Texture2D" uid="uid://bern1o63t7v3v" path="res://assets/pause/pause.png" id="7_2rvnt"]
+[ext_resource type="Script" path="res://scripts/Sair.gd" id="8_gvhad"]
 
 [node name="Pause" type="Node2D"]
 process_mode = 3
 script = ExtResource("1_useum")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
-visible = false
 
 [node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
 modulate = Color(0, 0, 0, 0.698039)
@@ -56,5 +56,6 @@ texture = ExtResource("4_5qcnx")
 position = Vector2(3.69995, 510.35)
 scale = Vector2(0.3, 0.3)
 texture = ExtResource("5_soaln")
+script = ExtResource("8_gvhad")
 
 [connection signal="voltar" from="CanvasLayer/CenterContainer/Voltar" to="." method="_on_voltar_voltar"]

@@ -4,7 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://ctmyrlulkq5bw" path="res://scenes/env/background.tscn" id="1_dp26d"]
 [ext_resource type="PackedScene" uid="uid://g7ldocm1a1b5" path="res://scenes/objects/gun.tscn" id="2_aeeha"]
 [ext_resource type="PackedScene" uid="uid://sevos7bhxqdt" path="res://scenes/personagem/arara_azul.tscn" id="3_4477x"]
-[ext_resource type="Script" path="res://scenes/personagem/arara_azul.gd" id="4_e3fq6"]
+[ext_resource type="Script" path="res://scripts/character/arara_azul.gd" id="5_4tasc"]
 [ext_resource type="PackedScene" uid="uid://b7o4dlqolv2xb" path="res://scenes/objects/ballon.tscn" id="6_jdwde"]
 [ext_resource type="Texture2D" uid="uid://dabosy3eg5dne" path="res://assets/interface/painel_pergunta.png" id="8_g3tdb"]
 [ext_resource type="Texture2D" uid="uid://bkeadsdoyakjw" path="res://assets/interface/pausa.png" id="9_ev0kt"]
@@ -25,7 +25,7 @@ position = Vector2(176.5, 554)
 
 [node name="AraraAzul" parent="." instance=ExtResource("3_4477x")]
 position = Vector2(224.5, 505)
-script = ExtResource("4_e3fq6")
+script = ExtResource("5_4tasc")
 
 [node name="Ballon01" parent="." instance=ExtResource("6_jdwde")]
 position = Vector2(823, 121)
