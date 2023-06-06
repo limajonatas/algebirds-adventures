@@ -81,6 +81,3 @@ func _physics_process(delta: float) -> void:
 func _on_gun_cont_updated(value: int):
 	canhao_position = value
 
-
-func _on_ballon_01_body_entered(body):
-	pass # Replace with function body.

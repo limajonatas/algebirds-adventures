@@ -7,7 +7,9 @@ var direction: int = 1
 var animationPlayer: AnimationPlayer
 var rng: RandomNumberGenerator
 var is_moving: bool = false
+var collisionActive: bool = true
 @onready var label: Label = $Label;
+@onready var collision: CollisionShape2D = $CollisionShape2D
 signal atingido(value: bool, label: Label )
 
 func _ready():
@@ -31,6 +33,8 @@ func _ready():
 	is_moving = true
 
 func _process(delta):
+	if collisionActive == false:
+		collision.disabled = true
 	if(is_moving):
 		position.y += speed * delta * direction
 
@@ -53,7 +57,7 @@ func _on_body_entered(body: Node) -> void:
 		animationPlayer.play('pow')
 		label.visible = false
 		is_moving = false
-		emit_signal("atingido", true, label)
+		emit_signal("atingido", label.text)
 		
 		
 		

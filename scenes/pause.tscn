@@ -13,6 +13,7 @@ process_mode = 3
 script = ExtResource("1_useum")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
+visible = false
 
 [node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
 modulate = Color(0, 0, 0, 0.698039)

@@ -1,7 +1,7 @@
 [gd_scene load_steps=14 format=3 uid="uid://bhqg2l0m8g028"]
 
+[ext_resource type="Script" path="res://scripts/nivel1.gd" id="1_0byhp"]
 [ext_resource type="PackedScene" uid="uid://ctmyrlulkq5bw" path="res://scenes/env/background.tscn" id="1_dp26d"]
-[ext_resource type="Script" path="res://scripts/node_2d.gd" id="1_hvssx"]
 [ext_resource type="PackedScene" uid="uid://g7ldocm1a1b5" path="res://scenes/objects/gun.tscn" id="2_aeeha"]
 [ext_resource type="PackedScene" uid="uid://sevos7bhxqdt" path="res://scenes/personagem/arara_azul.tscn" id="3_4477x"]
 [ext_resource type="Script" path="res://scenes/personagem/arara_azul.gd" id="4_e3fq6"]
@@ -14,8 +14,8 @@
 [ext_resource type="PackedScene" uid="uid://clf3bmt51d2vh" path="res://scenes/interface/vida.tscn" id="12_qba8w"]
 [ext_resource type="PackedScene" uid="uid://bvt4godvrh1uo" path="res://scenes/pause.tscn" id="13_ma7vm"]
 
-[node name="Node2D" type="Node2D"]
-script = ExtResource("1_hvssx")
+[node name="Nivel" type="Node2D"]
+script = ExtResource("1_0byhp")
 metadata/_edit_horizontal_guides_ = []
 
 [node name="ParallaxBackground" parent="." instance=ExtResource("1_dp26d")]
