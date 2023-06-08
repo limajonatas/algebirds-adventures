@@ -1,0 +1,26 @@
+[gd_scene load_steps=9 format=3 uid="uid://yisngukfe32c"]
+
+[ext_resource type="Script" path="res://root.gd" id="1_bpdew"]
+[ext_resource type="PackedScene" uid="uid://d0xcfqg55744q" path="res://scenes/main_menu.tscn" id="1_mdl75"]
+[ext_resource type="AudioStream" uid="uid://btk88tou40h5w" path="res://assets/music/mixkit-a-very-happy-christmas-897.wav" id="2_1idv3"]
+[ext_resource type="Script" path="res://mainMenuRoot.gd" id="2_3fl8i"]
+[ext_resource type="PackedScene" uid="uid://fgcwuu25ddmr" path="res://scenes/options.tscn" id="2_q1l03"]
+[ext_resource type="Script" path="res://optionsRoot.gd" id="3_56ug8"]
+[ext_resource type="PackedScene" uid="uid://dy65mue2yk24d" path="res://scenes/menu_selection.tscn" id="6_b05v6"]
+[ext_resource type="Script" path="res://levelsRoot.gd" id="7_08nts"]
+
+[node name="Root" type="Node2D"]
+script = ExtResource("1_bpdew")
+
+[node name="MainMenu" parent="." instance=ExtResource("1_mdl75")]
+script = ExtResource("2_3fl8i")
+
+[node name="Options" parent="." instance=ExtResource("2_q1l03")]
+script = ExtResource("3_56ug8")
+
+[node name="bgMusic" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("2_1idv3")
+autoplay = true
+
+[node name="Levels" parent="." instance=ExtResource("6_b05v6")]
+script = ExtResource("7_08nts")

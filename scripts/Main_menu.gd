@@ -1,19 +1,37 @@
 extends Control
-
-@onready var canvaLayerConfirmarSair = get_node("ConfirmarSair")
+@onready var pai = get_parent()
+#@onready var canvaLayerConfirmarSair = get_node("ConfirmarSair")
+@onready var options = get_parent().get_parent().get_node("Options")
+@onready var levels = get_parent().get_parent().get_node("Levels")
 func _ready():
+	self.visible = true
 	get_node("Button_play").pressed.connect(_on_play)
 	get_node("Button_options").pressed.connect(_on_option)
 	get_node("Button_quit").pressed.connect(_on_quit)
 
 
 func _on_play():
-	get_tree().change_scene_to_file("res://scenes/menu_selection.tscn")
+	if pai.sceneActive:
+		pai.sceneActive = false ## desativa o menu principal
+		levels.sceneActive = true
+		# get_tree().change_scene_to_file("res://scenes/menu_selection.tscn")
+
+
+func _process(_delta):
+	if pai.sceneActive:
+		self.visible = true
+	else:
+		self.visible = false
 
 
 func _on_option():
-	get_tree().change_scene_to_file("res://scenes/options.tscn")
+	if pai.sceneActive:
+		options.sceneActive = true
+		pai.sceneActive = false ## desativa o menu principal
+		# get_tree().change_scene_to_file("res://scenes/options.tscn")
+
 
 func _on_quit():
-	canvaLayerConfirmarSair.canva.visible = true
-
+	if pai.sceneActive:
+		#canvaLayerConfirmarSair.canva.visible = true
+		get_tree().quit()

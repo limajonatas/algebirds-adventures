@@ -1,5 +1,6 @@
-[gd_scene load_steps=5 format=3 uid="uid://dy65mue2yk24d"]
+[gd_scene load_steps=6 format=3 uid="uid://dy65mue2yk24d"]
 
+[ext_resource type="Script" path="res://scripts/background_LevelsMenu.gd" id="1_ee6yg"]
 [ext_resource type="Texture2D" uid="uid://cvao17v5rfpfs" path="res://assets/background/menu.png" id="1_vfors"]
 [ext_resource type="Script" path="res://scripts/Menu_selection.gd" id="1_w71g0"]
 [ext_resource type="Texture2D" uid="uid://eta3sfmpdmqa" path="res://assets/menu/voltar.png" id="3_4md8r"]
@@ -8,6 +9,7 @@
 [node name="Node2D" type="Node2D"]
 
 [node name="ParallaxBackground" type="ParallaxBackground" parent="."]
+script = ExtResource("1_ee6yg")
 
 [node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
 
