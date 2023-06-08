@@ -1,74 +1,53 @@
-[gd_scene load_steps=5 format=3 uid="uid://bjr5y5jew1aoq"]
+[gd_scene load_steps=7 format=3 uid="uid://bjr5y5jew1aoq"]
 
+[ext_resource type="Script" path="res://scripts/dialogSair.gd" id="1_0yv3w"]
 [ext_resource type="Texture2D" uid="uid://flr1ap5u3gm2" path="res://assets/menu/dialogSair.png" id="1_xvanh"]
 [ext_resource type="Texture2D" uid="uid://6rfh8wwr6rpg" path="res://assets/menu/naoSair.png" id="2_3kxua"]
-[ext_resource type="Script" path="res://scripts/ControlDialogSair.gd" id="2_re32j"]
 [ext_resource type="Texture2D" uid="uid://cxxgac0iouras" path="res://assets/menu/confirmaSair.png" id="3_3ha4m"]
+[ext_resource type="Script" path="res://scripts/ConfirmaSairButton.gd" id="4_q7l3o"]
+[ext_resource type="Script" path="res://scripts/NaoSairButton.gd" id="6_bpg35"]
 
-[node name="Node2D" type="Node2D"]
-position = Vector2(579, 280)
-metadata/_edit_horizontal_guides_ = [587.0]
+[node name="ConfirmarSair" type="Node2D"]
+script = ExtResource("1_0yv3w")
 
-[node name="ParallaxBackground" type="ParallaxBackground" parent="."]
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
 
-[node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
+process_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.886275)
+metadata/_edit_use_anchors_ = true
 
-[node name="TextureRect" type="TextureRect" parent="ParallaxBackground/ParallaxLayer"]
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer"]
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = 321.0
-offset_top = -46.0
-offset_right = 2134.0
-offset_bottom = 1657.0
+offset_left = -267.0
+offset_top = -265.0
+offset_right = 1546.0
+offset_bottom = 1438.0
 grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(0.3, 0.3)
 texture = ExtResource("1_xvanh")
+metadata/_edit_use_anchors_ = true
 
-[node name="Control" type="Control" parent="."]
-layout_mode = 3
-anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
-script = ExtResource("2_re32j")
-
-[node name="ButtonClaro" type="Button" parent="Control"]
-layout_mode = 0
-offset_left = 19.0
-offset_top = 211.0
-offset_right = 271.0
-offset_bottom = 277.0
-flat = true
-metadata/_edit_group_ = true
-
-[node name="TextureButton" type="TextureButton" parent="Control/ButtonClaro"]
-layout_mode = 0
-offset_top = -2.0
-offset_right = 840.0
-offset_bottom = 227.0
+[node name="ConfirmaSair" type="Sprite2D" parent="CanvasLayer"]
+position = Vector2(714, 518)
 scale = Vector2(0.3, 0.3)
-texture_normal = ExtResource("3_3ha4m")
+texture = ExtResource("3_3ha4m")
+script = ExtResource("4_q7l3o")
 
-[node name="ButtonNao" type="Button" parent="Control"]
-layout_mode = 0
-offset_left = -238.0
-offset_top = 210.0
-offset_right = 11.0
-offset_bottom = 276.0
-metadata/_edit_group_ = true
-
-[node name="TextureButton" type="TextureButton" parent="Control/ButtonNao"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -2.0
-offset_right = 586.0
-offset_bottom = 163.0
-grow_horizontal = 2
-grow_vertical = 2
+[node name="NaoSair" type="Sprite2D" parent="CanvasLayer"]
+position = Vector2(450, 518)
 scale = Vector2(0.3, 0.3)
-texture_normal = ExtResource("2_3kxua")
+texture = ExtResource("2_3kxua")
+script = ExtResource("6_bpg35")
+
+[connection signal="naoSair" from="CanvasLayer/NaoSair" to="." method="_on_nao_sair_nao_sair"]

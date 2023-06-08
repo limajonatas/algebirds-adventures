@@ -1,6 +1,5 @@
-extends Sprite2D
-signal sair_do_jogo
-
+extends Sprite2D ##BOTAO DE CONFIRMAR A SAÍDA DO JOGO
+@onready var nodepai:Node2D = get_parent().get_parent()
 
 func _input(event):
 	if (
@@ -8,7 +7,8 @@ func _input(event):
 		and event.button_index == MOUSE_BUTTON_LEFT
 		and event.is_pressed()
 	):
+	##CONFIRMAR SAÍDA DO JOGO
 		if get_rect().has_point(get_local_mouse_position()):
-			if event.is_pressed() && get_tree().is_paused():
+			if event.is_pressed() && get_tree().paused:
+				print(nodepai.ativo)
 				get_tree().quit()
-				emit_signal("sair_do_jogo")

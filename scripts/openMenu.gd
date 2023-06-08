@@ -1,5 +1,4 @@
 extends Sprite2D
-signal sair_do_jogo
 
 
 func _input(event):
@@ -10,5 +9,5 @@ func _input(event):
 	):
 		if get_rect().has_point(get_local_mouse_position()):
 			if event.is_pressed() && get_tree().is_paused():
-				get_tree().quit()
-				emit_signal("sair_do_jogo")
+				get_tree().set_pause(false)
+				get_tree().change_scene_to_file("res://scenes/main_menu.tscn")

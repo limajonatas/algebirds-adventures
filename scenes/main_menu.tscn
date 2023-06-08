@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://d0xcfqg55744q"]
+[gd_scene load_steps=8 format=3 uid="uid://d0xcfqg55744q"]
 
 [ext_resource type="Texture2D" uid="uid://dkjjb5p0wsq5w" path="res://assets/menu/fundo.png" id="1_lp7dg"]
 [ext_resource type="Script" path="res://scripts/Main_menu.gd" id="2_opqkm"]
@@ -7,9 +7,8 @@
 [ext_resource type="Texture2D" uid="uid://dmde4ycjhldqu" path="res://assets/menu/opcoes.png" id="4_mc2uk"]
 [ext_resource type="Texture2D" uid="uid://c1wv6wi3cp4mh" path="res://assets/menu/credito.png" id="5_wr4yn"]
 [ext_resource type="Texture2D" uid="uid://g3jrnrl34jkq" path="res://assets/menu/sair.png" id="6_8qs1f"]
-[ext_resource type="PackedScene" uid="uid://bjr5y5jew1aoq" path="res://scenes/dialogSair.tscn" id="9_nr1hs"]
 
-[node name="Node2D" type="Node2D"]
+[node name="MainMenu" type="Node2D"]
 
 [node name="ParallaxBackground" type="ParallaxBackground" parent="."]
 
@@ -35,8 +34,6 @@ grow_vertical = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 script = ExtResource("2_opqkm")
-
-[node name="Node2D" parent="Main_menu" instance=ExtResource("9_nr1hs")]
 
 [node name="Button_play" type="Button" parent="Main_menu"]
 layout_mode = 2

@@ -1,7 +1,7 @@
 extends Sprite2D
-signal sair_do_jogo
+signal naoSair
 
-
+# Called every frame. 'delta' is the elapsed time since the previous frame.
 func _input(event):
 	if (
 		event is InputEventMouseButton
@@ -9,6 +9,5 @@ func _input(event):
 		and event.is_pressed()
 	):
 		if get_rect().has_point(get_local_mouse_position()):
-			if event.is_pressed() && get_tree().is_paused():
-				get_tree().quit()
-				emit_signal("sair_do_jogo")
+			if event.is_pressed() && get_tree().paused:
+				emit_signal("naoSair")

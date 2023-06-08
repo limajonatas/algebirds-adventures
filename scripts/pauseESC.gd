@@ -17,11 +17,9 @@ func _process(_delta):
 			canva.visible=false
 
 func _on_voltar_voltar():
-	print('clicou')
 	get_tree().paused = false
 	canva.visible=false
 
 func _on_pausa_pausar():
-	print('clicou')
 	get_tree().paused = true
 	canva.visible=true
