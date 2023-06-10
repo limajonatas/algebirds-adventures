@@ -2,9 +2,9 @@ extends Control
 @onready var pai = get_parent()
 #@onready var canvaLayerConfirmarSair = get_node("ConfirmarSair")
 @onready var options = get_parent().get_parent().get_node("Options")
+
 @onready var levels = get_parent().get_parent().get_node("Levels")
 func _ready():
-	self.visible = true
 	get_node("Button_play").pressed.connect(_on_play)
 	get_node("Button_options").pressed.connect(_on_option)
 	get_node("Button_quit").pressed.connect(_on_quit)

@@ -1,5 +1,7 @@
-[gd_scene load_steps=8 format=3 uid="uid://d0xcfqg55744q"]
+[gd_scene load_steps=10 format=3 uid="uid://d0xcfqg55744q"]
 
+[ext_resource type="Script" path="res://mainMenuRoot.gd" id="1_67dnr"]
+[ext_resource type="Script" path="res://scripts/background_mainMenu.gd" id="1_77irg"]
 [ext_resource type="Texture2D" uid="uid://dkjjb5p0wsq5w" path="res://assets/menu/fundo.png" id="1_lp7dg"]
 [ext_resource type="Script" path="res://scripts/Main_menu.gd" id="2_opqkm"]
 [ext_resource type="Texture2D" uid="uid://jf664a1tesfs" path="res://assets/menu/logo-removebg-preview.png" id="2_u1mpi"]
@@ -9,8 +11,10 @@
 [ext_resource type="Texture2D" uid="uid://g3jrnrl34jkq" path="res://assets/menu/sair.png" id="6_8qs1f"]
 
 [node name="MainMenu" type="Node2D"]
+script = ExtResource("1_67dnr")
 
 [node name="ParallaxBackground" type="ParallaxBackground" parent="."]
+script = ExtResource("1_77irg")
 
 [node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
 

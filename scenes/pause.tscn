@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://bvt4godvrh1uo"]
+[gd_scene load_steps=11 format=3 uid="uid://bvt4godvrh1uo"]
 
 [ext_resource type="Script" path="res://scripts/pauseESC.gd" id="1_useum"]
 [ext_resource type="Texture2D" uid="uid://db386wy125eax" path="res://assets/pause/menu.png" id="2_1my7y"]
@@ -8,6 +8,7 @@
 [ext_resource type="Script" path="res://scripts/VoltarPause.gd" id="5_rs4hf"]
 [ext_resource type="Texture2D" uid="uid://bhrmtvw1qc1eh" path="res://assets/pause/sair.png" id="5_soaln"]
 [ext_resource type="Texture2D" uid="uid://bern1o63t7v3v" path="res://assets/pause/pause.png" id="7_2rvnt"]
+[ext_resource type="Script" path="res://scripts/openOptions.gd" id="8_36ort"]
 [ext_resource type="Script" path="res://scripts/Sair.gd" id="8_gvhad"]
 
 [node name="Pause" type="Node2D"]
@@ -24,40 +25,33 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="CenterContainer" type="CenterContainer" parent="CanvasLayer"]
-anchors_preset = 13
-anchor_left = 0.5
-anchor_right = 0.5
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="Pause" type="Sprite2D" parent="CanvasLayer/CenterContainer"]
-position = Vector2(2, 80)
+[node name="Pause" type="Sprite2D" parent="CanvasLayer"]
+position = Vector2(578, 80)
 scale = Vector2(0.3, 0.3)
 texture = ExtResource("7_2rvnt")
 
-[node name="Menu" type="Sprite2D" parent="CanvasLayer/CenterContainer"]
-position = Vector2(3.69995, 287.35)
+[node name="Menu" type="Sprite2D" parent="CanvasLayer"]
+position = Vector2(579.7, 287.35)
 scale = Vector2(0.3, 0.3)
 texture = ExtResource("2_1my7y")
 script = ExtResource("4_aq5no")
 
-[node name="Voltar" type="Sprite2D" parent="CanvasLayer/CenterContainer"]
-position = Vector2(3.69995, 176.35)
+[node name="Voltar" type="Sprite2D" parent="CanvasLayer"]
+position = Vector2(579.7, 176.35)
 scale = Vector2(0.3, 0.3)
 texture = ExtResource("3_bjyg6")
 script = ExtResource("5_rs4hf")
 
-[node name="Opcoes" type="Sprite2D" parent="CanvasLayer/CenterContainer"]
-position = Vector2(3.69995, 398.35)
+[node name="Opcoes" type="Sprite2D" parent="CanvasLayer"]
+position = Vector2(579.7, 398.35)
 scale = Vector2(0.3, 0.3)
 texture = ExtResource("4_5qcnx")
+script = ExtResource("8_36ort")
 
-[node name="Sair" type="Sprite2D" parent="CanvasLayer/CenterContainer"]
-position = Vector2(3.69995, 510.35)
+[node name="Sair" type="Sprite2D" parent="CanvasLayer"]
+position = Vector2(579.7, 510.35)
 scale = Vector2(0.3, 0.3)
 texture = ExtResource("5_soaln")
 script = ExtResource("8_gvhad")
 
-[connection signal="voltar" from="CanvasLayer/CenterContainer/Voltar" to="." method="_on_voltar_voltar"]
+[connection signal="voltar" from="CanvasLayer/Voltar" to="." method="_on_voltar_voltar"]

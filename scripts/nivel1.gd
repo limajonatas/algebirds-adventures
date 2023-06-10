@@ -1,4 +1,7 @@
 extends Node2D
+
+@onready var sceneActive = false
+@onready var menu: Node2D = get_parent().get_node("MainMenu")
 #Aqui serve para alterar a movimenta��o dos bal�es
 @onready var ballon01: Area2D = $Ballon01
 @onready var ballon02: Area2D = $Ballon02
@@ -23,6 +26,7 @@ var targetPosition: Vector2 = Vector2(200, 200)
 
 
 func _ready():
+	self.visible = false
 	# Modificar as propriedades do Line2D
 	line2D.default_color = Color(1, 1, 1)
 	line2D.width = 2
@@ -56,16 +60,20 @@ func _set_text_ballons(texts):
 
 func _process(_delta) -> void:
 	#draw_line(Vector2.ZERO, Vector2.RIGHT * 300, Color.WHITE, 0.8)
+	if sceneActive:
+		self.visible = true
+		if balaoAtingido:
+			arara.visible = false
+			arara.isMoving = false
+			ballon01.is_moving = false
+			ballon02.is_moving = false
+			ballon03.is_moving = false
+			ballon04.is_moving = false
+			ballon05.is_moving = false
+			ballon06.is_moving = false
+	else:
+		self.visible = false
 
-	if balaoAtingido:
-		arara.visible = false
-		arara.isMoving = false
-		ballon01.is_moving = false
-		ballon02.is_moving = false
-		ballon03.is_moving = false
-		ballon04.is_moving = false
-		ballon05.is_moving = false
-		ballon06.is_moving = false
 
 
 func _on_ballon_01_body_entered(body):

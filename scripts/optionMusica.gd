@@ -10,6 +10,6 @@ func _input(event):
 		and event.is_pressed()
 	):
 		if get_rect().has_point(get_local_mouse_position()):
-			if event.is_pressed():
+			if event.is_pressed() and pai.sceneActive:
 				print("cLICOU")
 				print(pai.sceneActive)

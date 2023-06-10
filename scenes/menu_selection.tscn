@@ -6,7 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://eta3sfmpdmqa" path="res://assets/menu/voltar.png" id="3_4md8r"]
 [ext_resource type="PackedScene" uid="uid://cqd2wqvm76h6b" path="res://scenes/button_level.tscn" id="4_76jns"]
 
-[node name="Node2D" type="Node2D"]
+[node name="Levels" type="Node2D"]
 
 [node name="ParallaxBackground" type="ParallaxBackground" parent="."]
 script = ExtResource("1_ee6yg")
@@ -55,10 +55,10 @@ anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
-offset_left = 165.0
-offset_top = 187.0
-offset_right = 601.0
-offset_bottom = 594.0
+offset_left = 181.0
+offset_top = 214.0
+offset_right = 617.0
+offset_bottom = 621.0
 grow_horizontal = 1
 grow_vertical = 1
 
@@ -69,10 +69,10 @@ anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
-offset_left = 266.0
-offset_top = 307.0
-offset_right = 702.0
-offset_bottom = 714.0
+offset_left = 274.0
+offset_top = 336.0
+offset_right = 710.0
+offset_bottom = 743.0
 grow_horizontal = 1
 grow_vertical = 1
 
@@ -83,10 +83,10 @@ anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
-offset_left = 387.0
-offset_top = 247.0
-offset_right = 823.0
-offset_bottom = 654.0
+offset_left = 401.0
+offset_top = 273.0
+offset_right = 837.0
+offset_bottom = 680.0
 grow_horizontal = 1
 grow_vertical = 1
 
@@ -97,9 +97,51 @@ anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
-offset_left = 426.0
-offset_top = 88.0
-offset_right = 862.0
-offset_bottom = 495.0
+offset_left = 434.0
+offset_top = 110.0
+offset_right = 870.0
+offset_bottom = 517.0
+grow_horizontal = 1
+grow_vertical = 1
+
+[node name="Level5" parent="Menu_selection" instance=ExtResource("4_76jns")]
+layout_mode = 0
+anchors_preset = 0
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_left = 628.0
+offset_top = 181.0
+offset_right = 1064.0
+offset_bottom = 588.0
+grow_horizontal = 1
+grow_vertical = 1
+
+[node name="Level6" parent="Menu_selection" instance=ExtResource("4_76jns")]
+layout_mode = 0
+anchors_preset = 0
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_left = 685.0
+offset_top = 310.0
+offset_right = 1121.0
+offset_bottom = 717.0
+grow_horizontal = 1
+grow_vertical = 1
+
+[node name="Level7" parent="Menu_selection" instance=ExtResource("4_76jns")]
+layout_mode = 0
+anchors_preset = 0
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_left = 839.0
+offset_top = 362.0
+offset_right = 1275.0
+offset_bottom = 769.0
 grow_horizontal = 1
 grow_vertical = 1

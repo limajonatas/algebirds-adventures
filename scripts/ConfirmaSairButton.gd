@@ -9,6 +9,6 @@ func _input(event):
 	):
 	##CONFIRMAR SAÍDA DO JOGO
 		if get_rect().has_point(get_local_mouse_position()):
-			if event.is_pressed() && get_tree().paused:
+			if event.is_pressed() and get_tree().paused:
 				print(nodepai.ativo)
 				get_tree().quit()

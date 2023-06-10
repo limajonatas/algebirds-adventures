@@ -1,7 +1,7 @@
 [gd_scene load_steps=8 format=3 uid="uid://cqd2wqvm76h6b"]
 
 [ext_resource type="Texture2D" uid="uid://fvjadvofli2u" path="res://assets/level.png" id="1_n4xrt"]
-[ext_resource type="Script" path="res://scripts/ButtonLevel.gd" id="2_5je1h"]
+[ext_resource type="Script" path="res://scripts/button_level.gd" id="2_fliva"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_m25ke"]
 
@@ -25,7 +25,7 @@ offset_right = 218.0
 offset_bottom = 203.5
 grow_horizontal = 2
 grow_vertical = 2
-scale = Vector2(0.3, 0.3)
+scale = Vector2(0.25, 0.25)
 theme_override_styles/normal = SubResource("StyleBoxEmpty_m25ke")
 theme_override_styles/hover = SubResource("StyleBoxEmpty_0puus")
 theme_override_styles/pressed = SubResource("StyleBoxEmpty_gi0vu")
@@ -33,4 +33,4 @@ theme_override_styles/disabled = SubResource("StyleBoxEmpty_31pdn")
 theme_override_styles/focus = SubResource("StyleBoxTexture_gykvm")
 icon = ExtResource("1_n4xrt")
 icon_alignment = 1
-script = ExtResource("2_5je1h")
+script = ExtResource("2_fliva")
