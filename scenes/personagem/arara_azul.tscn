@@ -1,5 +1,6 @@
-[gd_scene load_steps=9 format=3 uid="uid://sevos7bhxqdt"]
+[gd_scene load_steps=10 format=3 uid="uid://sevos7bhxqdt"]
 
+[ext_resource type="Script" path="res://scripts/character/arara_azul.gd" id="1_7cw23"]
 [ext_resource type="Texture2D" uid="uid://c7ejaprayk10a" path="res://assets/character/arara-azul-grande0.png" id="1_mnjnq"]
 [ext_resource type="Texture2D" uid="uid://b7p0gjhw12p61" path="res://assets/character/arara-azul-grande2.png" id="1_w06u3"]
 [ext_resource type="Script" path="res://scripts/character/arara_azul_sprite.gd" id="2_077l3"]
@@ -136,6 +137,7 @@ size = Vector2(46, 43)
 
 [node name="AraraAzul" type="CharacterBody2D"]
 position = Vector2(57, 51)
+script = ExtResource("1_7cw23")
 
 [node name="AraraAzulSprite" type="Sprite2D" parent="."]
 position = Vector2(0, -1)

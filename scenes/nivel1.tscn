@@ -1,11 +1,10 @@
-[gd_scene load_steps=15 format=3 uid="uid://bhqg2l0m8g028"]
+[gd_scene load_steps=17 format=3 uid="uid://bhqg2l0m8g028"]
 
 [ext_resource type="Script" path="res://scripts/nivel1.gd" id="1_0byhp"]
 [ext_resource type="PackedScene" uid="uid://ctmyrlulkq5bw" path="res://scenes/env/background.tscn" id="1_dp26d"]
 [ext_resource type="PackedScene" uid="uid://g7ldocm1a1b5" path="res://scenes/objects/gun.tscn" id="2_aeeha"]
 [ext_resource type="PackedScene" uid="uid://sevos7bhxqdt" path="res://scenes/personagem/arara_azul.tscn" id="3_4477x"]
 [ext_resource type="Script" path="res://scripts/background_nivel1.gd" id="3_o2ax6"]
-[ext_resource type="Script" path="res://scripts/character/arara_azul.gd" id="5_4tasc"]
 [ext_resource type="PackedScene" uid="uid://b7o4dlqolv2xb" path="res://scenes/objects/ballon.tscn" id="6_jdwde"]
 [ext_resource type="Texture2D" uid="uid://dabosy3eg5dne" path="res://assets/interface/painel_pergunta.png" id="8_g3tdb"]
 [ext_resource type="Texture2D" uid="uid://bkeadsdoyakjw" path="res://assets/interface/pausa.png" id="9_ev0kt"]
@@ -14,12 +13,15 @@
 [ext_resource type="Texture2D" uid="uid://be78pt7gpud23" path="res://assets/interface/fase1.png" id="11_003u2"]
 [ext_resource type="PackedScene" uid="uid://clf3bmt51d2vh" path="res://scenes/interface/vida.tscn" id="12_qba8w"]
 [ext_resource type="PackedScene" uid="uid://bvt4godvrh1uo" path="res://scenes/pause.tscn" id="13_ma7vm"]
+[ext_resource type="Texture2D" uid="uid://d245ljhbcp0fw" path="res://assets/interface/info_teclas.png" id="14_77g28"]
+[ext_resource type="Texture2D" uid="uid://cvq5egc1vhrld" path="res://assets/correto.png" id="15_qqxpm"]
+[ext_resource type="Texture2D" uid="uid://cumarovy5bt15" path="res://assets/errado.png" id="16_w8xos"]
 
 [node name="Nivel" type="Node2D"]
 script = ExtResource("1_0byhp")
 metadata/_edit_horizontal_guides_ = []
 
-[node name="ParallaxBackground" parent="." instance=ExtResource("1_dp26d")]
+[node name="Backgrond" parent="." instance=ExtResource("1_dp26d")]
 script = ExtResource("3_o2ax6")
 
 [node name="Gun" parent="." instance=ExtResource("2_aeeha")]
@@ -27,7 +29,6 @@ position = Vector2(176.5, 554)
 
 [node name="AraraAzul" parent="." instance=ExtResource("3_4477x")]
 position = Vector2(224.5, 505)
-script = ExtResource("5_4tasc")
 
 [node name="Ballon01" parent="." instance=ExtResource("6_jdwde")]
 position = Vector2(823, 121)
@@ -93,6 +94,36 @@ texture = ExtResource("11_003u2")
 scale = Vector2(0.2, 0.2)
 
 [node name="Pause" parent="." instance=ExtResource("13_ma7vm")]
+
+[node name="InfoTeclas" type="Sprite2D" parent="."]
+position = Vector2(653, 624)
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("14_77g28")
+
+[node name="Timer" type="Timer" parent="."]
+
+[node name="Correto" type="Sprite2D" parent="."]
+position = Vector2(592, 297)
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("15_qqxpm")
+
+[node name="ColorRect" type="ColorRect" parent="Correto"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -1963.0
+offset_top = -993.0
+offset_right = -125.0
+offset_bottom = 206.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_vertical = 4
+color = Color(0, 0, 0, 0.380392)
+
+[node name="Errado" type="Sprite2D" parent="."]
+position = Vector2(592, 305)
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("16_w8xos")
 
 [connection signal="cont_updated" from="Gun" to="AraraAzul" method="_on_gun_cont_updated"]
 [connection signal="atingido" from="Ballon01" to="." method="_on_ballon_01_atingido"]

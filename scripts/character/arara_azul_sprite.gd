@@ -1,11 +1,13 @@
 extends Sprite2D
-@onready var sceneActive = false
+@onready var paiNivel = get_parent().get_parent()
 var cont := 0
 var isMoving: bool = false
 
+func _ready() -> void:
+	print(paiNivel)
 
 func _input(event: InputEvent) -> void:
-	if sceneActive:
+	if paiNivel.sceneActive:
 		if event is InputEventKey and !isMoving:
 			var key_event := event as InputEventKey
 			if key_event.is_action_pressed("jump") and !isMoving:

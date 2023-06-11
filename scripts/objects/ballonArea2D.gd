@@ -1,7 +1,6 @@
 extends Area2D
 
-@onready var sceneActive = false
-
+@onready var pai: Node2D = get_parent()
 var speed = 30
 var amplitude = 15
 var initialY: float
@@ -36,7 +35,7 @@ func _ready():
 
 
 func _process(delta):
-	if sceneActive:
+	if pai.sceneActive:
 		if collisionActive == false:
 			collision.disabled = true
 		if is_moving:

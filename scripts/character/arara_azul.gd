@@ -1,6 +1,7 @@
 extends CharacterBody2D
 
-@onready var sceneActive = false
+@onready var pai:Node2D = get_parent()
+@onready var sceneActive:bool = false
 
 var animationPlayer: AnimationPlayer
 var sprite: Sprite2D
@@ -14,14 +15,13 @@ var descentRate: float = 10  # Taxa de inclina��o da curva descendente (valo
 
 
 func _ready():
-	print(canhao_position)
 	# Obtenha uma refer�ncia para o AnimationPlayer e o Sprite
 	animationPlayer = $AnimationPlayer
 	sprite = $AraraAzulSprite
 
 
 func _input(event: InputEvent) -> void:
-	if sceneActive:
+	if pai.sceneActive:
 		if event is InputEventKey:
 			var key_event := event as InputEventKey
 			if key_event.is_action_pressed("jump") and !isMoving:
@@ -51,13 +51,21 @@ func _input(event: InputEvent) -> void:
 				# Inicie o movimento do personagem
 				isMoving = true
 
+func _process(_delta):
+	if pai.sceneActive:
+		sceneActive = true;
+		self.visible = true;
+	else:
+		sceneActive = false;
+		self.visible = false;
 
 func _physics_process(delta: float) -> void:
-	if sceneActive:
+	if pai.sceneActive:
 		var motion = moveDirection * currentSpeed
 		if isMoving:
 			motion += Vector2(0, gravity) * delta
-			var collision = move_and_collide(motion * delta)
+			# var collision = 
+			move_and_collide(motion * delta)
 
 			# Verifique se houve colis�o (n�o est� sendo utilizado)
 			'''

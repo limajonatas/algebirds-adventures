@@ -28,6 +28,12 @@ autoplay = true
 script = ExtResource("7_08nts")
 
 [node name="OptionsPause" type="Node2D" parent="."]
+visible = false
+
+[node name="OpcoesPause" type="Sprite2D" parent="OptionsPause"]
+position = Vector2(565, 105)
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("10_bgbb4")
 
 [node name="Volume" type="Sprite2D" parent="OptionsPause"]
 position = Vector2(579, 239)
@@ -38,10 +44,5 @@ texture = ExtResource("8_dueoh")
 position = Vector2(579, 372)
 scale = Vector2(0.3, 0.3)
 texture = ExtResource("10_34ibf")
-
-[node name="OpcoesPause" type="Sprite2D" parent="."]
-position = Vector2(565, 105)
-scale = Vector2(0.3, 0.3)
-texture = ExtResource("10_bgbb4")
 
 [node name="Nivel1" parent="." instance=ExtResource("9_hkcjf")]
