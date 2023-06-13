@@ -101,6 +101,7 @@ scale = Vector2(0.25, 0.25)
 texture = ExtResource("14_77g28")
 
 [node name="Timer" type="Timer" parent="."]
+wait_time = 1.5
 
 [node name="Correto" type="Sprite2D" parent="."]
 position = Vector2(592, 297)

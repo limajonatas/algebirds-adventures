@@ -6,19 +6,26 @@ extends CharacterBody2D
 var animationPlayer: AnimationPlayer
 var sprite: Sprite2D
 var isMoving: bool = false
-var moveDirection: Vector2
 var canhao_position: int = 0
+var moveDirection: Vector2
 var gravity: float = 1000  # Valor da gravidade inicial
 var currentSpeed: float = 1200  # Velocidade inicial
 var speedReductionRate: float = 0.99  # Taxa de redu��o da velocidade (0.999 reduz em 0.1% a cada itera��o)
-var descentRate: float = 10  # Taxa de inclina��o da curva descendente (valores menores criam uma curva mais acentuada)
-
+# var descentRate: float = 10  # Taxa de inclina��o da curva descendente (valores menores criam uma curva mais acentuada)
+var positionAraraCharacter: Vector2 = Vector2(0, 0)
 
 func _ready():
 	# Obtenha uma refer�ncia para o AnimationPlayer e o Sprite
 	animationPlayer = $AnimationPlayer
 	sprite = $AraraAzulSprite
+	positionAraraCharacter = self.get_position()
 
+
+func _on_reset():
+	self.position = positionAraraCharacter
+	# moveDirection: Vector2
+	gravity = 1000  # Valor da gravidade inicial
+	currentSpeed = 1200
 
 func _input(event: InputEvent) -> void:
 	if pai.sceneActive:

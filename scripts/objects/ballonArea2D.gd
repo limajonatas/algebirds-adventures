@@ -20,10 +20,11 @@ func _ready():
 
 	rng = RandomNumberGenerator.new()
 	rng.randomize()
-	var numeroAleatorio = rng.randi_range(1, 6)
-	var animationNumber = "main0" + str(numeroAleatorio)
-
-	animationPlayer.play(animationNumber)
+	# var numeroAleatorio = rng.randi_range(1, 6)
+	# var animationNumber = "main0" + str(numeroAleatorio)
+	
+	# #escolher uma animação aleat�ria (a cor do balao)
+	# animationPlayer.play(animationNumber)
 
 	# Gerar um n�mero aleat�rio (0 ou 1)
 	var randomDirection = rng.randi_range(0, 1)
@@ -38,6 +39,9 @@ func _process(delta):
 	if pai.sceneActive:
 		if collisionActive == false:
 			collision.disabled = true
+		else:
+			collision.disabled = false
+			
 		if is_moving:
 			position.y += speed * delta * direction
 

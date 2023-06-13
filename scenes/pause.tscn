@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://bvt4godvrh1uo"]
+[gd_scene load_steps=15 format=3 uid="uid://bvt4godvrh1uo"]
 
 [ext_resource type="Script" path="res://scripts/pauseESC.gd" id="1_useum"]
 [ext_resource type="Texture2D" uid="uid://db386wy125eax" path="res://assets/pause/menu.png" id="2_1my7y"]
@@ -10,6 +10,10 @@
 [ext_resource type="Texture2D" uid="uid://bern1o63t7v3v" path="res://assets/pause/pause.png" id="7_2rvnt"]
 [ext_resource type="Script" path="res://scripts/openOptions.gd" id="8_36ort"]
 [ext_resource type="Script" path="res://scripts/Sair.gd" id="8_gvhad"]
+[ext_resource type="Texture2D" uid="uid://bull08ruqhcht" path="res://assets/menu/opcoesPause.png" id="12_vvojq"]
+[ext_resource type="Texture2D" uid="uid://bc2vbigs52doy" path="res://assets/menu/ativarMusica.png" id="12_x2vyq"]
+[ext_resource type="Script" path="res://scripts/VolumeOptionsPause.gd" id="14_xdnyo"]
+[ext_resource type="Script" path="res://scripts/VoltarOptionsPause.gd" id="15_sgiqs"]
 
 [node name="Pause" type="Node2D"]
 process_mode = 3
@@ -53,5 +57,24 @@ position = Vector2(579.7, 510.35)
 scale = Vector2(0.3, 0.3)
 texture = ExtResource("5_soaln")
 script = ExtResource("8_gvhad")
+
+[node name="OpcoesPause" type="Sprite2D" parent="CanvasLayer"]
+position = Vector2(565, 80)
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("12_vvojq")
+
+[node name="Volume" type="Sprite2D" parent="CanvasLayer"]
+position = Vector2(579, 235)
+scale = Vector2(0.29, 0.307)
+texture = ExtResource("12_x2vyq")
+script = ExtResource("14_xdnyo")
+
+[node name="Voltar2" type="Sprite2D" parent="CanvasLayer"]
+position = Vector2(579, 355)
+scale = Vector2(0.29, 0.29)
+texture = ExtResource("3_bjyg6")
+region_enabled = true
+region_rect = Rect2(6.63581, 6.96883, 1184.46, 244.505)
+script = ExtResource("15_sgiqs")
 
 [connection signal="voltar" from="CanvasLayer/Voltar" to="." method="_on_voltar_voltar"]

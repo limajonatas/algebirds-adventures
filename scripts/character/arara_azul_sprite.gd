@@ -1,6 +1,6 @@
 extends Sprite2D
 @onready var paiNivel = get_parent().get_parent()
-var cont := 0
+var cont:int = 0
 var isMoving: bool = false
 
 func _ready() -> void:

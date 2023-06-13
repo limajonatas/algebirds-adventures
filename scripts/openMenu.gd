@@ -1,9 +1,16 @@
 extends Sprite2D
-
+######################### CanvasLayer -> Pause (Node2D) -> Pause -> Root -> filhos
 @onready var pai: Node2D = get_parent().get_parent()
 @onready var sceneActive = false
 @onready var nivel: Node2D = get_parent().get_parent().get_parent().get_parent().get_node("Nivel1")
 @onready var menu: Node2D = get_parent().get_parent().get_parent().get_parent().get_node("MainMenu")
+
+func _process(_delta):
+	if pai.optionsVisible:
+		visible = false
+	else:
+		visible = true
+
 func _input(event):
 	if (
 		event is InputEventMouseButton
@@ -11,7 +18,6 @@ func _input(event):
 		and event.is_pressed()
 	):
 		if get_rect().has_point(get_local_mouse_position()):
-			if event.is_pressed() and get_tree().is_paused():
-				print("Clicou no botão de Menu " , menu.sceneActive)
+			if event.is_pressed() and get_tree().is_paused() and not pai.optionsVisible:
 				menu.sceneActive = true
 				nivel.sceneActive = false

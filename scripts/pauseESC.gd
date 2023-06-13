@@ -3,6 +3,9 @@ extends Node2D
 @onready var canva: CanvasLayer = $CanvasLayer
 @onready var sceneActive = false
 @onready var pai: Node2D = get_parent()
+@onready var titlePause: Sprite2D = $CanvasLayer/Pause
+@onready var titlePauseOption: Sprite2D = $CanvasLayer/OpcoesPause
+@onready var optionsVisible = false
 
 
 # Called when the node enters the scene tree for the first time.
@@ -13,6 +16,13 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta):
+	if optionsVisible:
+		titlePause.visible = false
+		titlePauseOption.visible = true
+	else:
+		titlePause.visible = true
+		titlePauseOption.visible = false
+
 	if pai.sceneActive:
 		if Input.is_action_just_pressed("pause"):
 			#ativa o pause
@@ -24,6 +34,7 @@ func _process(_delta):
 				get_tree().paused = false
 				canva.visible = false
 				sceneActive = false
+				optionsVisible = false
 	else:
 		canva.visible = false
 		get_tree().paused = false

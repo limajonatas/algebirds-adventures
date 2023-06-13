@@ -7,7 +7,9 @@ var fasesDesbloqueadas: int = 1
 var vidas: int = 3
 
 @onready var nivel1_fase1: Node2D = $Nivel1
-
+@onready var musicOn: bool = true
+@onready var music: AudioStreamPlayer2D = $Music
+@onready var soundOff: Sprite2D = $SoundOff
 ##### FASE 1 #####
 var pergunta1: String = "2+2"
 var resposta1: String = "4"
@@ -30,3 +32,10 @@ var opcoes4: Array = ["27", "6", "7", "5"]
 
 func _ready():
 	get_tree().paused = false
+
+
+func _process(_delta):
+	if musicOn:
+		soundOff.visible = false
+	else:
+		soundOff.visible = true
