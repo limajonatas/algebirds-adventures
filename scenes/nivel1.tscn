@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://bhqg2l0m8g028"]
+[gd_scene load_steps=18 format=3 uid="uid://bhqg2l0m8g028"]
 
 [ext_resource type="Script" path="res://scripts/nivel1.gd" id="1_0byhp"]
 [ext_resource type="PackedScene" uid="uid://ctmyrlulkq5bw" path="res://scenes/env/background.tscn" id="1_dp26d"]
@@ -16,6 +16,7 @@
 [ext_resource type="Texture2D" uid="uid://d245ljhbcp0fw" path="res://assets/interface/info_teclas.png" id="14_77g28"]
 [ext_resource type="Texture2D" uid="uid://cvq5egc1vhrld" path="res://assets/correto.png" id="15_qqxpm"]
 [ext_resource type="Texture2D" uid="uid://cumarovy5bt15" path="res://assets/errado.png" id="16_w8xos"]
+[ext_resource type="Texture2D" uid="uid://djq0e26x6li5m" path="res://assets/miraErrada.png" id="17_u0wav"]
 
 [node name="Nivel" type="Node2D"]
 script = ExtResource("1_0byhp")
@@ -125,6 +126,37 @@ color = Color(0, 0, 0, 0.380392)
 position = Vector2(592, 305)
 scale = Vector2(0.3, 0.3)
 texture = ExtResource("16_w8xos")
+
+[node name="ColorRect" type="ColorRect" parent="Errado"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -1963.0
+offset_top = -993.0
+offset_right = -29.0
+offset_bottom = 167.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_vertical = 4
+color = Color(0, 0, 0, 0.380392)
+
+[node name="MiraErrada" type="Sprite2D" parent="."]
+position = Vector2(608, 326)
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("17_u0wav")
+
+[node name="ColorRect" type="ColorRect" parent="MiraErrada"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -1963.0
+offset_top = -993.0
+offset_right = -29.0
+offset_bottom = 167.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_vertical = 4
+color = Color(0, 0, 0, 0.380392)
 
 [connection signal="cont_updated" from="Gun" to="AraraAzul" method="_on_gun_cont_updated"]
 [connection signal="atingido" from="Ballon01" to="." method="_on_ballon_01_atingido"]

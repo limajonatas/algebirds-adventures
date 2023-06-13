@@ -16,7 +16,6 @@ var rng: RandomNumberGenerator
 
 
 @onready var arara: Sprite2D = $AraraAzul/AraraAzulSprite
-@onready var araraAnimation: AnimationPlayer = $AraraAzul/AnimationPlayer
 @onready var canhao: Sprite2D = $Gun
 @onready var araraCharacter: CharacterBody2D = $AraraAzul
 # var positionAraraCharacter: Vector2 = Vector2(0, 0)
@@ -42,9 +41,6 @@ var targetPosition: Vector2 = Vector2(200, 200)
 
 
 func _ready():
-	# positionAraraCharacter = araraCharacter.get_position()
-
-
 	self.visible = false
 	acertouMessagem.visible = false
 	errouMessagem.visible = false
@@ -97,12 +93,7 @@ func _configura_baloes():
 func _reset_fase():
 	# reseted = true
 	print('fase resetada')
-	araraCharacter._on_reset()
-	# araraCharacter.position = positionAraraCharacter
-	
-	# arara.cont = 0
-	# canhao.cont = 0
-	araraAnimation.play("static")
+	araraCharacter._on_reset()	
 	$Timer.stop()
 	shouldDelay = true
 	errouMessagem.visible = false

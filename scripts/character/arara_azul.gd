@@ -13,6 +13,7 @@ var currentSpeed: float = 1200  # Velocidade inicial
 var speedReductionRate: float = 0.99  # Taxa de redu��o da velocidade (0.999 reduz em 0.1% a cada itera��o)
 # var descentRate: float = 10  # Taxa de inclina��o da curva descendente (valores menores criam uma curva mais acentuada)
 var positionAraraCharacter: Vector2 = Vector2(0, 0)
+@onready var saiuDaTela: bool = false
 
 func _ready():
 	# Obtenha uma refer�ncia para o AnimationPlayer e o Sprite
@@ -26,6 +27,7 @@ func _on_reset():
 	# moveDirection: Vector2
 	gravity = 1000  # Valor da gravidade inicial
 	currentSpeed = 1200
+	animationPlayer.play("static")
 
 func _input(event: InputEvent) -> void:
 	if pai.sceneActive:
@@ -73,6 +75,14 @@ func _physics_process(delta: float) -> void:
 			motion += Vector2(0, gravity) * delta
 			# var collision = 
 			move_and_collide(motion * delta)
+
+			## verificar se o personagem saiu da tela 1152x648
+			if self.position.x > 1200 or self.position.x < -1200 or self.position.y > 700 or self.position.y < -700:
+				# Pare o movimento do personagem e defina isMoving como falso
+				isMoving = false
+				print("Saiu da tela")
+				saiuDaTela = true
+
 
 			# Verifique se houve colis�o (n�o est� sendo utilizado)
 			'''

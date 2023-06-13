@@ -15,6 +15,7 @@ script = ExtResource("1_bpdew")
 
 [node name="Music" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("2_1idv3")
+volume_db = -10.0
 autoplay = true
 
 [node name="Nivel1" parent="." instance=ExtResource("9_hkcjf")]

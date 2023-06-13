@@ -3,8 +3,8 @@
 [ext_resource type="Texture2D" uid="uid://dkjjb5p0wsq5w" path="res://assets/menu/fundo.png" id="1_nau6i"]
 [ext_resource type="Script" path="res://scripts/background_options.gd" id="1_qwspi"]
 [ext_resource type="Texture2D" uid="uid://bi3737qcekep5" path="res://assets/menu/text35639-7.png" id="2_uyfno"]
-[ext_resource type="Texture2D" uid="uid://bt5fnjvvani5f" path="res://assets/menu/som.png" id="3_eyf7f"]
 [ext_resource type="Script" path="res://scripts/optionMusica.gd" id="4_1j5yp"]
+[ext_resource type="Texture2D" uid="uid://cmre7fb21m2ob" path="res://assets/menu/desativarMusica.png" id="4_uhl04"]
 [ext_resource type="Texture2D" uid="uid://cy2ry65d50v2x" path="res://assets/pause/voltar.png" id="5_h857k"]
 [ext_resource type="Script" path="res://scripts/VoltarOpcoes.gd" id="5_wu71r"]
 
@@ -37,8 +37,8 @@ texture = ExtResource("2_uyfno")
 
 [node name="Volume" type="Sprite2D" parent="Options"]
 position = Vector2(579, 239)
-scale = Vector2(0.937337, 0.992168)
-texture = ExtResource("3_eyf7f")
+scale = Vector2(0.3, 0.318)
+texture = ExtResource("4_uhl04")
 script = ExtResource("4_1j5yp")
 
 [node name="Voltar" type="Sprite2D" parent="Options"]
