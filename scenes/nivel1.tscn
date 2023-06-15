@@ -101,7 +101,7 @@ position = Vector2(653, 624)
 scale = Vector2(0.25, 0.25)
 texture = ExtResource("14_77g28")
 
-[node name="Timer" type="Timer" parent="."]
+[node name="TimerErrou" type="Timer" parent="."]
 wait_time = 1.5
 
 [node name="Correto" type="Sprite2D" parent="."]
@@ -113,10 +113,10 @@ texture = ExtResource("15_qqxpm")
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -1963.0
-offset_top = -993.0
-offset_right = -125.0
-offset_bottom = 206.0
+offset_left = -1973.0
+offset_top = -990.0
+offset_right = -121.0
+offset_bottom = 223.0
 grow_horizontal = 2
 grow_vertical = 2
 size_flags_vertical = 4
@@ -131,10 +131,10 @@ texture = ExtResource("16_w8xos")
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -1963.0
-offset_top = -993.0
-offset_right = -29.0
-offset_bottom = 167.0
+offset_left = -1973.0
+offset_top = -1017.0
+offset_right = -15.0
+offset_bottom = 163.0
 grow_horizontal = 2
 grow_vertical = 2
 size_flags_vertical = 4
@@ -149,16 +149,17 @@ texture = ExtResource("17_u0wav")
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -1963.0
-offset_top = -993.0
-offset_right = -29.0
-offset_bottom = 167.0
+offset_left = -2432.0
+offset_top = -1304.0
+offset_right = -982.0
+offset_bottom = 308.0
 grow_horizontal = 2
 grow_vertical = 2
 size_flags_vertical = 4
 color = Color(0, 0, 0, 0.380392)
 
 [connection signal="cont_updated" from="Gun" to="AraraAzul" method="_on_gun_cont_updated"]
+[connection signal="saiuDaTela" from="AraraAzul" to="." method="_on_arara_azul_saiu_da_tela"]
 [connection signal="atingido" from="Ballon01" to="." method="_on_ballon_01_atingido"]
 [connection signal="body_entered" from="Ballon01" to="." method="_on_ballon_01_body_entered"]
 [connection signal="body_entered" from="Ballon01" to="AraraAzul" method="_on_ballon_01_body_entered"]

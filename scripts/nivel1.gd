@@ -4,6 +4,7 @@ extends Node2D
 @onready var reseted = false
 @onready var menu: Node2D = get_parent().get_node("MainMenu")
 @onready var root: Node2D = get_parent()
+@onready var gameOver: Node2D= get_parent().get_node("GameOver")
 
 #Aqui serve para alterar a movimenta��o dos bal�es
 @onready var ballon01: Area2D = $Ballon01
@@ -22,6 +23,7 @@ var rng: RandomNumberGenerator
 @onready var vidas: Sprite2D = $Vida
 @onready var errouMessagem: Sprite2D = $Errado
 @onready var acertouMessagem: Sprite2D = $Correto
+@onready var errouAlvo: Sprite2D = $MiraErrada
 
 @onready var labelPergunta: Label = $Pergunta/Label
 @onready var respostaCorreta:String = root.resposta1
@@ -44,7 +46,8 @@ func _ready():
 	self.visible = false
 	acertouMessagem.visible = false
 	errouMessagem.visible = false
-	$Timer.connect("timeout", _reset_fase)
+	errouAlvo.visible = false
+	$TimerErrou.connect("timeout", _reset_fase)
 
 	
 	# Modificar as propriedades do Line2D
@@ -94,11 +97,16 @@ func _reset_fase():
 	# reseted = true
 	print('fase resetada')
 	araraCharacter._on_reset()	
-	$Timer.stop()
+	arara.activeInput = true
+	canhao.activeInput = true
+	
 	shouldDelay = true
 	errouMessagem.visible = false
 	acertouMessagem.visible = false
+	errouAlvo.visible = false
+	canhao.isMoving = false
 	_configura_baloes()
+	$TimerErrou.stop()
 
 
 
@@ -111,6 +119,9 @@ func _update_vidas():
 		vidas.texture = load("res://assets//interface//1vidas.png")
 	elif root.vidas == 0:
 		vidas.texture = load("res://assets//interface//0vidas.png")
+		##chamar tela de game over
+		gameOver.sceneActive = true
+		sceneActive = false
 
 
 func _process(_delta) -> void:
@@ -128,11 +139,11 @@ func _process(_delta) -> void:
 		# 	# ballon05.is_moving = false
 		# 	# ballon06.is_moving = false
 		# 	if shouldDelay:
-		# 		$Timer.start()
+		# 		$TimerErrou.start()
 		# 		shouldDelay = false
 		# 		arara.isMoving = false
 		# 		araraCharacter.isMoving = false
-				
+		
 	else:
 		self.visible = false
 
@@ -143,8 +154,12 @@ func _on_ballon_01_body_entered(body):
 
 func _balao_atingido():
 	arara.isMoving = false
+	arara.activeInput= false
+	araraCharacter.activeInput = false
 	araraCharacter.isMoving = false
 	canhao.isMoving = false
+	canhao.activeInput = false
+
 	ballon01.is_moving = false
 	ballon02.is_moving = false
 	ballon03.is_moving = false
@@ -156,18 +171,20 @@ func _verificar_acerto(resp: String):
 	if resp == respostaCorreta:
 		errouMessagem.visible = false
 		acertouMessagem.visible = true
+		errouAlvo.visible = false
 		root.fasesDesbloqueadas += 1
 		print('fase desbloqueadas',root.fasesDesbloqueadas)
 		# if shouldDelay:
-		# 	$Timer.start()
+		# 	$TimerErrou.start()
 		# 	shouldDelay = false
 	else:
 		errouMessagem.visible = true
 		acertouMessagem.visible = false
+		errouAlvo.visible = false
 		root.vidas -= 1
 		_update_vidas()
 		if shouldDelay:
-			$Timer.start()
+			$TimerErrou.start()
 			shouldDelay = false
 	
 	_balao_atingido()
@@ -177,25 +194,35 @@ func _verificar_acerto(resp: String):
 ##s�o os sinais emitidos pelos baloes
 #as labels ser�o para comparar o que a arara acertou
 func _on_ballon_01_atingido(label: String):
-	balaoAtingido = true
+	# balaoAtingido = true
 	_verificar_acerto(label)
 
 func _on_ballon_02_atingido(label: String):
-	balaoAtingido = true
+	# balaoAtingido = true
 	_verificar_acerto(label)
 
 func _on_ballon_03_atingido(label: String):
-	balaoAtingido = true
+	# balaoAtingido = true
 	_verificar_acerto(label)
 
 func _on_ballon_04_atingido(label: String):
-	balaoAtingido = true
+	# balaoAtingido = true
 	_verificar_acerto(label)
 
 func _on_ballon_05_atingido(label: String):
-	balaoAtingido = true
+	# balaoAtingido = true
 	_verificar_acerto(label)
 
 func _on_ballon_06_atingido(label: String):
-	balaoAtingido = true
+	# balaoAtingido = true
 	_verificar_acerto(label)
+
+
+func _on_arara_azul_saiu_da_tela():
+	errouAlvo.visible = true
+	root.vidas -= 1
+	_update_vidas()
+	if shouldDelay:
+		$TimerErrou.start()
+		shouldDelay = false
+		_balao_atingido() ##poderia ter outro nome, mas esta é função necessaria aqui

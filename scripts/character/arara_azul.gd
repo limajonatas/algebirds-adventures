@@ -6,6 +6,7 @@ extends CharacterBody2D
 var animationPlayer: AnimationPlayer
 var sprite: Sprite2D
 var isMoving: bool = false
+var activeInput: bool = true
 var canhao_position: int = 0
 var moveDirection: Vector2
 var gravity: float = 1000  # Valor da gravidade inicial
@@ -13,8 +14,8 @@ var currentSpeed: float = 1200  # Velocidade inicial
 var speedReductionRate: float = 0.99  # Taxa de redu��o da velocidade (0.999 reduz em 0.1% a cada itera��o)
 # var descentRate: float = 10  # Taxa de inclina��o da curva descendente (valores menores criam uma curva mais acentuada)
 var positionAraraCharacter: Vector2 = Vector2(0, 0)
-@onready var saiuDaTela: bool = false
-
+# @onready var saiuDaTela: bool = false
+signal saiuDaTela
 func _ready():
 	# Obtenha uma refer�ncia para o AnimationPlayer e o Sprite
 	animationPlayer = $AnimationPlayer
@@ -28,12 +29,14 @@ func _on_reset():
 	gravity = 1000  # Valor da gravidade inicial
 	currentSpeed = 1200
 	animationPlayer.play("static")
+	isMoving = false
+	activeInput = true
 
 func _input(event: InputEvent) -> void:
 	if pai.sceneActive:
-		if event is InputEventKey:
+		if event is InputEventKey and !isMoving and activeInput:
 			var key_event := event as InputEventKey
-			if key_event.is_action_pressed("jump") and !isMoving:
+			if key_event.is_action_pressed("jump"):
 				# Inicie a anima��o "voo" no AnimationPlayer
 				animationPlayer.play("voo")
 
@@ -81,7 +84,8 @@ func _physics_process(delta: float) -> void:
 				# Pare o movimento do personagem e defina isMoving como falso
 				isMoving = false
 				print("Saiu da tela")
-				saiuDaTela = true
+				# saiuDaTela = true
+				emit_signal("saiuDaTela")
 
 
 			# Verifique se houve colis�o (n�o est� sendo utilizado)

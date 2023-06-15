@@ -2,17 +2,18 @@ extends Sprite2D
 @onready var paiNivel = get_parent().get_parent()
 var cont:int = 0
 var isMoving: bool = false
+var activeInput: bool = true
 
 func _ready() -> void:
 	print(paiNivel)
 
 func _input(event: InputEvent) -> void:
 	if paiNivel.sceneActive:
-		if event is InputEventKey and !isMoving:
+		if event is InputEventKey and !isMoving and activeInput:
 			var key_event := event as InputEventKey
-			if key_event.is_action_pressed("jump") and !isMoving:
+			if key_event.is_action_pressed("jump"):
 				isMoving = true
-			if key_event.is_action_pressed("ui_down") and !isMoving:
+			if key_event.is_action_pressed("ui_down"):
 				if cont > -3:
 					# Define a nova posi��o do sprite
 					if cont == 3:
@@ -35,7 +36,7 @@ func _input(event: InputEvent) -> void:
 						self.position = Vector2(14, 19)
 
 					cont -= 1
-			elif key_event.is_action_pressed("ui_up") and !isMoving:
+			elif key_event.is_action_pressed("ui_up"):
 				if cont < 2:
 					if cont == -3:
 						self.rotation = deg_to_rad(13)
