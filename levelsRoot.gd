@@ -15,78 +15,86 @@ extends Node2D
 
 
 func _ready():
+	level1.label.set_text("Lv 1")
+	level2.label.set_text("Lv 2")
+	level3.label.set_text("Lv 3")
+	level4.label.set_text("Lv 4")
+	level5.label.set_text("Lv 5")
+	level6.label.set_text("Lv 6")
+	level7.label.set_text("Lv 7")
+	level8.label.set_text("Lv 8")
 	if root.fasesDesbloqueadas == 1:
-		level1.disabled = false
-		level2.disabled = true
-		level3.disabled = true
-		level4.disabled = true
-		level5.disabled = true
-		level6.disabled = true
-		level7.disabled = true
-		level8.disabled = true
+		level1.texture.disabled = false
+		level2.texture.disabled = true
+		level3.texture.disabled = true
+		level4.texture.disabled = true
+		level5.texture.disabled = true
+		level6.texture.disabled = true
+		level7.texture.disabled = true
+		level8.texture.disabled = true
 	elif root.fasesDesbloqueadas == 2:
-		level1.disabled = false
-		level2.disabled = false
-		level3.disabled = true
-		level4.disabled = true
-		level5.disabled = true
-		level6.disabled = true
-		level7.disabled = true
-		level8.disabled = true
+		level1.texture.disabled = false
+		level2.texture.disabled = false
+		level3.texture.disabled = true
+		level4.texture.disabled = true
+		level5.texture.disabled = true
+		level6.texture.disabled = true
+		level7.texture.disabled = true
+		level8.texture.disabled = true
 	elif root.fasesDesbloqueadas == 3:
-		level1.disabled = false
-		level2.disabled = false
-		level3.disabled = false
-		level4.disabled = true
-		level5.disabled = true
-		level6.disabled = true
-		level7.disabled = true
-		level8.disabled = true
+		level1.texture.disabled = false
+		level2.texture.disabled = false
+		level3.texture.disabled = false
+		level4.texture.disabled = true
+		level5.texture.disabled = true
+		level6.texture.disabled = true
+		level7.texture.disabled = true
+		level8.texture.disabled = true
 	elif root.fasesDesbloqueadas == 4:
-		level1.disabled = false
-		level2.disabled = false
-		level3.disabled = false
-		level4.disabled = false
-		level5.disabled = true
-		level6.disabled = true
-		level7.disabled = true
-		level8.disabled = true
+		level1.texture.disabled = false
+		level2.texture.disabled = false
+		level3.texture.disabled = false
+		level4.texture.disabled = false
+		level5.texture.disabled = true
+		level6.texture.disabled = true
+		level7.texture.disabled = true
+		level8.texture.disabled = true
 	elif root.fasesDesbloqueadas == 5:
-		level1.disabled = false
-		level2.disabled = false
-		level3.disabled = false
-		level4.disabled = false
-		level5.disabled = false
-		level6.disabled = true
-		level7.disabled = true
-		level8.disabled = true
+		level1.texture.disabled = false
+		level2.texture.disabled = false
+		level3.texture.disabled = false
+		level4.texture.disabled = false
+		level5.texture.disabled = false
+		level6.texture.disabled = true
+		level7.texture.disabled = true
+		level8.texture.disabled = true
 	elif root.fasesDesbloqueadas == 6:
-		level1.disabled = false
-		level2.disabled = false
-		level3.disabled = false
-		level4.disabled = false
-		level5.disabled = false
-		level6.disabled = false
-		level7.disabled = true
-		level8.disabled = true
+		level1.texture.disabled = false
+		level2.texture.disabled = false
+		level3.texture.disabled = false
+		level4.texture.disabled = false
+		level5.texture.disabled = false
+		level6.texture.disabled = false
+		level7.texture.disabled = true
+		level8.texture.disabled = true
 	elif root.fasesDesbloqueadas == 7:
-		level1.disabled = false
-		level2.disabled = false
-		level3.disabled = false
-		level4.disabled = false
-		level5.disabled = false
-		level6.disabled = false
-		level7.disabled = false
-		level8.disabled = true
+		level1.texture.disabled = false
+		level2.texture.disabled = false
+		level3.texture.disabled = false
+		level4.texture.disabled = false
+		level5.texture.disabled = false
+		level6.texture.disabled = false
+		level7.texture.disabled = false
+		level8.texture.disabled = true
 	elif root.fasesDesbloqueadas == 8:
-		level1.disabled = false
-		level2.disabled = false
-		level3.disabled = false
-		level4.disabled = false
-		level5.disabled = false
-		level6.disabled = false
-		level7.disabled = false
-		level8.disabled = false
+		level1.texture.disabled = false
+		level2.texture.disabled = false
+		level3.texture.disabled = false
+		level4.texture.disabled = false
+		level5.texture.disabled = false
+		level6.texture.disabled = false
+		level7.texture.disabled = false
+		level8.texture.disabled = false
 
 	level1.pressed.connect(_level1_Open)
 
@@ -97,7 +105,6 @@ func _level1_Open():
 		fase1_level1.sceneActive = true
 	else:
 		sceneActive = true
-		
 
 
 func _process(_delta):

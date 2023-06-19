@@ -1,7 +1,10 @@
-[gd_scene load_steps=8 format=3 uid="uid://cqd2wqvm76h6b"]
+[gd_scene load_steps=11 format=3 uid="uid://cqd2wqvm76h6b"]
 
-[ext_resource type="Texture2D" uid="uid://fvjadvofli2u" path="res://assets/level.png" id="1_n4xrt"]
 [ext_resource type="Script" path="res://scripts/button_level.gd" id="2_fliva"]
+[ext_resource type="Texture2D" uid="uid://bxlj8l42koywj" path="res://assets/level_icon.png" id="2_k5o3j"]
+[ext_resource type="Texture2D" uid="uid://cky6w46wfnuww" path="res://assets/level_icon_hover.png" id="3_op87r"]
+[ext_resource type="Texture2D" uid="uid://bu4dkeq7ttc6u" path="res://assets/level_icon_block.png" id="4_u25aj"]
+[ext_resource type="AudioStream" uid="uid://ur2rlaonyyrl" path="res://assets/music/game-start.wav" id="5_wn62g"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_m25ke"]
 
@@ -20,9 +23,9 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -218.0
-offset_top = -203.5
-offset_right = 218.0
-offset_bottom = 203.5
+offset_top = -165.0
+offset_right = 22.0
+offset_bottom = 87.0
 grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(0.25, 0.25)
@@ -31,6 +34,41 @@ theme_override_styles/hover = SubResource("StyleBoxEmpty_0puus")
 theme_override_styles/pressed = SubResource("StyleBoxEmpty_gi0vu")
 theme_override_styles/disabled = SubResource("StyleBoxEmpty_31pdn")
 theme_override_styles/focus = SubResource("StyleBoxTexture_gykvm")
-icon = ExtResource("1_n4xrt")
+keep_pressed_outside = true
 icon_alignment = 1
 script = ExtResource("2_fliva")
+
+[node name="TextureButton" type="TextureButton" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -116.0
+offset_top = -122.0
+offset_right = 122.0
+offset_bottom = 116.0
+mouse_filter = 1
+keep_pressed_outside = true
+texture_normal = ExtResource("2_k5o3j")
+texture_hover = ExtResource("3_op87r")
+texture_disabled = ExtResource("4_u25aj")
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -80.0
+offset_top = -77.0
+offset_right = 88.0
+offset_bottom = 74.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 110
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_wn62g")

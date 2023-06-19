@@ -1,10 +1,11 @@
-[gd_scene load_steps=16 format=3 uid="uid://yisngukfe32c"]
+[gd_scene load_steps=17 format=3 uid="uid://yisngukfe32c"]
 
 [ext_resource type="Script" path="res://root.gd" id="1_bpdew"]
 [ext_resource type="PackedScene" uid="uid://d0xcfqg55744q" path="res://scenes/main_menu.tscn" id="1_mdl75"]
 [ext_resource type="AudioStream" uid="uid://btk88tou40h5w" path="res://assets/music/mixkit-a-very-happy-christmas-897.wav" id="2_1idv3"]
 [ext_resource type="PackedScene" uid="uid://fgcwuu25ddmr" path="res://scenes/options.tscn" id="2_q1l03"]
 [ext_resource type="Script" path="res://optionsRoot.gd" id="3_56ug8"]
+[ext_resource type="AudioStream" uid="uid://biyapc7o0crhx" path="res://assets/music/cottagecore.wav" id="3_noysl"]
 [ext_resource type="PackedScene" uid="uid://dy65mue2yk24d" path="res://scenes/menu_selection.tscn" id="6_b05v6"]
 [ext_resource type="Script" path="res://levelsRoot.gd" id="7_08nts"]
 [ext_resource type="PackedScene" uid="uid://bhqg2l0m8g028" path="res://scenes/nivel1.tscn" id="9_hkcjf"]
@@ -22,6 +23,11 @@ metadata/_edit_horizontal_guides_ = [611.0]
 
 [node name="Music" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("2_1idv3")
+volume_db = -10.0
+autoplay = true
+
+[node name="Music2" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_noysl")
 volume_db = -10.0
 autoplay = true
 
@@ -60,5 +66,6 @@ scale = Vector2(0.25, 0.25)
 texture = ExtResource("13_oxgbt")
 script = ExtResource("15_fjywd")
 
+[connection signal="scene_active" from="Nivel1" to="." method="_on_nivel_1_scene_active"]
 [connection signal="restart_fase" from="GameOver/ButtonRestart" to="GameOver" method="_on_button_restart_restart_fase"]
 [connection signal="menu_principal" from="GameOver/ButtonMenu" to="GameOver" method="_on_button_menu_menu_principal"]

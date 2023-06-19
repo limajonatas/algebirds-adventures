@@ -9,6 +9,8 @@ var vidas: int = 3
 @onready var nivel1_fase1: Node2D = $Nivel1
 @onready var musicOn: bool = true
 @onready var music: AudioStreamPlayer2D = $Music
+@onready var music2: AudioStreamPlayer2D = $Music2
+
 @onready var soundOff: Sprite2D = $SoundOff
 ##### FASE 1 #####
 var pergunta1: String = "2+2"
@@ -32,6 +34,7 @@ var opcoes4: Array = ["27", "6", "7", "5"]
 
 func _ready():
 	get_tree().paused = false
+	music2.stop()
 
 
 func _process(_delta):
@@ -39,3 +42,4 @@ func _process(_delta):
 		soundOff.visible = false
 	else:
 		soundOff.visible = true
+

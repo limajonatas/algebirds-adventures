@@ -5,6 +5,7 @@ extends Node2D
 @onready var menu: Node2D = get_parent().get_node("MainMenu")
 @onready var root: Node2D = get_parent()
 @onready var gameOver: Node2D= get_parent().get_node("GameOver")
+var musicPlaying = false
 
 #Aqui serve para alterar a movimenta��o dos bal�es
 @onready var ballon01: Area2D = $Ballon01
@@ -48,6 +49,12 @@ func _ready():
 	errouMessagem.visible = false
 	errouAlvo.visible = false
 	$TimerErrou.connect("timeout", _reset_fase)
+
+	if sceneActive:
+		root.music2.play()
+		root.music.stop()
+	else:
+		musicPlaying = false
 
 	
 	# Modificar as propriedades do Line2D
@@ -128,6 +135,13 @@ func _process(_delta) -> void:
 	#draw_line(Vector2.ZERO, Vector2.RIGHT * 300, Color.WHITE, 0.8)
 	if sceneActive:
 		self.visible = true
+		if not musicPlaying:
+			musicPlaying = true
+			root.music2.play()
+			root.music.stop()
+
+			
+		
 		# if balaoAtingido:
 		# 	# arara.visible = false
 		# 	# arara.isMoving = false
