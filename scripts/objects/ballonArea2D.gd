@@ -52,6 +52,7 @@ func _process(delta):
 				direction = -1
 			elif position.y <= initialY:
 				direction = 1
+	
 
 
 func directionVerify(random: int) -> int:
@@ -60,6 +61,9 @@ func directionVerify(random: int) -> int:
 	else:
 		return 1
 
+func _set_label_text(text: String):
+	label.text = text
+	label.visible = true
 
 func _on_body_entered(body: Node) -> void:
 	if body is CharacterBody2D:  # Verifica se o objeto que colidiu � do tipo CharacterBody
@@ -68,4 +72,5 @@ func _on_body_entered(body: Node) -> void:
 		label.visible = false
 		is_moving = false
 		sound.play()
+		print('ACERTOU BALÃO: ', label.text)
 		emit_signal("atingido", label.text)

@@ -28,7 +28,6 @@ var rng: RandomNumberGenerator
 @onready var mira: Line2D = $Mira
 
 @onready var labelPergunta: Label = $Pergunta/Label
-# @onready var respostaCorreta:String = root.resposta1
 @onready var fase:Sprite2D = $Fase
 
 var balaoAtingido: bool = false
@@ -91,25 +90,25 @@ func _configura_baloes():
 	if root.nivelAtual == 1:
 		if root.faseAtual == 1:
 			for i in range(root.opcoes_nivel1_fase1.size()):
-				baloes[i].get_node("Label").set_text(root.opcoes_nivel1_fase1[i])
+				baloes[i]._set_label_text(root.opcoes_nivel1_fase1[i])
 
 			labelPergunta.set_text(root.pergunta_nivel1_fase1)
 
 		elif root.faseAtual == 2:
 			for i in range(root.opcoes_nivel1_fase2.size()):
-				baloes[i].get_node("Label").set_text(root.opcoes_nivel1_fase2[i])
+				baloes[i]._set_label_text(root.opcoes_nivel1_fase2[i])
 
 			labelPergunta.set_text(root.pergunta_nivel1_fase2)
 
 		elif root.faseAtual == 3:
 			for i in range(root.opcoes_nivel1_fase3.size()):
-				baloes[i].get_node("Label").set_text(root.opcoes_nivel1_fase3[i])
+				baloes[i]._set_label_text(root.opcoes_nivel1_fase3[i])
 
 			labelPergunta.set_text(root.pergunta_nivel1_fase3)
 
 		elif root.faseAtual == 4:
 			for i in range(root.opcoes_nivel1_fase4.size()):
-				baloes[i].get_node("Label").set_text(root.opcoes_nivel1_fase4[i])
+				baloes[i]._set_label_text(root.opcoes_nivel1_fase4[i])
 
 			labelPergunta.set_text(root.pergunta_nivel1_fase4)
 
@@ -248,27 +247,21 @@ func errou():
 ##s�o os sinais emitidos pelos baloes
 #as labels ser�o para comparar o que a arara acertou
 func _on_ballon_01_atingido(label: String):
-	# balaoAtingido = true
 	_verificar_acerto(label)
 
 func _on_ballon_02_atingido(label: String):
-	# balaoAtingido = true
 	_verificar_acerto(label)
 
 func _on_ballon_03_atingido(label: String):
-	# balaoAtingido = true
 	_verificar_acerto(label)
 
 func _on_ballon_04_atingido(label: String):
-	# balaoAtingido = true
 	_verificar_acerto(label)
 
 func _on_ballon_05_atingido(label: String):
-	# balaoAtingido = true
 	_verificar_acerto(label)
 
 func _on_ballon_06_atingido(label: String):
-	# balaoAtingido = true
 	_verificar_acerto(label)
 
 
