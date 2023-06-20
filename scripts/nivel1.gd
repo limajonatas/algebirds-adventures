@@ -1,4 +1,5 @@
 extends Node2D
+@onready var background:TextureRect = $Background/ParallaxLayer/TextureRect
 
 @onready var sceneActive = false
 @onready var reseted = false
@@ -41,6 +42,7 @@ var shouldDelay = true
 # @onready var line2D: Line2D = $Line2D
 @onready var timerGameOver: Timer = $TimerGameOver
 @onready var timer: Timer = $Timer
+@onready var timerNextLevel: Timer = $TimerNextLevel
 @onready var fadeIn: AnimationPlayer = $FadeIn
 var fadeInExecuted = false
 
@@ -57,7 +59,7 @@ func _ready():
 	$TimerErrou.connect("timeout", _reset_fase)
 	timer.connect("timeout", _timer)
 	timerGameOver.connect("timeout", _game_over)
-
+	timerNextLevel.connect("timeout", _next_level)
 	if sceneActive and root.musicOn:
 		root.music2.play()
 		root.music.stop()
@@ -112,13 +114,52 @@ func _configura_baloes():
 
 			labelPergunta.set_text(root.pergunta_nivel1_fase4)
 
+	elif root.nivelAtual == 2:
+		if root.faseAtual == 1:
+			for i in range(root.opcoes_nivel2_fase1.size()):
+				baloes[i]._set_label_text(root.opcoes_nivel2_fase1[i])
+			labelPergunta.set_text(root.pergunta_nivel2_fase1)
+		elif root.faseAtual == 2:
+			for i in range(root.opcoes_nivel2_fase2.size()):
+				baloes[i]._set_label_text(root.opcoes_nivel2_fase2[i])
+			labelPergunta.set_text(root.pergunta_nivel2_fase2)
+		elif root.faseAtual == 3:
+			for i in range(root.opcoes_nivel2_fase3.size()):
+				baloes[i]._set_label_text(root.opcoes_nivel2_fase3[i])
+			labelPergunta.set_text(root.pergunta_nivel2_fase3)
+		elif root.faseAtual == 4:
+			for i in range(root.opcoes_nivel2_fase4.size()):
+				baloes[i]._set_label_text(root.opcoes_nivel2_fase4[i])
+			labelPergunta.set_text(root.pergunta_nivel2_fase4)
+	
+	
+
+
 
 func _timer():
 	_reset_fase()
 	fadeInExecuted = false
 	timer.stop()
 
-func _reset_fase():
+func _charge_background():
+	if root.nivelAtual == 1:
+		background.texture = load("res://assets//background//background1.png")
+	elif root.nivelAtual == 2:
+		background.texture = load("res://assets//background//background2.jpeg")
+	elif root.nivelAtual == 3:
+		background.texture = load("res://assets//background//background3.jpeg")
+	elif root.nivelAtual == 4:
+		background.texture = load("res://assets//background//background4.jpeg")
+	elif root.nivelAtual == 5:
+		background.texture = load("res://assets//background//background5.jpeg")
+	elif root.nivelAtual == 6:
+		background.texture = load("res://assets//background//background6.jpeg")
+	elif root.nivelAtual == 7:
+		background.texture= load("res://assets//background//background7.jpeg")
+	elif root.nivelAtual == 8:
+		background.texture = load("res://assets//background//background8.jpeg")
+
+func _charge_fase_interface():
 	if root.faseAtual == 1:
 		fase.texture = load("res://assets//interface//fase1.png")
 	elif root.faseAtual == 2:
@@ -128,6 +169,8 @@ func _reset_fase():
 	elif root.faseAtual == 4:
 		fase.texture = load("res://assets//interface//fase4.png")
 
+func _reset_fase():
+	_charge_fase_interface()
 	araraCharacter._on_reset()	
 	arara._reset()
 	canhao._reset()
@@ -221,17 +264,75 @@ func _verificar_acerto(resp: String):
 				acertou()
 			else:
 				errou()
-	
+	elif root.nivelAtual == 2:
+		if root.faseAtual == 1:
+			if resp == root.resposta_nivel2_fase1:
+				acertou()
+			else:
+				errou()
+		elif root.faseAtual == 2:
+			if resp == root.resposta_nivel2_fase2:
+				acertou()
+			else:
+				errou()
+		elif root.faseAtual == 3:
+			if resp == root.resposta_nivel2_fase3:
+				acertou()
+			else:
+				errou()
+		elif root.faseAtual == 4:
+			if resp == root.resposta_nivel2_fase4:
+				acertou()
+			else:
+				errou()
+	elif root.nivelAtual == 3:
+		if root.faseAtual == 1:
+			if resp == root.resposta_nivel3_fase1:
+				acertou()
+			else:
+				errou()
+		elif root.faseAtual == 2:
+			if resp == root.resposta_nivel3_fase2:
+				acertou()
+			else:
+				errou()
+		elif root.faseAtual == 3:
+			if resp == root.resposta_nivel3_fase3:
+				acertou()
+			else:
+				errou()
+		elif root.faseAtual == 4:
+			if resp == root.resposta_nivel3_fase4:
+				acertou()
+			else:
+				errou()
+
+
 	_balao_atingido()
 
+##é usado no timerNextLevel
+func _next_level():
+	root.nivelAtual += 1
+	root.faseAtual = 1
+	root.vidas = 3
+	_update_vidas()
+	_charge_background()
+	_reset_fase()
+	fadeInExecuted = false
+	timerNextLevel.stop()
 
 func acertou():
 	hitSound.play()
 	errouMessagem.visible = false
 	acertouMessagem.visible = true
 	errouAlvo.visible = false
-	root.faseAtual += 1
-	timer.start()
+	if root.faseAtual== 4:
+		timerNextLevel.start()
+	else:
+		root.faseAtual += 1
+		#muda de fase
+		timer.start()
+
 
 func errou():
 	errorSound.play()

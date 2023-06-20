@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://dy65mue2yk24d"]
+[gd_scene load_steps=12 format=3 uid="uid://dy65mue2yk24d"]
 
 [ext_resource type="Script" path="res://scripts/background_LevelsMenu.gd" id="1_ee6yg"]
 [ext_resource type="Texture2D" uid="uid://cvao17v5rfpfs" path="res://assets/background/menu.png" id="1_vfors"]
@@ -8,9 +8,17 @@
 [ext_resource type="PackedScene" uid="uid://cqd2wqvm76h6b" path="res://scenes/button_level.tscn" id="4_76jns"]
 [ext_resource type="Texture2D" uid="uid://cubvvk1dxcrb6" path="res://assets/background/ninho.png" id="4_p7mdt"]
 [ext_resource type="Texture2D" uid="uid://fvjadvofli2u" path="res://assets/level.png" id="6_ld2bh"]
+[ext_resource type="Script" path="res://scripts/AraraIndicadorMapa.gd" id="7_182sw"]
 [ext_resource type="AudioStream" uid="uid://ur2rlaonyyrl" path="res://assets/music/game-start.wav" id="9_dkyo5"]
+[ext_resource type="Texture2D" uid="uid://dxyagwhr0hual" path="res://assets/character/arara-azul-grande4.png" id="10_8ikat"]
 
 [node name="Levels" type="Node2D"]
+
+[node name="AraraIndicadorMapa" type="Sprite2D" parent="."]
+position = Vector2(504, 272)
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("10_8ikat")
+script = ExtResource("7_182sw")
 
 [node name="ParallaxBackground" type="ParallaxBackground" parent="."]
 script = ExtResource("1_ee6yg")

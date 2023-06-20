@@ -1,8 +1,9 @@
-[gd_scene load_steps=7 format=3 uid="uid://cs7ih1vp86ea0"]
+[gd_scene load_steps=8 format=3 uid="uid://cs7ih1vp86ea0"]
 
 [ext_resource type="Script" path="res://scripts/loading.gd" id="1_0dmyk"]
 [ext_resource type="Texture2D" uid="uid://chdeq4pl181ks" path="res://assets/background/backgroundLoading.png" id="1_cy184"]
 [ext_resource type="Texture2D" uid="uid://184c644b2id7" path="res://assets/background/loadingText.png" id="2_1cnnj"]
+[ext_resource type="Texture2D" uid="uid://ccli64lmttnh5" path="res://assets/logotipo.png" id="4_fbawt"]
 
 [sub_resource type="Animation" id="Animation_tu5dv"]
 length = 0.001
@@ -68,6 +69,11 @@ offset_bottom = 382.0
 libraries = {
 "": SubResource("AnimationLibrary_714a6")
 }
+
+[node name="Logotipo" type="Sprite2D" parent="."]
+position = Vector2(1062, 597)
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("4_fbawt")
 
 [node name="ColorRect" type="ColorRect" parent="."]
 offset_right = 1152.0
