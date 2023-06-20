@@ -2,7 +2,7 @@ extends Node2D
 @onready var sceneActive = false
 @onready var menuPrincipal = get_parent().get_node("MainMenu")
 @onready var root: Node2D = get_parent()
-@onready var nivel1_fase1: Node2D = get_parent().get_node("Nivel1_Fase1")
+@onready var nivel1_fase1: Node2D = get_parent().get_node("Nivel1")
 @onready var gameOverSound: AudioStreamPlayer2D = $GameOverSound
 var playingSound = false
 
@@ -37,6 +37,7 @@ func _on_button_restart_restart_fase():
 	root.buttonSound.play()
 	if root.nivelAtual == 1:
 		root.vidas = 3
+		root.faseAtual = 1
 		_update_nivel1_fase1()
 		nivel1_fase1.sceneActive = true
 

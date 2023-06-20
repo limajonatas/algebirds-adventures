@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://yisngukfe32c"]
+[gd_scene load_steps=21 format=3 uid="uid://yisngukfe32c"]
 
 [ext_resource type="Script" path="res://root.gd" id="1_bpdew"]
 [ext_resource type="PackedScene" uid="uid://d0xcfqg55744q" path="res://scenes/main_menu.tscn" id="1_mdl75"]
@@ -10,7 +10,6 @@
 [ext_resource type="AudioStream" uid="uid://ck31ys16gs43j" path="res://assets/music/back.wav" id="5_ldscu"]
 [ext_resource type="PackedScene" uid="uid://dy65mue2yk24d" path="res://scenes/menu_selection.tscn" id="6_b05v6"]
 [ext_resource type="Script" path="res://levelsRoot.gd" id="7_08nts"]
-[ext_resource type="Script" path="res://scripts/nivel1_fase1.gd" id="7_autlu"]
 [ext_resource type="PackedScene" uid="uid://bhqg2l0m8g028" path="res://scenes/nivel1.tscn" id="9_hkcjf"]
 [ext_resource type="Texture2D" uid="uid://d214w0l6cqgtw" path="res://assets/sound_off.png" id="9_kfrkv"]
 [ext_resource type="Script" path="res://scripts/gameOver.gd" id="10_kmq2a"]
@@ -45,8 +44,7 @@ autoplay = true
 stream = ExtResource("5_ldscu")
 autoplay = true
 
-[node name="Nivel1_Fase1" parent="." instance=ExtResource("9_hkcjf")]
-script = ExtResource("7_autlu")
+[node name="Nivel1" parent="." instance=ExtResource("9_hkcjf")]
 
 [node name="Levels" parent="." instance=ExtResource("6_b05v6")]
 script = ExtResource("7_08nts")

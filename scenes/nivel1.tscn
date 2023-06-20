@@ -219,6 +219,9 @@ volume_db = -5.0
 stream = ExtResource("20_twbut")
 volume_db = -5.0
 
+[node name="Timer" type="Timer" parent="."]
+wait_time = 1.5
+
 [connection signal="cont_updated" from="Gun" to="AraraAzul" method="_on_gun_cont_updated"]
 [connection signal="cont_updated" from="Gun" to="Mira" method="_on_gun_cont_updated"]
 [connection signal="saiuDaTela" from="AraraAzul" to="." method="_on_arara_azul_saiu_da_tela"]

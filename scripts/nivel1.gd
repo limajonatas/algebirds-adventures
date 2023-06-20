@@ -28,7 +28,8 @@ var rng: RandomNumberGenerator
 @onready var mira: Line2D = $Mira
 
 @onready var labelPergunta: Label = $Pergunta/Label
-@onready var respostaCorreta:String = root.resposta1
+# @onready var respostaCorreta:String = root.resposta1
+@onready var fase:Sprite2D = $Fase
 
 var balaoAtingido: bool = false
 
@@ -40,6 +41,7 @@ var shouldDelay = true
 
 # @onready var line2D: Line2D = $Line2D
 @onready var timerGameOver: Timer = $TimerGameOver
+@onready var timer: Timer = $Timer
 @onready var fadeIn: AnimationPlayer = $FadeIn
 var fadeInExecuted = false
 
@@ -54,6 +56,7 @@ func _ready():
 	errouMessagem.visible = false
 	errouAlvo.visible = false
 	$TimerErrou.connect("timeout", _reset_fase)
+	timer.connect("timeout", _timer)
 	timerGameOver.connect("timeout", _game_over)
 
 	if sceneActive and root.musicOn:
@@ -84,14 +87,48 @@ func _configura_baloes():
 		var animationNumber = "main0" + str(rng.randi_range(1, 6))
 		balao.animationPlayer.play(animationNumber)
 		balao.is_moving = true
-
-	for i in range(root.opcoes1.size()):
-		baloes[i].get_node("Label").set_text(root.opcoes1[i])
-
-	labelPergunta.set_text(root.pergunta1)
 	
+	if root.nivelAtual == 1:
+		if root.faseAtual == 1:
+			for i in range(root.opcoes_nivel1_fase1.size()):
+				baloes[i].get_node("Label").set_text(root.opcoes_nivel1_fase1[i])
+
+			labelPergunta.set_text(root.pergunta_nivel1_fase1)
+
+		elif root.faseAtual == 2:
+			for i in range(root.opcoes_nivel1_fase2.size()):
+				baloes[i].get_node("Label").set_text(root.opcoes_nivel1_fase2[i])
+
+			labelPergunta.set_text(root.pergunta_nivel1_fase2)
+
+		elif root.faseAtual == 3:
+			for i in range(root.opcoes_nivel1_fase3.size()):
+				baloes[i].get_node("Label").set_text(root.opcoes_nivel1_fase3[i])
+
+			labelPergunta.set_text(root.pergunta_nivel1_fase3)
+
+		elif root.faseAtual == 4:
+			for i in range(root.opcoes_nivel1_fase4.size()):
+				baloes[i].get_node("Label").set_text(root.opcoes_nivel1_fase4[i])
+
+			labelPergunta.set_text(root.pergunta_nivel1_fase4)
+
+
+func _timer():
+	_reset_fase()
+	fadeInExecuted = false
+	timer.stop()
 
 func _reset_fase():
+	if root.faseAtual == 1:
+		fase.texture = load("res://assets//interface//fase1.png")
+	elif root.faseAtual == 2:
+		fase.texture = load("res://assets//interface//fase2.png")
+	elif root.faseAtual == 3:
+		fase.texture = load("res://assets//interface//fase3.png")
+	elif root.faseAtual == 4:
+		fase.texture = load("res://assets//interface//fase4.png")
+
 	araraCharacter._on_reset()	
 	arara._reset()
 	canhao._reset()
@@ -164,29 +201,49 @@ func _balao_atingido():
 	ballon06.is_moving = false
 
 func _verificar_acerto(resp: String):
-	if resp == respostaCorreta:
-		hitSound.play()
-		errouMessagem.visible = false
-		acertouMessagem.visible = true
-		errouAlvo.visible = false
-		root.fasesDesbloqueadas += 1
-		# if shouldDelay:
-		# 	$TimerErrou.start()
-		# 	shouldDelay = false
-	else:
-		errorSound.play()
-		errouMessagem.visible = true
-		acertouMessagem.visible = false
-		errouAlvo.visible = false
-		root.vidas -= 1
-		_update_vidas()
-		if shouldDelay:
-			$TimerErrou.start()
-			shouldDelay = false
+	if root.nivelAtual == 1:
+		if root.faseAtual == 1:
+			if resp == root.resposta_nivel1_fase1:
+				acertou()
+			else:
+				errou()
+		elif root.faseAtual == 2:
+			if resp == root.resposta_nivel1_fase2:
+				acertou()
+			else:
+				errou()
+		elif root.faseAtual == 3:
+			if resp == root.resposta_nivel1_fase3:
+				acertou()
+			else:
+				errou()
+		elif root.faseAtual == 4:
+			if resp == root.resposta_nivel1_fase4:
+				acertou()
+			else:
+				errou()
 	
 	_balao_atingido()
 
 
+func acertou():
+	hitSound.play()
+	errouMessagem.visible = false
+	acertouMessagem.visible = true
+	errouAlvo.visible = false
+	root.faseAtual += 1
+	timer.start()
+
+func errou():
+	errorSound.play()
+	errouMessagem.visible = true
+	acertouMessagem.visible = false
+	errouAlvo.visible = false
+	root.vidas -= 1
+	_update_vidas()
+	if shouldDelay:
+		$TimerErrou.start()
+		shouldDelay = false
 
 ##s�o os sinais emitidos pelos baloes
 #as labels ser�o para comparar o que a arara acertou

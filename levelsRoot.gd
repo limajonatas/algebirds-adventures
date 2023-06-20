@@ -14,7 +14,7 @@ extends Node2D
 @onready var loading: Node2D = get_parent().get_node("Loading")
 var faseSelecionada = 0
 
-@onready var fase1_level1: Node2D = get_parent().get_node("Nivel1_Fase1")
+@onready var fase1_level1: Node2D = get_parent().get_node("Nivel1")
 
 var playingSoundClick=false
 @onready var click: AudioStreamPlayer = get_node("Click")
