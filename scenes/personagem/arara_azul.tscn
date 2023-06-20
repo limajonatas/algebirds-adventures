@@ -1,9 +1,11 @@
-[gd_scene load_steps=10 format=3 uid="uid://sevos7bhxqdt"]
+[gd_scene load_steps=12 format=3 uid="uid://sevos7bhxqdt"]
 
 [ext_resource type="Script" path="res://scripts/character/arara_azul.gd" id="1_7cw23"]
 [ext_resource type="Texture2D" uid="uid://c7ejaprayk10a" path="res://assets/character/arara-azul-grande0.png" id="1_mnjnq"]
 [ext_resource type="Texture2D" uid="uid://b7p0gjhw12p61" path="res://assets/character/arara-azul-grande2.png" id="1_w06u3"]
 [ext_resource type="Script" path="res://scripts/character/arara_azul_sprite.gd" id="2_077l3"]
+[ext_resource type="AudioStream" uid="uid://hwm1t7q0uxm2" path="res://assets/music/pigeons-flying.wav" id="5_5nu30"]
+[ext_resource type="AudioStream" uid="uid://bp3rppg0a2t53" path="res://assets/music/failure-drum-sound-effect.wav" id="6_0y5cc"]
 
 [sub_resource type="Animation" id="Animation_m25jt"]
 length = 0.001
@@ -154,3 +156,10 @@ libraries = {
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, -0.5)
 shape = SubResource("RectangleShape2D_3i2hv")
+
+[node name="FlyingSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("5_5nu30")
+
+[node name="ExitedSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("6_0y5cc")
+volume_db = -5.0

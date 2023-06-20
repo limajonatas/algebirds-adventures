@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://bhqg2l0m8g028"]
+[gd_scene load_steps=24 format=3 uid="uid://bhqg2l0m8g028"]
 
 [ext_resource type="Script" path="res://scripts/nivel1.gd" id="1_0byhp"]
 [ext_resource type="PackedScene" uid="uid://ctmyrlulkq5bw" path="res://scenes/env/background.tscn" id="1_dp26d"]
@@ -18,6 +18,45 @@
 [ext_resource type="Texture2D" uid="uid://cvq5egc1vhrld" path="res://assets/correto.png" id="15_qqxpm"]
 [ext_resource type="Texture2D" uid="uid://cumarovy5bt15" path="res://assets/errado.png" id="16_w8xos"]
 [ext_resource type="Texture2D" uid="uid://djq0e26x6li5m" path="res://assets/miraErrada.png" id="17_u0wav"]
+[ext_resource type="AudioStream" uid="uid://dx4vnhjmb62eh" path="res://assets/music/wrong-buzzer.wav" id="19_m4qcg"]
+[ext_resource type="AudioStream" uid="uid://bxv0oyifvyvkq" path="res://assets/music/beep-6.wav" id="20_twbut"]
+
+[sub_resource type="Animation" id="Animation_cojhr"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ColorRect:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0, 1, 0, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_m6vdp"]
+resource_name = "fade_in"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ColorRect:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0, 1, 0, 1), Color(0, 1, 0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_53wmw"]
+_data = {
+"RESET": SubResource("Animation_cojhr"),
+"fade_in": SubResource("Animation_m6vdp")
+}
 
 [node name="Nivel" type="Node2D"]
 script = ExtResource("1_0byhp")
@@ -161,6 +200,24 @@ size_flags_vertical = 4
 color = Color(0, 0, 0, 0.380392)
 
 [node name="TimerGameOver" type="Timer" parent="."]
+
+[node name="ColorRect" type="ColorRect" parent="."]
+offset_right = 1152.0
+offset_bottom = 648.0
+color = Color(0, 1, 0, 1)
+
+[node name="FadeIn" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_53wmw")
+}
+
+[node name="ErrorSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("19_m4qcg")
+volume_db = -5.0
+
+[node name="HitSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("20_twbut")
+volume_db = -5.0
 
 [connection signal="cont_updated" from="Gun" to="AraraAzul" method="_on_gun_cont_updated"]
 [connection signal="cont_updated" from="Gun" to="Mira" method="_on_gun_cont_updated"]

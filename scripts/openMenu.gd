@@ -2,7 +2,7 @@ extends Sprite2D
 ######################### CanvasLayer -> Pause (Node2D) -> Pause -> Root -> filhos
 @onready var pai: Node2D = get_parent().get_parent()
 @onready var sceneActive = false
-@onready var nivel: Node2D = get_parent().get_parent().get_parent().get_parent().get_node("Nivel1")
+@onready var nivel: Node2D = get_parent().get_parent().get_parent().get_parent().get_node("Nivel1_Fase1")
 @onready var menu: Node2D = get_parent().get_parent().get_parent().get_parent().get_node("MainMenu")
 @onready var root: Node2D = get_parent().get_parent().get_parent().get_parent()
 

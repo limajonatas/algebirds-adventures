@@ -56,3 +56,9 @@ func _input(event: InputEvent) -> void:
 						self.position = Vector2(-14, -7)
 
 					cont += 1
+
+func _reset():
+	cont = 0
+	self.rotation = deg_to_rad(0)
+	self.position = Vector2(0, 0)
+	activeInput = true

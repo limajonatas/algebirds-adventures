@@ -16,7 +16,13 @@ var speedReductionRate: float = 0.99  # Taxa de redu��o da velocidade (0.999
 var positionAraraCharacter: Vector2 = Vector2(0, 0)
 # @onready var saiuDaTela: bool = false
 signal saiuDaTela
+
+@onready var flyingSound: AudioStreamPlayer2D = $FlyingSound
+@onready var exitedSound: AudioStreamPlayer2D = $ExitedSound
+
 func _ready():
+	flyingSound.stop()
+	exitedSound.stop()
 	# Obtenha uma refer�ncia para o AnimationPlayer e o Sprite
 	animationPlayer = $AnimationPlayer
 	sprite = $AraraAzulSprite
@@ -39,6 +45,7 @@ func _input(event: InputEvent) -> void:
 			if key_event.is_action_pressed("jump"):
 				# Inicie a anima��o "voo" no AnimationPlayer
 				animationPlayer.play("voo")
+				flyingSound.play()
 
 				# Defina a dire��o do movimento
 				var moveAngle = -21
@@ -84,6 +91,7 @@ func _physics_process(delta: float) -> void:
 				# Pare o movimento do personagem e defina isMoving como falso
 				isMoving = false
 				# saiuDaTela = true
+				exitedSound.play()
 				emit_signal("saiuDaTela")
 
 

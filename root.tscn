@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://yisngukfe32c"]
+[gd_scene load_steps=22 format=3 uid="uid://yisngukfe32c"]
 
 [ext_resource type="Script" path="res://root.gd" id="1_bpdew"]
 [ext_resource type="PackedScene" uid="uid://d0xcfqg55744q" path="res://scenes/main_menu.tscn" id="1_mdl75"]
@@ -10,6 +10,7 @@
 [ext_resource type="AudioStream" uid="uid://ck31ys16gs43j" path="res://assets/music/back.wav" id="5_ldscu"]
 [ext_resource type="PackedScene" uid="uid://dy65mue2yk24d" path="res://scenes/menu_selection.tscn" id="6_b05v6"]
 [ext_resource type="Script" path="res://levelsRoot.gd" id="7_08nts"]
+[ext_resource type="Script" path="res://scripts/nivel1_fase1.gd" id="7_autlu"]
 [ext_resource type="PackedScene" uid="uid://bhqg2l0m8g028" path="res://scenes/nivel1.tscn" id="9_hkcjf"]
 [ext_resource type="Texture2D" uid="uid://d214w0l6cqgtw" path="res://assets/sound_off.png" id="9_kfrkv"]
 [ext_resource type="Script" path="res://scripts/gameOver.gd" id="10_kmq2a"]
@@ -19,6 +20,7 @@
 [ext_resource type="Texture2D" uid="uid://cll05wadxnptk" path="res://assets/buttonMenu.png" id="13_oxgbt"]
 [ext_resource type="Script" path="res://scripts/ButtonMenuGameOver.gd" id="15_fjywd"]
 [ext_resource type="PackedScene" uid="uid://cs7ih1vp86ea0" path="res://scenes/loading.tscn" id="17_p4fln"]
+[ext_resource type="AudioStream" uid="uid://b6wo8p816b45y" path="res://assets/music/negative_beeps-6008.wav" id="20_b6g60"]
 
 [node name="Root" type="Node2D"]
 script = ExtResource("1_bpdew")
@@ -43,7 +45,8 @@ autoplay = true
 stream = ExtResource("5_ldscu")
 autoplay = true
 
-[node name="Nivel1" parent="." instance=ExtResource("9_hkcjf")]
+[node name="Nivel1_Fase1" parent="." instance=ExtResource("9_hkcjf")]
+script = ExtResource("7_autlu")
 
 [node name="Levels" parent="." instance=ExtResource("6_b05v6")]
 script = ExtResource("7_08nts")
@@ -54,8 +57,8 @@ script = ExtResource("7_08nts")
 script = ExtResource("3_56ug8")
 
 [node name="SoundOff" type="Sprite2D" parent="."]
-position = Vector2(1119, 28)
-scale = Vector2(0.1, 0.1)
+position = Vector2(1119, 32)
+scale = Vector2(0.08, 0.08)
 texture = ExtResource("9_kfrkv")
 
 [node name="GameOver" type="Node2D" parent="."]
@@ -67,16 +70,21 @@ scale = Vector2(0.287868, 0.290732)
 texture = ExtResource("11_2ow0d")
 
 [node name="ButtonRestart" type="Sprite2D" parent="GameOver"]
-position = Vector2(1065, 579)
+position = Vector2(998, 579)
 scale = Vector2(0.25, 0.25)
 texture = ExtResource("12_pha42")
 script = ExtResource("13_04tyl")
 
 [node name="ButtonMenu" type="Sprite2D" parent="GameOver"]
-position = Vector2(99, 579)
+position = Vector2(141, 579)
 scale = Vector2(0.25, 0.25)
 texture = ExtResource("13_oxgbt")
 script = ExtResource("15_fjywd")
+
+[node name="GameOverSound" type="AudioStreamPlayer2D" parent="GameOver"]
+stream = ExtResource("20_b6g60")
+volume_db = -5.0
+autoplay = true
 
 [node name="Loading" parent="." instance=ExtResource("17_p4fln")]
 

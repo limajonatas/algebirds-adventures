@@ -1,5 +1,6 @@
 extends Sprite2D
 @onready var pai = get_parent()
+# @onready var root = get_parent().get_parent()
 @onready var menuPause = get_parent().get_node("Pause")
 signal pausar
 

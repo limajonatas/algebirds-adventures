@@ -11,10 +11,12 @@ var is_moving: bool = false
 var collisionActive: bool = true
 @onready var label: Label = $Label
 @onready var collision: CollisionShape2D = $CollisionShape2D
+@onready var sound: AudioStreamPlayer2D  = $Sound
 signal atingido(value: bool, label: Label)
 
 
 func _ready():
+	sound.stop()
 	initialY = position.y
 	animationPlayer = $AnimationPlayer
 
@@ -65,4 +67,5 @@ func _on_body_entered(body: Node) -> void:
 		animationPlayer.play("pow")
 		label.visible = false
 		is_moving = false
+		sound.play()
 		emit_signal("atingido", label.text)

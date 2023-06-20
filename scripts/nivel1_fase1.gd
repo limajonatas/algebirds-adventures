@@ -25,6 +25,7 @@ var rng: RandomNumberGenerator
 @onready var errouMessagem: Sprite2D = $Errado
 @onready var acertouMessagem: Sprite2D = $Correto
 @onready var errouAlvo: Sprite2D = $MiraErrada
+@onready var mira: Line2D = $Mira
 
 @onready var labelPergunta: Label = $Pergunta/Label
 @onready var respostaCorreta:String = root.resposta1
@@ -33,17 +34,21 @@ var balaoAtingido: bool = false
 
 var shouldDelay = true
 
-var startPosition: Vector2 = Vector2(100, 100)
-var targetPosition: Vector2 = Vector2(200, 200)
-
 @onready var baloes = [ballon01, ballon02, ballon03, ballon04, ballon05, ballon06]  # Lista de bal�es dispon�veis
 # @onready var baloesAux = [ballon01, ballon02, ballon03, ballon04, ballon05, ballon06] 
 @onready var quantidadeDesativar:int = 2;  # Quantidade de bal�es a serem desativados
 
 # @onready var line2D: Line2D = $Line2D
 @onready var timerGameOver: Timer = $TimerGameOver
+@onready var fadeIn: AnimationPlayer = $FadeIn
+var fadeInExecuted = false
+
+@onready var errorSound:AudioStreamPlayer2D = $ErrorSound
+@onready var hitSound:AudioStreamPlayer2D = $HitSound
 
 func _ready():
+	errorSound.stop()
+	hitSound.stop()
 	self.visible = false
 	acertouMessagem.visible = false
 	errouMessagem.visible = false
@@ -88,15 +93,16 @@ func _configura_baloes():
 
 func _reset_fase():
 	araraCharacter._on_reset()	
-	arara.activeInput = true
-	canhao.activeInput = true
-	
+	arara._reset()
+	canhao._reset()
+
 	shouldDelay = true
 	errouMessagem.visible = false
 	acertouMessagem.visible = false
 	errouAlvo.visible = false
 	canhao.isMoving = false
 	_configura_baloes()
+	mira.visible = true
 	$TimerErrou.stop()
 
 func _update_vidas():
@@ -121,10 +127,17 @@ func _process(_delta) -> void:
 	#draw_line(Vector2.ZERO, Vector2.RIGHT * 300, Color.WHITE, 0.8)
 	if sceneActive:
 		self.visible = true
-		if not musicPlaying:
+		if not fadeInExecuted:
+			fadeInExecuted = true
+			fadeIn.play("fade_in")
+		if not musicPlaying and root.musicOn:
 			musicPlaying = true
 			root.music2.play()
 			root.music.stop()
+		
+		#quando a arara começa a se movimentar
+		if arara.isMoving:
+			mira.visible = false
 	else:
 		self.visible = false
 		if musicPlaying:
@@ -152,6 +165,7 @@ func _balao_atingido():
 
 func _verificar_acerto(resp: String):
 	if resp == respostaCorreta:
+		hitSound.play()
 		errouMessagem.visible = false
 		acertouMessagem.visible = true
 		errouAlvo.visible = false
@@ -160,6 +174,7 @@ func _verificar_acerto(resp: String):
 		# 	$TimerErrou.start()
 		# 	shouldDelay = false
 	else:
+		errorSound.play()
 		errouMessagem.visible = true
 		acertouMessagem.visible = false
 		errouAlvo.visible = false

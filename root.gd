@@ -1,12 +1,14 @@
 extends Node2D
 
 @onready var options: Node2D = $Options
-@onready var faseAtual: int = 1
-var fasesDesbloqueadas: int = 1
 
+var faseAtual: int = 1
+var nivelAtual: int = 1
+var fasesDesbloqueadas: int = 1
 var vidas: int = 3
 
-@onready var nivel1_fase1: Node2D = $Nivel1
+# @onready var nivel1_fase1: Node2D = $Nivel1_Fase1
+
 @onready var musicOn: bool = true
 @onready var music: AudioStreamPlayer2D = $Music
 @onready var music2: AudioStreamPlayer2D = $Music2
