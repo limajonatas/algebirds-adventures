@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://yisngukfe32c"]
+[gd_scene load_steps=18 format=3 uid="uid://yisngukfe32c"]
 
 [ext_resource type="Script" path="res://root.gd" id="1_bpdew"]
 [ext_resource type="PackedScene" uid="uid://d0xcfqg55744q" path="res://scenes/main_menu.tscn" id="1_mdl75"]
@@ -16,6 +16,7 @@
 [ext_resource type="Script" path="res://scripts/ButtonRestart.gd" id="13_04tyl"]
 [ext_resource type="Texture2D" uid="uid://cll05wadxnptk" path="res://assets/buttonMenu.png" id="13_oxgbt"]
 [ext_resource type="Script" path="res://scripts/ButtonMenuGameOver.gd" id="15_fjywd"]
+[ext_resource type="PackedScene" uid="uid://cs7ih1vp86ea0" path="res://scenes/loading.tscn" id="17_p4fln"]
 
 [node name="Root" type="Node2D"]
 script = ExtResource("1_bpdew")
@@ -66,6 +67,7 @@ scale = Vector2(0.25, 0.25)
 texture = ExtResource("13_oxgbt")
 script = ExtResource("15_fjywd")
 
-[connection signal="scene_active" from="Nivel1" to="." method="_on_nivel_1_scene_active"]
+[node name="Loading" parent="." instance=ExtResource("17_p4fln")]
+
 [connection signal="restart_fase" from="GameOver/ButtonRestart" to="GameOver" method="_on_button_restart_restart_fase"]
 [connection signal="menu_principal" from="GameOver/ButtonMenu" to="GameOver" method="_on_button_menu_menu_principal"]

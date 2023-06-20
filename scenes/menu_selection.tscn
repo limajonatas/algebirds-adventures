@@ -1,11 +1,14 @@
-[gd_scene load_steps=7 format=3 uid="uid://dy65mue2yk24d"]
+[gd_scene load_steps=10 format=3 uid="uid://dy65mue2yk24d"]
 
 [ext_resource type="Script" path="res://scripts/background_LevelsMenu.gd" id="1_ee6yg"]
 [ext_resource type="Texture2D" uid="uid://cvao17v5rfpfs" path="res://assets/background/menu.png" id="1_vfors"]
 [ext_resource type="Script" path="res://scripts/Menu_selection.gd" id="1_w71g0"]
 [ext_resource type="Texture2D" uid="uid://eta3sfmpdmqa" path="res://assets/menu/voltar.png" id="3_4md8r"]
+[ext_resource type="Texture2D" uid="uid://dvvqetpmt7nt" path="res://assets/background/inicio.png" id="4_6w5s4"]
 [ext_resource type="PackedScene" uid="uid://cqd2wqvm76h6b" path="res://scenes/button_level.tscn" id="4_76jns"]
+[ext_resource type="Texture2D" uid="uid://cubvvk1dxcrb6" path="res://assets/background/ninho.png" id="4_p7mdt"]
 [ext_resource type="Texture2D" uid="uid://fvjadvofli2u" path="res://assets/level.png" id="6_ld2bh"]
+[ext_resource type="AudioStream" uid="uid://ur2rlaonyyrl" path="res://assets/music/game-start.wav" id="9_dkyo5"]
 
 [node name="Levels" type="Node2D"]
 
@@ -19,6 +22,21 @@ offset_right = 1151.0
 offset_bottom = 649.0
 texture = ExtResource("1_vfors")
 expand_mode = 1
+
+[node name="Ninho" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer"]
+position = Vector2(1086, 549)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("6_ld2bh")
+
+[node name="NinhoText" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer"]
+position = Vector2(1072, 618)
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("4_p7mdt")
+
+[node name="Inicio" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer"]
+position = Vector2(90, 88)
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("4_6w5s4")
 
 [node name="Menu_selection" type="Control" parent="."]
 layout_mode = 3
@@ -161,7 +179,6 @@ offset_bottom = 939.0
 grow_horizontal = 1
 grow_vertical = 1
 
-[node name="Level" type="Sprite2D" parent="."]
-position = Vector2(1077.89, 499)
-scale = Vector2(0.5, 0.5)
-texture = ExtResource("6_ld2bh")
+[node name="Click" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("9_dkyo5")
+volume_db = -10.0

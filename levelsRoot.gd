@@ -10,8 +10,13 @@ extends Node2D
 @onready var level7: Button = $Menu_selection/Level7
 @onready var level8: Button = $Menu_selection/Level8
 @onready var root: Node2D = get_parent()
+@onready var loading: Node2D = get_parent().get_node("Loading")
+var faseSelecionada = 0
 
 @onready var fase1_level1: Node2D = get_parent().get_node("Nivel1")
+
+var playingSoundClick=false
+@onready var click: AudioStreamPlayer = get_node("Click")
 
 
 func _ready():
@@ -98,11 +103,13 @@ func _ready():
 
 	level1.pressed.connect(_level1_Open)
 
-
 func _level1_Open():
 	if sceneActive:
+		faseSelecionada = 1
 		sceneActive = false
-		fase1_level1.sceneActive = true
+		# fase1_level1.sceneActive = true
+		click.play()
+		loading.sceneActive = true
 	else:
 		sceneActive = true
 
@@ -112,3 +119,9 @@ func _process(_delta):
 		self.visible = true
 	else:
 		self.visible = false
+
+	if loading.loading.value >= 100:
+		if faseSelecionada == 1:
+			fase1_level1.sceneActive = true
+		else:
+			sceneActive = true

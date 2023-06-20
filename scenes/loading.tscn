@@ -1,0 +1,75 @@
+[gd_scene load_steps=7 format=3 uid="uid://cs7ih1vp86ea0"]
+
+[ext_resource type="Script" path="res://scripts/loading.gd" id="1_0dmyk"]
+[ext_resource type="Texture2D" uid="uid://chdeq4pl181ks" path="res://assets/background/backgroundLoading.png" id="1_cy184"]
+[ext_resource type="Texture2D" uid="uid://184c644b2id7" path="res://assets/background/loadingText.png" id="2_1cnnj"]
+
+[sub_resource type="Animation" id="Animation_tu5dv"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ColorRect:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0, 0, 0, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_gvvaw"]
+resource_name = "transition"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ColorRect:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0, 0, 0, 1), Color(0, 0, 0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_714a6"]
+_data = {
+"RESET": SubResource("Animation_tu5dv"),
+"transition": SubResource("Animation_gvvaw")
+}
+
+[node name="Loading" type="Node2D"]
+script = ExtResource("1_0dmyk")
+metadata/_edit_vertical_guides_ = [575.0]
+
+[node name="TextureRect" type="TextureRect" parent="."]
+offset_right = 4000.0
+offset_bottom = 2250.0
+scale = Vector2(0.288, 0.288)
+texture = ExtResource("1_cy184")
+
+[node name="LoadingText" type="Sprite2D" parent="."]
+position = Vector2(574, 273)
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("2_1cnnj")
+
+[node name="ProgressBar" type="ProgressBar" parent="."]
+offset_left = 260.0
+offset_top = 333.0
+offset_right = 914.0
+offset_bottom = 382.0
+
+[node name="Timer" type="Timer" parent="."]
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_714a6")
+}
+
+[node name="ColorRect" type="ColorRect" parent="."]
+offset_right = 1152.0
+offset_bottom = 648.0
+color = Color(0, 0, 0, 1)

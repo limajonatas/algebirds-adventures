@@ -55,6 +55,8 @@ func _ready():
 		root.music.stop()
 	else:
 		musicPlaying = false
+		
+
 
 	
 	# Modificar as propriedades do Line2D
@@ -139,28 +141,12 @@ func _process(_delta) -> void:
 			musicPlaying = true
 			root.music2.play()
 			root.music.stop()
-
-			
-		
-		# if balaoAtingido:
-		# 	# arara.visible = false
-		# 	# arara.isMoving = false
-		# 	# araraCharacter.isMoving = false
-		# 	# ballon01.is_moving = false
-		# 	# ballon02.is_moving = false
-		# 	# ballon03.is_moving = false
-		# 	# ballon04.is_moving = false
-		# 	# ballon05.is_moving = false
-		# 	# ballon06.is_moving = false
-		# 	if shouldDelay:
-		# 		$TimerErrou.start()
-		# 		shouldDelay = false
-		# 		arara.isMoving = false
-		# 		araraCharacter.isMoving = false
-		
 	else:
 		self.visible = false
-
+		if musicPlaying:
+			musicPlaying = false
+			root.music2.stop()
+			root.music.play()
 
 func _on_ballon_01_body_entered(body):
 	print(body)
