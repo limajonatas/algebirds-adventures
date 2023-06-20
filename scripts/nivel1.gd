@@ -40,7 +40,7 @@ var targetPosition: Vector2 = Vector2(200, 200)
 # @onready var baloesAux = [ballon01, ballon02, ballon03, ballon04, ballon05, ballon06] 
 @onready var quantidadeDesativar:int = 2;  # Quantidade de bal�es a serem desativados
 
-@onready var line2D: Line2D = $Line2D
+# @onready var line2D: Line2D = $Line2D
 
 
 func _ready():
@@ -56,23 +56,6 @@ func _ready():
 	else:
 		musicPlaying = false
 		
-
-
-	
-	# Modificar as propriedades do Line2D
-	line2D.default_color = Color(1, 1, 1)
-	line2D.width = 2
-	line2D.antialiased = true
-
-	var positionAX = line2D.get_point_position(0).x
-	var positionAY = line2D.get_point_position(0).y
-	var positionBX = line2D.get_point_position(1).x
-	var positionBY = line2D.get_point_position(1).y
-
-	# Definir os pontos de controle iniciais
-	var startPoint = Vector2(positionAX, positionAY)
-	var endPoint = Vector2(positionBX, positionBY)
-	line2D.points = [startPoint, endPoint]
 	_configura_baloes()
 
 func _configura_baloes():

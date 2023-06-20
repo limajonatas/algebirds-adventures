@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://bhqg2l0m8g028"]
+[gd_scene load_steps=19 format=3 uid="uid://bhqg2l0m8g028"]
 
 [ext_resource type="Script" path="res://scripts/nivel1.gd" id="1_0byhp"]
 [ext_resource type="PackedScene" uid="uid://ctmyrlulkq5bw" path="res://scenes/env/background.tscn" id="1_dp26d"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://sevos7bhxqdt" path="res://scenes/personagem/arara_azul.tscn" id="3_4477x"]
 [ext_resource type="Script" path="res://scripts/background_nivel1.gd" id="3_o2ax6"]
 [ext_resource type="PackedScene" uid="uid://b7o4dlqolv2xb" path="res://scenes/objects/ballon.tscn" id="6_jdwde"]
+[ext_resource type="Script" path="res://scripts/mira.gd" id="7_m8a2k"]
 [ext_resource type="Texture2D" uid="uid://dabosy3eg5dne" path="res://assets/interface/painel_pergunta.png" id="8_g3tdb"]
 [ext_resource type="Texture2D" uid="uid://bkeadsdoyakjw" path="res://assets/interface/pausa.png" id="9_ev0kt"]
 [ext_resource type="Script" path="res://scripts/pauseJogo.gd" id="9_ytj1u"]
@@ -49,8 +50,9 @@ position = Vector2(901, 464)
 [node name="Ballon06" parent="." instance=ExtResource("6_jdwde")]
 position = Vector2(1004, 577)
 
-[node name="Line2D" type="Line2D" parent="."]
-points = PackedVector2Array(886, 273, 274, 496)
+[node name="Mira" type="Line2D" parent="."]
+points = PackedVector2Array(876, 556, 267, 534)
+script = ExtResource("7_m8a2k")
 
 [node name="Pergunta" type="Sprite2D" parent="."]
 position = Vector2(376, 588)
@@ -159,6 +161,7 @@ size_flags_vertical = 4
 color = Color(0, 0, 0, 0.380392)
 
 [connection signal="cont_updated" from="Gun" to="AraraAzul" method="_on_gun_cont_updated"]
+[connection signal="cont_updated" from="Gun" to="Mira" method="_on_gun_cont_updated"]
 [connection signal="saiuDaTela" from="AraraAzul" to="." method="_on_arara_azul_saiu_da_tela"]
 [connection signal="atingido" from="Ballon01" to="." method="_on_ballon_01_atingido"]
 [connection signal="body_entered" from="Ballon01" to="." method="_on_ballon_01_body_entered"]
