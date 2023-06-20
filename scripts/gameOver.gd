@@ -13,6 +13,7 @@ func _on_button_menu_menu_principal():
 	sceneActive = false
 	menuPrincipal.sceneActive = true
 	root.music.play()
+	root.buttonSound.play()
 
 
 func _on_button_restart_restart_fase():

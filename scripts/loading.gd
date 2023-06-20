@@ -27,10 +27,10 @@ func on_timeout():
 	rng.randomize()
 
 	if loading.value == 100:
-		print("Loading complete!")
 		timer.stop()
+		loading.value = 0
+		inicializou = false
 		sceneActive = false
 		self.visible = false
 	else:
 		loading.value += rng.randi_range(10, 30)
-		print(loading.value)

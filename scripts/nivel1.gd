@@ -41,7 +41,7 @@ var targetPosition: Vector2 = Vector2(200, 200)
 @onready var quantidadeDesativar:int = 2;  # Quantidade de bal�es a serem desativados
 
 # @onready var line2D: Line2D = $Line2D
-
+@onready var timerGameOver: Timer = $TimerGameOver
 
 func _ready():
 	self.visible = false
@@ -49,13 +49,14 @@ func _ready():
 	errouMessagem.visible = false
 	errouAlvo.visible = false
 	$TimerErrou.connect("timeout", _reset_fase)
+	timerGameOver.connect("timeout", _game_over)
 
-	if sceneActive:
+	if sceneActive and root.musicOn:
 		root.music2.play()
 		root.music.stop()
 	else:
 		musicPlaying = false
-		
+
 	_configura_baloes()
 
 func _configura_baloes():
@@ -86,8 +87,6 @@ func _configura_baloes():
 	
 
 func _reset_fase():
-	# reseted = true
-	print('fase resetada')
 	araraCharacter._on_reset()	
 	arara.activeInput = true
 	canhao.activeInput = true
@@ -100,8 +99,6 @@ func _reset_fase():
 	_configura_baloes()
 	$TimerErrou.stop()
 
-
-
 func _update_vidas():
 	if root.vidas == 3:
 		vidas.texture = load("res://assets//interface//3vidas.png")
@@ -112,9 +109,13 @@ func _update_vidas():
 	elif root.vidas == 0:
 		vidas.texture = load("res://assets//interface//0vidas.png")
 		##chamar tela de game over
-		gameOver.sceneActive = true
-		sceneActive = false
+		timerGameOver.start()
 
+func _game_over() -> void:
+	gameOver.sceneActive = true
+	sceneActive = false
+	timerGameOver.stop()
+	
 
 func _process(_delta) -> void:
 	#draw_line(Vector2.ZERO, Vector2.RIGHT * 300, Color.WHITE, 0.8)
@@ -131,9 +132,8 @@ func _process(_delta) -> void:
 			root.music2.stop()
 			root.music.play()
 
-func _on_ballon_01_body_entered(body):
-	print(body)
-	pass  # Replace with function body
+# func _on_ballon_01_body_entered(body):
+# 	pass  # Replace with function body
 
 func _balao_atingido():
 	arara.isMoving = false
@@ -156,7 +156,6 @@ func _verificar_acerto(resp: String):
 		acertouMessagem.visible = true
 		errouAlvo.visible = false
 		root.fasesDesbloqueadas += 1
-		print('fase desbloqueadas',root.fasesDesbloqueadas)
 		# if shouldDelay:
 		# 	$TimerErrou.start()
 		# 	shouldDelay = false

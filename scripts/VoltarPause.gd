@@ -3,7 +3,6 @@ signal voltar
 
 @onready var pai: Node2D = get_parent().get_parent()
 
-
 func _process(_delta):
 	if pai.optionsVisible:
 		visible = false

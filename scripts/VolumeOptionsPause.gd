@@ -26,6 +26,8 @@ func _input(event):
 				if root.musicOn:
 					root.musicOn = false
 					root.music.stop()
+					root.music2.stop()
 				else:
 					root.musicOn = true
-					root.music.play()
+					# root.music.play()
+					root.music2.play()

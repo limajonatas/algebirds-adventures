@@ -83,7 +83,6 @@ func _physics_process(delta: float) -> void:
 			if self.position.x > 1200 or self.position.x < -1200 or self.position.y > 700 or self.position.y < -700:
 				# Pare o movimento do personagem e defina isMoving como falso
 				isMoving = false
-				print("Saiu da tela")
 				# saiuDaTela = true
 				emit_signal("saiuDaTela")
 

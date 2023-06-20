@@ -160,6 +160,8 @@ grow_vertical = 2
 size_flags_vertical = 4
 color = Color(0, 0, 0, 0.380392)
 
+[node name="TimerGameOver" type="Timer" parent="."]
+
 [connection signal="cont_updated" from="Gun" to="AraraAzul" method="_on_gun_cont_updated"]
 [connection signal="cont_updated" from="Gun" to="Mira" method="_on_gun_cont_updated"]
 [connection signal="saiuDaTela" from="AraraAzul" to="." method="_on_arara_azul_saiu_da_tela"]

@@ -10,6 +10,7 @@ extends Node2D
 @onready var level7: Button = $Menu_selection/Level7
 @onready var level8: Button = $Menu_selection/Level8
 @onready var root: Node2D = get_parent()
+@onready var menu: Node2D = get_parent().get_node("MainMenu")
 @onready var loading: Node2D = get_parent().get_node("Loading")
 var faseSelecionada = 0
 
@@ -117,11 +118,14 @@ func _level1_Open():
 func _process(_delta):
 	if sceneActive:
 		self.visible = true
+		fase1_level1.sceneActive = false
 	else:
 		self.visible = false
-
 	if loading.loading.value >= 100:
 		if faseSelecionada == 1:
 			fase1_level1.sceneActive = true
 		else:
 			sceneActive = true
+	
+	if menu.sceneActive == true:
+		fase1_level1.sceneActive = false

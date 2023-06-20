@@ -6,7 +6,8 @@ extends Node2D
 @onready var titlePause: Sprite2D = $CanvasLayer/Pause
 @onready var titlePauseOption: Sprite2D = $CanvasLayer/OpcoesPause
 @onready var optionsVisible = false
-@onready var buttonPause = get_parent().get_node("Pausa")
+@onready var root:Node2D = get_parent().get_parent()
+# @onready var buttonPause = get_parent().get_node("Pausa")
 
 func _ready():
 	canva.visible = false
@@ -36,15 +37,12 @@ func _process(_delta):
 	else:
 		canva.visible = false
 		get_tree().paused = false
-
-
+	
 func _on_voltar_voltar():
+	root.buttonBackSound.play()
 	get_tree().paused = false
 	canva.visible = false
-	buttonPause.visible = true
-
 
 func _on_pausa_pausar():
 	get_tree().paused = true
 	canva.visible = true
-	buttonPause.visible = false

@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://yisngukfe32c"]
+[gd_scene load_steps=20 format=3 uid="uid://yisngukfe32c"]
 
 [ext_resource type="Script" path="res://root.gd" id="1_bpdew"]
 [ext_resource type="PackedScene" uid="uid://d0xcfqg55744q" path="res://scenes/main_menu.tscn" id="1_mdl75"]
@@ -6,6 +6,8 @@
 [ext_resource type="PackedScene" uid="uid://fgcwuu25ddmr" path="res://scenes/options.tscn" id="2_q1l03"]
 [ext_resource type="Script" path="res://optionsRoot.gd" id="3_56ug8"]
 [ext_resource type="AudioStream" uid="uid://biyapc7o0crhx" path="res://assets/music/cottagecore.wav" id="3_noysl"]
+[ext_resource type="AudioStream" uid="uid://br3ydnqdinfio" path="res://assets/music/button.wav" id="4_bswbp"]
+[ext_resource type="AudioStream" uid="uid://ck31ys16gs43j" path="res://assets/music/back.wav" id="5_ldscu"]
 [ext_resource type="PackedScene" uid="uid://dy65mue2yk24d" path="res://scenes/menu_selection.tscn" id="6_b05v6"]
 [ext_resource type="Script" path="res://levelsRoot.gd" id="7_08nts"]
 [ext_resource type="PackedScene" uid="uid://bhqg2l0m8g028" path="res://scenes/nivel1.tscn" id="9_hkcjf"]
@@ -30,6 +32,15 @@ autoplay = true
 [node name="Music2" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("3_noysl")
 volume_db = -10.0
+autoplay = true
+
+[node name="ButtonSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("4_bswbp")
+volume_db = -10.0
+autoplay = true
+
+[node name="ButtonBackSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("5_ldscu")
 autoplay = true
 
 [node name="Nivel1" parent="." instance=ExtResource("9_hkcjf")]

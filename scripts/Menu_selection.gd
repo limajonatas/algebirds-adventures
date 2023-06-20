@@ -1,4 +1,5 @@
 extends Control
+@onready var root: Node2D = get_parent().get_parent()
 @onready var pai: Node2D = get_parent()
 @onready var menu: Node2D = get_parent().get_parent().get_node("MainMenu")
 
@@ -18,6 +19,7 @@ func _process(_delta):
 func _on_Button_Back_pressed():
 	##se o menu de levels está ativo
 	if pai.sceneActive:
+		root.buttonBackSound.play()
 		pai.sceneActive = false
 		menu.sceneActive = true
 

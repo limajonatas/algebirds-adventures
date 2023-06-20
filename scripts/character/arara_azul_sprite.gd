@@ -4,8 +4,6 @@ var cont:int = 0
 var isMoving: bool = false
 var activeInput: bool = true
 
-func _ready() -> void:
-	print(paiNivel)
 
 func _input(event: InputEvent) -> void:
 	if paiNivel.sceneActive:

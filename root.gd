@@ -10,6 +10,8 @@ var vidas: int = 3
 @onready var musicOn: bool = true
 @onready var music: AudioStreamPlayer2D = $Music
 @onready var music2: AudioStreamPlayer2D = $Music2
+@onready var buttonSound: AudioStreamPlayer2D = $ButtonSound
+@onready var buttonBackSound: AudioStreamPlayer2D = $ButtonBackSound
 
 @onready var soundOff: Sprite2D = $SoundOff
 ##### FASE 1 #####
@@ -35,6 +37,8 @@ var opcoes4: Array = ["27", "6", "7", "5"]
 func _ready():
 	get_tree().paused = false
 	music2.stop()
+	buttonSound.stop()
+	buttonBackSound.stop()
 
 
 func _process(_delta):

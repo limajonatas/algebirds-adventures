@@ -2,6 +2,7 @@ extends Sprite2D
 
 @onready var pai: Node2D = get_parent().get_parent()
 @onready var openOptions: Node2D = get_parent().get_node("OptionsPause")
+@onready var root: Node2D = get_parent().get_parent().get_parent().get_parent()
 
 func _process(_delta):
 	if pai.optionsVisible:
@@ -17,4 +18,5 @@ func _input(event):
 	):
 		if get_rect().has_point(get_local_mouse_position()):
 			if event.is_pressed() and get_tree().is_paused() and not pai.optionsVisible:
+				root.buttonSound.play()
 				pai.optionsVisible = true

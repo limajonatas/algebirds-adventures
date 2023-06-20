@@ -62,7 +62,6 @@ func directionVerify(random: int) -> int:
 func _on_body_entered(body: Node) -> void:
 	if body is CharacterBody2D:  # Verifica se o objeto que colidiu � do tipo CharacterBody
 		# Fa�a algo quando um CharacterBody colidir com a �rea2D
-		print("Um CharacterBody colidiu com a �rea2D!", body)
 		animationPlayer.play("pow")
 		label.visible = false
 		is_moving = false
