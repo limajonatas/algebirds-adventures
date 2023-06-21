@@ -1,5 +1,6 @@
 extends Node2D
 @onready var background:TextureRect = $Background/ParallaxLayer/TextureRect
+@onready var labelNivel: Label = $Label
 
 @onready var sceneActive = false
 @onready var reseted = false
@@ -131,7 +132,60 @@ func _configura_baloes():
 			for i in range(root.opcoes_nivel2_fase4.size()):
 				baloes[i]._set_label_text(root.opcoes_nivel2_fase4[i])
 			labelPergunta.set_text(root.pergunta_nivel2_fase4)
-	
+
+	elif root.nivelAtual == 3:
+		if root.faseAtual == 1:
+			for i in range(root.opcoes_nivel3_fase1.size()):
+				baloes[i]._set_label_text(root.opcoes_nivel3_fase1[i])
+			labelPergunta.set_text(root.pergunta_nivel3_fase1)
+		elif root.faseAtual == 2:
+			for i in range(root.opcoes_nivel3_fase2.size()):
+				baloes[i]._set_label_text(root.opcoes_nivel3_fase2[i])
+			labelPergunta.set_text(root.pergunta_nivel3_fase2)
+		elif root.faseAtual == 3:
+			for i in range(root.opcoes_nivel3_fase3.size()):
+				baloes[i]._set_label_text(root.opcoes_nivel3_fase3[i])
+			labelPergunta.set_text(root.pergunta_nivel3_fase3)
+		elif root.faseAtual == 4:
+			for i in range(root.opcoes_nivel3_fase4.size()):
+				baloes[i]._set_label_text(root.opcoes_nivel3_fase4[i])
+			labelPergunta.set_text(root.pergunta_nivel3_fase4)
+
+	elif root.nivelAtual == 4:
+		if root.faseAtual == 1:
+			for i in range(root.opcoes_nivel4_fase1.size()):
+				baloes[i]._set_label_text(root.opcoes_nivel4_fase1[i])
+			labelPergunta.set_text(root.pergunta_nivel4_fase1)
+		elif root.faseAtual == 2:
+			for i in range(root.opcoes_nivel4_fase2.size()):
+				baloes[i]._set_label_text(root.opcoes_nivel4_fase2[i])
+			labelPergunta.set_text(root.pergunta_nivel4_fase2)
+		elif root.faseAtual == 3:
+			for i in range(root.opcoes_nivel4_fase3.size()):
+				baloes[i]._set_label_text(root.opcoes_nivel4_fase3[i])
+			labelPergunta.set_text(root.pergunta_nivel4_fase3)
+		elif root.faseAtual == 4:
+			for i in range(root.opcoes_nivel4_fase4.size()):
+				baloes[i]._set_label_text(root.opcoes_nivel4_fase4[i])
+			labelPergunta.set_text(root.pergunta_nivel4_fase4)
+
+	elif root.nivelAtual == 5:
+		if root.faseAtual == 1:
+			for i in range(root.opcoes_nivel5_fase1.size()):
+				baloes[i]._set_label_text(root.opcoes_nivel5_fase1[i])
+			labelPergunta.set_text(root.pergunta_nivel5_fase1)
+		elif root.faseAtual == 2:
+			for i in range(root.opcoes_nivel5_fase2.size()):
+				baloes[i]._set_label_text(root.opcoes_nivel5_fase2[i])
+			labelPergunta.set_text(root.pergunta_nivel5_fase2)
+		elif root.faseAtual == 3:
+			for i in range(root.opcoes_nivel5_fase3.size()):
+				baloes[i]._set_label_text(root.opcoes_nivel5_fase3[i])
+			labelPergunta.set_text(root.pergunta_nivel5_fase3)
+		elif root.faseAtual == 4:
+			for i in range(root.opcoes_nivel5_fase4.size()):
+				baloes[i]._set_label_text(root.opcoes_nivel5_fase4[i])
+			labelPergunta.set_text(root.pergunta_nivel5_fase4)
 	
 
 
@@ -143,20 +197,28 @@ func _timer():
 
 func _charge_background():
 	if root.nivelAtual == 1:
+		labelNivel.set_text("Nível 1")
 		background.texture = load("res://assets//background//background1.png")
 	elif root.nivelAtual == 2:
+		labelNivel.set_text("Nível 2")
 		background.texture = load("res://assets//background//background2.jpeg")
 	elif root.nivelAtual == 3:
+		labelNivel.set_text("Nível 3")
 		background.texture = load("res://assets//background//background3.jpeg")
 	elif root.nivelAtual == 4:
+		labelNivel.set_text("Nível 4")
 		background.texture = load("res://assets//background//background4.jpeg")
 	elif root.nivelAtual == 5:
+		labelNivel.set_text("Nível 5")
 		background.texture = load("res://assets//background//background5.jpeg")
 	elif root.nivelAtual == 6:
+		labelNivel.set_text("Nível 6")
 		background.texture = load("res://assets//background//background6.jpeg")
 	elif root.nivelAtual == 7:
+		labelNivel.set_text("Nível 7")
 		background.texture= load("res://assets//background//background7.jpeg")
 	elif root.nivelAtual == 8:
+		labelNivel.set_text("Nível 8")
 		background.texture = load("res://assets//background//background8.jpeg")
 
 func _charge_fase_interface():
@@ -171,6 +233,7 @@ func _charge_fase_interface():
 
 func _reset_fase():
 	_charge_fase_interface()
+	_charge_background()
 	araraCharacter._on_reset()	
 	arara._reset()
 	canhao._reset()
@@ -310,11 +373,17 @@ func _verificar_acerto(resp: String):
 
 	_balao_atingido()
 
+func _save_in_data():
+	var file = FileAccess.open("res://data/data.lvs.aa", FileAccess.WRITE)
+	file.store_string(str(root.fasesDesbloqueadas))
+
 ##é usado no timerNextLevel
 func _next_level():
 	root.nivelAtual += 1
+	root.fasesDesbloqueadas += 1
 	root.faseAtual = 1
 	root.vidas = 3
+	_save_in_data()
 	_update_vidas()
 	_charge_background()
 	_reset_fase()

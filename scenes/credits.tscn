@@ -1,0 +1,97 @@
+[gd_scene load_steps=12 format=3 uid="uid://b7jtfcay5rer8"]
+
+[ext_resource type="Texture2D" uid="uid://dkjjb5p0wsq5w" path="res://assets/menu/fundo.png" id="1_s3g7q"]
+[ext_resource type="Script" path="res://scripts/backgroundCredits.gd" id="1_sri4o"]
+[ext_resource type="Texture2D" uid="uid://du7sft5lkdyjq" path="res://assets/menu/creditsTitle.png" id="2_mi76i"]
+[ext_resource type="Texture2D" uid="uid://cy2ry65d50v2x" path="res://assets/pause/voltar.png" id="4_7ashq"]
+[ext_resource type="Script" path="res://scripts/VoltarOpcoes.gd" id="5_3somn"]
+[ext_resource type="Texture2D" uid="uid://cdxrvmrp2n7l4" path="res://assets/menu/creditsInfo.png" id="5_j2cuo"]
+[ext_resource type="Texture2D" uid="uid://crawl5ykk8v61" path="res://icon.svg" id="6_0j287"]
+[ext_resource type="Texture2D" uid="uid://ccli64lmttnh5" path="res://assets/logotipo.png" id="7_l2gx1"]
+[ext_resource type="Texture2D" uid="uid://cm2cksifq46bk" path="res://assets/menu/inkscape-logo.png" id="9_lpvcg"]
+[ext_resource type="Texture2D" uid="uid://cbedt88f2cgcf" path="res://assets/menu/pixabay-logo.png" id="10_rxre3"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_mwx22"]
+outline_size = 4
+outline_color = Color(0, 0, 0, 1)
+
+[node name="Credits" type="Node2D"]
+metadata/_edit_vertical_guides_ = [597.0]
+
+[node name="ParallaxBackground" type="ParallaxBackground" parent="."]
+script = ExtResource("1_sri4o")
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
+
+[node name="TextureRect" type="TextureRect" parent="ParallaxBackground/ParallaxLayer"]
+offset_right = 1153.0
+offset_bottom = 651.0
+texture = ExtResource("1_s3g7q")
+expand_mode = 1
+
+[node name="Credits" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = 1154.0
+offset_bottom = 647.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Creditos" type="Sprite2D" parent="Credits"]
+position = Vector2(592, 80)
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("2_mi76i")
+
+[node name="Voltar" type="Sprite2D" parent="Credits"]
+position = Vector2(594, 590)
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("4_7ashq")
+script = ExtResource("5_3somn")
+
+[node name="Icon" type="Sprite2D" parent="Credits"]
+position = Vector2(857, 440)
+scale = Vector2(0.207031, 0.207031)
+texture = ExtResource("6_0j287")
+
+[node name="CreditsInfo" type="Sprite2D" parent="Credits"]
+position = Vector2(591, 341)
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("5_j2cuo")
+
+[node name="Logotipo" type="Sprite2D" parent="Credits"]
+position = Vector2(1035, 560)
+scale = Vector2(0.388199, 0.388199)
+texture = ExtResource("7_l2gx1")
+
+[node name="Inkscape-logo" type="Sprite2D" parent="Credits"]
+position = Vector2(872, 471)
+scale = Vector2(0.119531, 0.119531)
+texture = ExtResource("9_lpvcg")
+
+[node name="Pixabay-logo" type="Sprite2D" parent="Credits"]
+position = Vector2(707, 501)
+scale = Vector2(0.0458007, 0.0458007)
+texture = ExtResource("10_rxre3")
+
+[node name="Contacts" type="Label" parent="Credits"]
+layout_mode = 0
+offset_left = 932.0
+offset_top = 598.0
+offset_right = 1140.0
+offset_bottom = 624.0
+theme_override_constants/line_spacing = -31
+text = "jonataslimafsa@gmail.com
+"
+label_settings = SubResource("LabelSettings_mwx22")
+
+[node name="Contacts2" type="Label" parent="Credits"]
+layout_mode = 0
+offset_left = 937.0
+offset_top = 617.0
+offset_right = 1145.0
+offset_bottom = 643.0
+theme_override_constants/line_spacing = -31
+text = "weslei200912@gmail.com"
+label_settings = SubResource("LabelSettings_mwx22")

@@ -201,11 +201,6 @@ color = Color(0, 0, 0, 0.380392)
 
 [node name="TimerGameOver" type="Timer" parent="."]
 
-[node name="ColorRect" type="ColorRect" parent="."]
-offset_right = 1152.0
-offset_bottom = 648.0
-color = Color(0, 1, 0, 1)
-
 [node name="FadeIn" type="AnimationPlayer" parent="."]
 libraries = {
 "": SubResource("AnimationLibrary_53wmw")
@@ -223,6 +218,23 @@ volume_db = -5.0
 wait_time = 1.5
 
 [node name="TimerNextLevel" type="Timer" parent="."]
+
+[node name="Label" type="Label" parent="."]
+offset_left = 974.0
+offset_top = 25.0
+offset_right = 1084.0
+offset_bottom = 70.0
+theme_override_colors/font_color = Color(0, 0.247059, 0, 1)
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+theme_override_constants/outline_size = 9
+theme_override_font_sizes/font_size = 30
+text = "Nivel 1"
+uppercase = true
+
+[node name="ColorRect" type="ColorRect" parent="."]
+offset_right = 1152.0
+offset_bottom = 648.0
+color = Color(0, 1, 0, 1)
 
 [connection signal="cont_updated" from="Gun" to="AraraAzul" method="_on_gun_cont_updated"]
 [connection signal="cont_updated" from="Gun" to="Mira" method="_on_gun_cont_updated"]

@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://yisngukfe32c"]
+[gd_scene load_steps=23 format=3 uid="uid://yisngukfe32c"]
 
 [ext_resource type="Script" path="res://root.gd" id="1_bpdew"]
 [ext_resource type="PackedScene" uid="uid://d0xcfqg55744q" path="res://scenes/main_menu.tscn" id="1_mdl75"]
@@ -14,8 +14,10 @@
 [ext_resource type="Texture2D" uid="uid://d214w0l6cqgtw" path="res://assets/sound_off.png" id="9_kfrkv"]
 [ext_resource type="Script" path="res://scripts/gameOver.gd" id="10_kmq2a"]
 [ext_resource type="Texture2D" uid="uid://beahhdasaooe4" path="res://assets/gameOver.png" id="11_2ow0d"]
+[ext_resource type="PackedScene" uid="uid://b7jtfcay5rer8" path="res://scenes/credits.tscn" id="12_55xwo"]
 [ext_resource type="Texture2D" uid="uid://b73hnk4sffv0g" path="res://assets/buttonRestart.png" id="12_pha42"]
 [ext_resource type="Script" path="res://scripts/ButtonRestart.gd" id="13_04tyl"]
+[ext_resource type="Script" path="res://scripts/credits.gd" id="13_035x7"]
 [ext_resource type="Texture2D" uid="uid://cll05wadxnptk" path="res://assets/buttonMenu.png" id="13_oxgbt"]
 [ext_resource type="Script" path="res://scripts/ButtonMenuGameOver.gd" id="15_fjywd"]
 [ext_resource type="PackedScene" uid="uid://cs7ih1vp86ea0" path="res://scenes/loading.tscn" id="17_p4fln"]
@@ -53,6 +55,9 @@ script = ExtResource("7_08nts")
 
 [node name="Options" parent="." instance=ExtResource("2_q1l03")]
 script = ExtResource("3_56ug8")
+
+[node name="Credits" parent="." instance=ExtResource("12_55xwo")]
+script = ExtResource("13_035x7")
 
 [node name="SoundOff" type="Sprite2D" parent="."]
 position = Vector2(1119, 32)

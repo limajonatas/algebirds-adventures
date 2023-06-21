@@ -3,11 +3,14 @@ extends Control
 @onready var root = get_parent().get_parent()
 #@onready var canvaLayerConfirmarSair = get_node("ConfirmarSair")
 @onready var options = get_parent().get_parent().get_node("Options")
+@onready var credits = get_parent().get_parent().get_node("Credits")
 @onready var levels = get_parent().get_parent().get_node("Levels")
+@onready var buttonOpenCredits:Button = get_node("Button_credits")
 func _ready():
 	get_node("Button_play").pressed.connect(_on_play)
 	get_node("Button_options").pressed.connect(_on_option)
 	get_node("Button_quit").pressed.connect(_on_quit)
+	buttonOpenCredits.pressed.connect(_on_open_credits)
 
 
 func _on_play():
@@ -32,7 +35,12 @@ func _on_option():
 		pai.sceneActive = false ## desativa o menu principal
 		# get_tree().change_scene_to_file("res://scenes/options.tscn")
 
-
+func _on_open_credits():
+	if pai.sceneActive:
+		root.buttonSound.play()
+		pai.sceneActive = false ## desativa o menu principal
+		credits.sceneActive = true
+		
 func _on_quit():
 	if pai.sceneActive:
 		#canvaLayerConfirmarSair.canva.visible = true

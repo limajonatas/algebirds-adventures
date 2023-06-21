@@ -6,6 +6,7 @@
 
 [node name="Gun" type="Sprite2D"]
 position = Vector2(446, 232)
+scale = Vector2(0.315, 0.315)
 texture = ExtResource("1_1ys6f")
 script = ExtResource("2_udgxv")
 
