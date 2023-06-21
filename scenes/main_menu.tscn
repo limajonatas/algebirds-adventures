@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://d0xcfqg55744q"]
+[gd_scene load_steps=14 format=3 uid="uid://d0xcfqg55744q"]
 
 [ext_resource type="Script" path="res://mainMenuRoot.gd" id="1_67dnr"]
 [ext_resource type="Script" path="res://scripts/background_mainMenu.gd" id="1_77irg"]
@@ -9,6 +9,10 @@
 [ext_resource type="Texture2D" uid="uid://dmde4ycjhldqu" path="res://assets/menu/opcoes.png" id="4_mc2uk"]
 [ext_resource type="Texture2D" uid="uid://c1wv6wi3cp4mh" path="res://assets/menu/credito.png" id="5_wr4yn"]
 [ext_resource type="Texture2D" uid="uid://g3jrnrl34jkq" path="res://assets/menu/sair.png" id="6_8qs1f"]
+[ext_resource type="Texture2D" uid="uid://brqwk18f13fvx" path="res://assets/menu/hover/voltar_opcao.png" id="6_u7hdr"]
+[ext_resource type="Texture2D" uid="uid://dj8yh30le7tgx" path="res://assets/menu/hover/g17162-5-5.png" id="8_a3ttg"]
+[ext_resource type="Texture2D" uid="uid://ccaam1myww5w1" path="res://assets/menu/hover/g99769-1.png" id="10_0bs3d"]
+[ext_resource type="Texture2D" uid="uid://dvcfo1lmavu5i" path="res://assets/menu/hover/g111244-9.png" id="12_c3uok"]
 
 [node name="MainMenu" type="Node2D"]
 script = ExtResource("1_67dnr")
@@ -60,6 +64,7 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 1
 texture_normal = ExtResource("3_v1ebv")
+texture_hover = ExtResource("6_u7hdr")
 ignore_texture_size = true
 stretch_mode = 0
 
@@ -82,6 +87,7 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 1
 texture_normal = ExtResource("4_mc2uk")
+texture_hover = ExtResource("8_a3ttg")
 ignore_texture_size = true
 stretch_mode = 0
 
@@ -104,6 +110,7 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 1
 texture_normal = ExtResource("5_wr4yn")
+texture_hover = ExtResource("10_0bs3d")
 ignore_texture_size = true
 stretch_mode = 0
 
@@ -124,6 +131,7 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 1
 texture_normal = ExtResource("6_8qs1f")
+texture_hover = ExtResource("12_c3uok")
 ignore_texture_size = true
 stretch_mode = 0
 
