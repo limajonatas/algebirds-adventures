@@ -108,16 +108,16 @@ var resposta_nivel6_fase1: String = "4"
 var opcoes_nivel6_fase1: Array = ["4", "6", "2", "8"]
 
 var pergunta_nivel6_fase2: String = "2/1"
-var resposta_nivel6_fase2: String = "1"
-var opcoes_nivel6_fase2: Array = ["8", "1", "10", "3"]
+var resposta_nivel6_fase2: String = "2"
+var opcoes_nivel6_fase2: Array = ["1", "2", "21", "3"]
 
 var pergunta_nivel6_fase3: String = "10/2"
 var resposta_nivel6_fase3: String = "5"
-var opcoes_nivel6_fase3: Array = ["11", "12", "6", "5"]
+var opcoes_nivel6_fase3: Array = ["10", "20", "2", "5"]
 
 var pergunta_nivel6_fase4: String = "9/3"
 var resposta_nivel6_fase4: String = "3"
-var opcoes_nivel6_fase4: Array = ["3", "16", "14", "5"]
+var opcoes_nivel6_fase4: Array = ["3", "27", "9", "6"]
 
 ##### FASE 7 ##### OPERA��ES SIMPLES DE ADI��O E SUBTRA��O #####
 var pergunta_nivel7_fase1: String = "2+4-1"
@@ -175,3 +175,7 @@ func _load() -> int:
 	if content == "":
 		return 1
 	return int(content)
+
+
+func _on_music_2_finished():
+	music2.play();

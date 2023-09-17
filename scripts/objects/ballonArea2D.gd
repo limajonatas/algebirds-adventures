@@ -72,5 +72,5 @@ func _on_body_entered(body: Node) -> void:
 		label.visible = false
 		is_moving = false
 		sound.play()
-		print('ACERTOU BALÃO: ', label.text)
+		# print('ACERTOU BALÃO: ', label.text)
 		emit_signal("atingido", label.text)

@@ -7,6 +7,9 @@ extends Node2D
 @onready var menu: Node2D = get_parent().get_node("MainMenu")
 @onready var root: Node2D = get_parent()
 @onready var gameOver: Node2D= get_parent().get_node("GameOver")
+@onready var timerGameOver: Timer = $TimerGameOver
+@onready var timerGameEnd: Timer = $TimerGameEnd
+@onready var gameEnd: Node2D= get_parent().get_node("GameEnd")
 var musicPlaying = false
 
 #Aqui serve para alterar a movimenta��o dos bal�es
@@ -41,7 +44,6 @@ var shouldDelay = true
 @onready var quantidadeDesativar:int = 2;  # Quantidade de bal�es a serem desativados
 
 # @onready var line2D: Line2D = $Line2D
-@onready var timerGameOver: Timer = $TimerGameOver
 @onready var timer: Timer = $Timer
 @onready var timerNextLevel: Timer = $TimerNextLevel
 @onready var fadeIn: AnimationPlayer = $FadeIn
@@ -60,9 +62,11 @@ func _ready():
 	$TimerErrou.connect("timeout", _reset_fase)
 	timer.connect("timeout", _timer)
 	timerGameOver.connect("timeout", _game_over)
+	timerGameEnd.connect("timeout", _game_end)
 	timerNextLevel.connect("timeout", _next_level)
 	if sceneActive and root.musicOn:
 		root.music2.play()
+		root.music2.stream.loop = true
 		root.music.stop()
 	else:
 		musicPlaying = false
@@ -186,8 +190,60 @@ func _configura_baloes():
 			for i in range(root.opcoes_nivel5_fase4.size()):
 				baloes[i]._set_label_text(root.opcoes_nivel5_fase4[i])
 			labelPergunta.set_text(root.pergunta_nivel5_fase4)
-	
 
+	elif root.nivelAtual == 6:
+		if root.faseAtual == 1:
+			for i in range(root.opcoes_nivel6_fase1.size()):
+				baloes[i]._set_label_text(root.opcoes_nivel6_fase1[i])
+			labelPergunta.set_text(root.pergunta_nivel6_fase1)
+		elif root.faseAtual == 2:
+			for i in range(root.opcoes_nivel6_fase2.size()):
+				baloes[i]._set_label_text(root.opcoes_nivel6_fase2[i])
+			labelPergunta.set_text(root.pergunta_nivel6_fase2)
+		elif root.faseAtual == 3:
+			for i in range(root.opcoes_nivel6_fase3.size()):
+				baloes[i]._set_label_text(root.opcoes_nivel6_fase3[i])
+			labelPergunta.set_text(root.pergunta_nivel6_fase3)
+		elif root.faseAtual == 4:
+			for i in range(root.opcoes_nivel6_fase4.size()):
+				baloes[i]._set_label_text(root.opcoes_nivel6_fase4[i])
+			labelPergunta.set_text(root.pergunta_nivel6_fase4)
+	
+	elif root.nivelAtual == 7:
+		if root.faseAtual == 1:
+			for i in range(root.opcoes_nivel7_fase1.size()):
+				baloes[i]._set_label_text(root.opcoes_nivel7_fase1[i])
+			labelPergunta.set_text(root.pergunta_nivel7_fase1)
+		elif root.faseAtual == 2:
+			for i in range(root.opcoes_nivel7_fase2.size()):
+				baloes[i]._set_label_text(root.opcoes_nivel7_fase2[i])
+			labelPergunta.set_text(root.pergunta_nivel7_fase2)
+		elif root.faseAtual == 3:
+			for i in range(root.opcoes_nivel7_fase3.size()):
+				baloes[i]._set_label_text(root.opcoes_nivel7_fase3[i])
+			labelPergunta.set_text(root.pergunta_nivel7_fase3)
+		elif root.faseAtual == 4:
+			for i in range(root.opcoes_nivel7_fase4.size()):
+				baloes[i]._set_label_text(root.opcoes_nivel7_fase4[i])
+			labelPergunta.set_text(root.pergunta_nivel7_fase4)
+	
+	elif root.nivelAtual == 8:
+		if root.faseAtual == 1:
+			for i in range(root.opcoes_nivel8_fase1.size()):
+				baloes[i]._set_label_text(root.opcoes_nivel8_fase1[i])
+			labelPergunta.set_text(root.pergunta_nivel8_fase1)
+		elif root.faseAtual == 2:
+			for i in range(root.opcoes_nivel8_fase2.size()):
+				baloes[i]._set_label_text(root.opcoes_nivel8_fase2[i])
+			labelPergunta.set_text(root.pergunta_nivel8_fase2)
+		elif root.faseAtual == 3:
+			for i in range(root.opcoes_nivel8_fase3.size()):
+				baloes[i]._set_label_text(root.opcoes_nivel8_fase3[i])
+			labelPergunta.set_text(root.pergunta_nivel8_fase3)
+		elif root.faseAtual == 4:
+			for i in range(root.opcoes_nivel8_fase4.size()):
+				baloes[i]._set_label_text(root.opcoes_nivel8_fase4[i])
+			labelPergunta.set_text(root.pergunta_nivel8_fase4)
 
 
 func _timer():
@@ -275,6 +331,7 @@ func _process(_delta) -> void:
 		if not musicPlaying and root.musicOn:
 			musicPlaying = true
 			root.music2.play()
+			# root.music2.stream.loop = true
 			root.music.stop()
 		
 		#quando a arara começa a se movimentar
@@ -369,7 +426,111 @@ func _verificar_acerto(resp: String):
 				acertou()
 			else:
 				errou()
-
+	elif root.nivelAtual == 4:
+		if root.faseAtual == 1:
+			if resp == root.resposta_nivel4_fase1:
+				acertou()
+			else:
+				errou()
+		elif root.faseAtual == 2:
+			if resp == root.resposta_nivel4_fase2:
+				acertou()
+			else:
+				errou()
+		elif root.faseAtual == 3:
+			if resp == root.resposta_nivel4_fase3:
+				acertou()
+			else:
+				errou()
+		elif root.faseAtual == 4:
+			if resp == root.resposta_nivel4_fase4:
+				acertou()
+			else:
+				errou()
+	elif root.nivelAtual == 5:
+		if root.faseAtual == 1:
+			if resp == root.resposta_nivel5_fase1:
+				acertou()
+			else:
+				errou()
+		elif root.faseAtual == 2:
+			if resp == root.resposta_nivel5_fase2:
+				acertou()
+			else:
+				errou()
+		elif root.faseAtual == 3:
+			if resp == root.resposta_nivel5_fase3:
+				acertou()
+			else:
+				errou()
+		elif root.faseAtual == 4:
+			if resp == root.resposta_nivel5_fase4:
+				acertou()
+			else:
+				errou()
+	elif root.nivelAtual == 6:
+		if root.faseAtual == 1:
+			if resp == root.resposta_nivel6_fase1:
+				acertou()
+			else:
+				errou()
+		elif root.faseAtual == 2:
+			if resp == root.resposta_nivel6_fase2:
+				acertou()
+			else:
+				errou()
+		elif root.faseAtual == 3:
+			if resp == root.resposta_nivel6_fase3:
+				acertou()
+			else:
+				errou()
+		elif root.faseAtual == 4:
+			if resp == root.resposta_nivel6_fase4:
+				acertou()
+			else:
+				errou()
+	elif root.nivelAtual == 7:
+		if root.faseAtual == 1:
+			if resp == root.resposta_nivel7_fase1:
+				acertou()
+			else:
+				errou()
+		elif root.faseAtual == 2:
+			if resp == root.resposta_nivel7_fase2:
+				acertou()
+			else:
+				errou()
+		elif root.faseAtual == 3:
+			if resp == root.resposta_nivel7_fase3:
+				acertou()
+			else:
+				errou()
+		elif root.faseAtual == 4:
+			if resp == root.resposta_nivel7_fase4:
+				acertou()
+			else:
+				errou()
+	elif root.nivelAtual == 8:
+		if root.faseAtual == 1:
+			if resp == root.resposta_nivel8_fase1:
+				acertou()
+			else:
+				errou()
+		elif root.faseAtual == 2:
+			if resp == root.resposta_nivel8_fase2:
+				acertou()
+			else:
+				errou()
+		elif root.faseAtual == 3:
+			if resp == root.resposta_nivel8_fase3:
+				acertou()
+			else:
+				errou()
+		elif root.faseAtual == 4:
+			if resp == root.resposta_nivel8_fase4:
+				timerGameEnd.start() ##chamar tela de fim de jogo
+			else:
+				errou()
 
 	_balao_atingido()
 
@@ -414,6 +575,11 @@ func errou():
 		$TimerErrou.start()
 		shouldDelay = false
 
+func _game_end():
+	gameEnd.sceneActive = true
+	sceneActive = false
+	timerGameEnd.stop()
+
 ##s�o os sinais emitidos pelos baloes
 #as labels ser�o para comparar o que a arara acertou
 func _on_ballon_01_atingido(label: String):
@@ -443,3 +609,8 @@ func _on_arara_azul_saiu_da_tela():
 		$TimerErrou.start()
 		shouldDelay = false
 		_balao_atingido() ##poderia ter outro nome, mas esta é função necessaria aqui
+
+
+func _on_music_2_finished():
+	root.music2.play()
+	

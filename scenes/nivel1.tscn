@@ -201,6 +201,8 @@ color = Color(0, 0, 0, 0.380392)
 
 [node name="TimerGameOver" type="Timer" parent="."]
 
+[node name="TimerGameEnd" type="Timer" parent="."]
+
 [node name="FadeIn" type="AnimationPlayer" parent="."]
 libraries = {
 "": SubResource("AnimationLibrary_53wmw")
