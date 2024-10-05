@@ -93,7 +93,22 @@ func _configura_baloes():
 		var animationNumber = "main0" + str(rng.randi_range(1, 6))
 		balao.animationPlayer.play(animationNumber)
 		balao.is_moving = true
-	
+
+	# Carregar a pergunta e opções para o nível e fase atuais
+	var pergunta_data = root.get_pergunta(root.nivelAtual, root.faseAtual)
+
+	# Verificar se há uma pergunta válida
+	if pergunta_data.size() > 0:
+		# Definir o texto da pergunta
+		labelPergunta.set_text(pergunta_data["pergunta"])
+		
+		# Definir as opções nos balões
+		var opcoes = pergunta_data["opcoes"]
+		for i in range(min(baloes.size(), opcoes.size())):
+			baloes[i]._set_label_text(opcoes[i])
+	else:
+		print("Pergunta não encontrada para o nível ", root.nivelAtual, " e fase ", root.faseAtual)
+'''
 	if root.nivelAtual == 1:
 		if root.faseAtual == 1:
 			for i in range(root.opcoes_nivel1_fase1.size()):
@@ -244,7 +259,7 @@ func _configura_baloes():
 			for i in range(root.opcoes_nivel8_fase4.size()):
 				baloes[i]._set_label_text(root.opcoes_nivel8_fase4[i])
 			labelPergunta.set_text(root.pergunta_nivel8_fase4)
-
+'''
 
 func _timer():
 	_reset_fase()
@@ -252,30 +267,22 @@ func _timer():
 	timer.stop()
 
 func _charge_background():
-	if root.nivelAtual == 1:
-		labelNivel.set_text("Nível 1")
-		background.texture = load("res://assets//background//background1.png")
-	elif root.nivelAtual == 2:
-		labelNivel.set_text("Nível 2")
-		background.texture = load("res://assets//background//background2.jpeg")
-	elif root.nivelAtual == 3:
-		labelNivel.set_text("Nível 3")
-		background.texture = load("res://assets//background//background3.jpeg")
-	elif root.nivelAtual == 4:
-		labelNivel.set_text("Nível 4")
-		background.texture = load("res://assets//background//background4.jpeg")
-	elif root.nivelAtual == 5:
-		labelNivel.set_text("Nível 5")
-		background.texture = load("res://assets//background//background5.jpeg")
-	elif root.nivelAtual == 6:
-		labelNivel.set_text("Nível 6")
-		background.texture = load("res://assets//background//background6.jpeg")
-	elif root.nivelAtual == 7:
-		labelNivel.set_text("Nível 7")
-		background.texture= load("res://assets//background//background7.jpeg")
-	elif root.nivelAtual == 8:
-		labelNivel.set_text("Nível 8")
-		background.texture = load("res://assets//background//background8.jpeg")
+	var niveis = [
+		{"texto": "Nível 1", "background": "res://assets/background/background1.png"},
+		{"texto": "Nível 2", "background": "res://assets/background/background2.jpeg"},
+		{"texto": "Nível 3", "background": "res://assets/background/background3.jpeg"},
+		{"texto": "Nível 4", "background": "res://assets/background/background4.jpeg"},
+		{"texto": "Nível 5", "background": "res://assets/background/background5.jpeg"},
+		{"texto": "Nível 6", "background": "res://assets/background/background6.jpeg"},
+		{"texto": "Nível 7", "background": "res://assets/background/background7.jpeg"},
+		{"texto": "Nível 8", "background": "res://assets/background/background8.jpeg"},
+		{"texto": "Nível 9", "background": "res://assets/background/background9.jpeg"},
+		{"texto": "Nível 10", "background": "res://assets/background/background10.jpeg"}
+	]
+	if root.nivelAtual >= 1 and root.nivelAtual <= 10:
+		var nivel_info = niveis[root.nivelAtual - 1]  # Ajuste para índice (0 a 9)
+		labelNivel.set_text(nivel_info["texto"])
+		background.texture = load(nivel_info["background"])
 
 func _charge_fase_interface():
 	if root.faseAtual == 1:
@@ -363,176 +370,27 @@ func _balao_atingido():
 	ballon06.is_moving = false
 
 func _verificar_acerto(resp: String):
-	if root.nivelAtual == 1:
-		if root.faseAtual == 1:
-			if resp == root.resposta_nivel1_fase1:
-				acertou()
-			else:
-				errou()
-		elif root.faseAtual == 2:
-			if resp == root.resposta_nivel1_fase2:
-				acertou()
-			else:
-				errou()
-		elif root.faseAtual == 3:
-			if resp == root.resposta_nivel1_fase3:
-				acertou()
-			else:
-				errou()
-		elif root.faseAtual == 4:
-			if resp == root.resposta_nivel1_fase4:
-				acertou()
-			else:
-				errou()
-	elif root.nivelAtual == 2:
-		if root.faseAtual == 1:
-			if resp == root.resposta_nivel2_fase1:
-				acertou()
-			else:
-				errou()
-		elif root.faseAtual == 2:
-			if resp == root.resposta_nivel2_fase2:
-				acertou()
-			else:
-				errou()
-		elif root.faseAtual == 3:
-			if resp == root.resposta_nivel2_fase3:
-				acertou()
-			else:
-				errou()
-		elif root.faseAtual == 4:
-			if resp == root.resposta_nivel2_fase4:
-				acertou()
-			else:
-				errou()
-	elif root.nivelAtual == 3:
-		if root.faseAtual == 1:
-			if resp == root.resposta_nivel3_fase1:
-				acertou()
-			else:
-				errou()
-		elif root.faseAtual == 2:
-			if resp == root.resposta_nivel3_fase2:
-				acertou()
-			else:
-				errou()
-		elif root.faseAtual == 3:
-			if resp == root.resposta_nivel3_fase3:
-				acertou()
-			else:
-				errou()
-		elif root.faseAtual == 4:
-			if resp == root.resposta_nivel3_fase4:
-				acertou()
-			else:
-				errou()
-	elif root.nivelAtual == 4:
-		if root.faseAtual == 1:
-			if resp == root.resposta_nivel4_fase1:
-				acertou()
-			else:
-				errou()
-		elif root.faseAtual == 2:
-			if resp == root.resposta_nivel4_fase2:
-				acertou()
-			else:
-				errou()
-		elif root.faseAtual == 3:
-			if resp == root.resposta_nivel4_fase3:
-				acertou()
-			else:
-				errou()
-		elif root.faseAtual == 4:
-			if resp == root.resposta_nivel4_fase4:
-				acertou()
-			else:
-				errou()
-	elif root.nivelAtual == 5:
-		if root.faseAtual == 1:
-			if resp == root.resposta_nivel5_fase1:
-				acertou()
-			else:
-				errou()
-		elif root.faseAtual == 2:
-			if resp == root.resposta_nivel5_fase2:
-				acertou()
-			else:
-				errou()
-		elif root.faseAtual == 3:
-			if resp == root.resposta_nivel5_fase3:
-				acertou()
-			else:
-				errou()
-		elif root.faseAtual == 4:
-			if resp == root.resposta_nivel5_fase4:
-				acertou()
-			else:
-				errou()
-	elif root.nivelAtual == 6:
-		if root.faseAtual == 1:
-			if resp == root.resposta_nivel6_fase1:
-				acertou()
-			else:
-				errou()
-		elif root.faseAtual == 2:
-			if resp == root.resposta_nivel6_fase2:
-				acertou()
-			else:
-				errou()
-		elif root.faseAtual == 3:
-			if resp == root.resposta_nivel6_fase3:
-				acertou()
-			else:
-				errou()
-		elif root.faseAtual == 4:
-			if resp == root.resposta_nivel6_fase4:
-				acertou()
-			else:
-				errou()
-	elif root.nivelAtual == 7:
-		if root.faseAtual == 1:
-			if resp == root.resposta_nivel7_fase1:
-				acertou()
-			else:
-				errou()
-		elif root.faseAtual == 2:
-			if resp == root.resposta_nivel7_fase2:
-				acertou()
-			else:
-				errou()
-		elif root.faseAtual == 3:
-			if resp == root.resposta_nivel7_fase3:
-				acertou()
-			else:
-				errou()
-		elif root.faseAtual == 4:
-			if resp == root.resposta_nivel7_fase4:
-				acertou()
-			else:
-				errou()
-	elif root.nivelAtual == 8:
-		if root.faseAtual == 1:
-			if resp == root.resposta_nivel8_fase1:
-				acertou()
-			else:
-				errou()
-		elif root.faseAtual == 2:
-			if resp == root.resposta_nivel8_fase2:
-				acertou()
-			else:
-				errou()
-		elif root.faseAtual == 3:
-			if resp == root.resposta_nivel8_fase3:
-				acertou()
-			else:
-				errou()
-		elif root.faseAtual == 4:
-			if resp == root.resposta_nivel8_fase4:
-				timerGameEnd.start() ##chamar tela de fim de jogo
-			else:
-				errou()
-
+	# Carregar os dados da pergunta e respostas para o nível e fase atuais
+	var pergunta_data = root.get_pergunta(root.nivelAtual, root.faseAtual)
+	
+	# Verificar se há uma pergunta válida
+	if pergunta_data.size() > 0:
+		# Verificar se a resposta do usuário está correta
+		var resposta_correta = pergunta_data["resposta"]
+		
+		if resp == resposta_correta:
+			acertou()
+		else:
+			errou()
+			
+		# Caso especial: se for a fase 4 do nível 10, iniciar o fim de jogo
+		if root.nivelAtual == 10 and root.faseAtual == 4:
+			timerGameEnd.start()  # Chamar tela de fim de jogo
+	else:
+		print("Resposta não encontrada para o nível ", root.nivelAtual, " e fase ", root.faseAtual)
+	
 	_balao_atingido()
+
 
 func _save_in_data():
 	var file = FileAccess.open("res://data/data.lvs.aa", FileAccess.WRITE)
@@ -541,6 +399,7 @@ func _save_in_data():
 ##é usado no timerNextLevel
 func _next_level():
 	root.nivelAtual += 1
+	print(root.nivelAtual)
 	root.fasesDesbloqueadas += 1
 	root.faseAtual = 1
 	root.vidas = 3
