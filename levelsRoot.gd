@@ -12,6 +12,8 @@ var animacaoRodou = false
 @onready var level6: Button = $Menu_selection/Level6
 @onready var level7: Button = $Menu_selection/Level7
 @onready var level8: Button = $Menu_selection/Level8
+@onready var level9: Button = $Menu_selection/Level9
+@onready var level10: Button = $Menu_selection/Level10
 @onready var root: Node2D = get_parent()
 @onready var menu: Node2D = get_parent().get_node("MainMenu")
 @onready var loading: Node2D = get_parent().get_node("Loading")
@@ -32,6 +34,8 @@ func _ready():
 	level6.label.set_text("Lv 6")
 	level7.label.set_text("Lv 7")
 	level8.label.set_text("Lv 8")
+	level9.label.set_text("Lv 9")
+	level10.label.set_text("Lv 10")
 
 	level1.pressed.connect(_level1_Open)
 	level2.pressed.connect(_level2_Open)
@@ -41,6 +45,8 @@ func _ready():
 	level6.pressed.connect(_level6_Open)
 	level7.pressed.connect(_level7_Open)
 	level8.pressed.connect(_level8_Open)
+	level9.pressed.connect(_level9_Open)
+	level10.pressed.connect(_level10_Open)
 
 
 func _level1_Open():
@@ -115,6 +121,24 @@ func _level8_Open():
 		sceneActive = true
 
 
+func _level9_Open():
+	if sceneActive:
+		faseSelecionada = 9
+		root.nivelAtual = 9
+		_sceneLoading()
+	else:
+		sceneActive = true
+
+
+func _level10_Open():
+	if sceneActive:
+		faseSelecionada = 10
+		root.nivelAtual = 10
+		_sceneLoading()
+	else:
+		sceneActive = true
+
+
 func _sceneLoading():
 	root.faseAtual = 1
 	jogo._reset_fase()
@@ -136,10 +160,7 @@ func _process(_delta):
 		self.visible = false
 
 	if loading.loading.value >= 100:
-		# if faseSelecionada == 1:
 		jogo.sceneActive = true
-		# else:
-		# 	sceneActive = true
 
 	if menu.sceneActive == true:
 		jogo.sceneActive = false
@@ -147,74 +168,31 @@ func _process(_delta):
 
 func _exibe_mapa_niveis():
 	if root.fasesDesbloqueadas == 1:
-		level1.texture.disabled = false
-		level2.texture.disabled = true
-		level3.texture.disabled = true
-		level4.texture.disabled = true
-		level5.texture.disabled = true
-		level6.texture.disabled = true
-		level7.texture.disabled = true
-		level8.texture.disabled = true
+		_desbloquear_fases([level1], [level2, level3, level4, level5, level6, level7, level8, level9, level10])
 	elif root.fasesDesbloqueadas == 2:
-		level1.texture.disabled = false
-		level2.texture.disabled = false
-		level3.texture.disabled = true
-		level4.texture.disabled = true
-		level5.texture.disabled = true
-		level6.texture.disabled = true
-		level7.texture.disabled = true
-		level8.texture.disabled = true
+		_desbloquear_fases([level1, level2], [level3, level4, level5, level6, level7, level8, level9, level10])
 	elif root.fasesDesbloqueadas == 3:
-		level1.texture.disabled = false
-		level2.texture.disabled = false
-		level3.texture.disabled = false
-		level4.texture.disabled = true
-		level5.texture.disabled = true
-		level6.texture.disabled = true
-		level7.texture.disabled = true
-		level8.texture.disabled = true
+		_desbloquear_fases([level1, level2, level3], [level4, level5, level6, level7, level8, level9, level10])
 	elif root.fasesDesbloqueadas == 4:
-		level1.texture.disabled = false
-		level2.texture.disabled = false
-		level3.texture.disabled = false
-		level4.texture.disabled = false
-		level5.texture.disabled = true
-		level6.texture.disabled = true
-		level7.texture.disabled = true
-		level8.texture.disabled = true
+		_desbloquear_fases([level1, level2, level3, level4], [level5, level6, level7, level8, level9, level10])
 	elif root.fasesDesbloqueadas == 5:
-		level1.texture.disabled = false
-		level2.texture.disabled = false
-		level3.texture.disabled = false
-		level4.texture.disabled = false
-		level5.texture.disabled = false
-		level6.texture.disabled = true
-		level7.texture.disabled = true
-		level8.texture.disabled = true
+		_desbloquear_fases([level1, level2, level3, level4, level5], [level6, level7, level8, level9, level10])
 	elif root.fasesDesbloqueadas == 6:
-		level1.texture.disabled = false
-		level2.texture.disabled = false
-		level3.texture.disabled = false
-		level4.texture.disabled = false
-		level5.texture.disabled = false
-		level6.texture.disabled = false
-		level7.texture.disabled = true
-		level8.texture.disabled = true
+		_desbloquear_fases([level1, level2, level3, level4, level5, level6], [level7, level8, level9, level10])
 	elif root.fasesDesbloqueadas == 7:
-		level1.texture.disabled = false
-		level2.texture.disabled = false
-		level3.texture.disabled = false
-		level4.texture.disabled = false
-		level5.texture.disabled = false
-		level6.texture.disabled = false
-		level7.texture.disabled = false
-		level8.texture.disabled = true
+		_desbloquear_fases([level1, level2, level3, level4, level5, level6, level7], [level8, level9, level10])
 	elif root.fasesDesbloqueadas == 8:
-		level1.texture.disabled = false
-		level2.texture.disabled = false
-		level3.texture.disabled = false
-		level4.texture.disabled = false
-		level5.texture.disabled = false
-		level6.texture.disabled = false
-		level7.texture.disabled = false
-		level8.texture.disabled = false
+		_desbloquear_fases([level1, level2, level3, level4, level5, level6, level7, level8], [level9, level10])
+	elif root.fasesDesbloqueadas == 9:
+		_desbloquear_fases([level1, level2, level3, level4, level5, level6, level7, level8, level9], [level10])
+	elif root.fasesDesbloqueadas == 10:
+		_desbloquear_fases([level1, level2, level3, level4, level5, level6, level7, level8, level9, level10], [])
+
+
+func _desbloquear_fases(fases_desbloqueadas, fases_bloqueadas):
+	for fase in fases_desbloqueadas:
+		fase.texture.disabled = false
+		fase.disabled = false
+	for fase in fases_bloqueadas:
+		fase.texture.disabled = true
+		fase.disabled = true
